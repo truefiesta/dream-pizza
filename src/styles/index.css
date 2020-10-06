@@ -10,5 +10,8 @@ h1 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 60px;
-    color: palevioletred;
+}
+
+.text {
+  color: palevioletred;
 }

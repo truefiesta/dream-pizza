@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App snapshot should render 1`] = `
+exports[`Pass should render 1`] = `
 <div>
-  <h1>
+  <h1
+    className="text"
+  >
     Hello World
   </h1>
 </div>
