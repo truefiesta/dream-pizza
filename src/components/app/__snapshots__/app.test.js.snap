@@ -2,10 +2,6 @@
 
 exports[`Pass should render 1`] = `
 <div>
-  <h1
-    className="text"
-  >
-    Hello World
-  </h1>
+  Home
 </div>
 `;
