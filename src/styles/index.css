@@ -1,17 +1,82 @@
 @import "~normalize.css";
 @import "fonts.css";
 
-body {
-  color: white;
-  background-color: black;
+/* Variables */
+
+:root {
+  --basic-black: #181818;
+  --basic-white: #ffffff;
+  --basic-red: #b72828;
+  --basic-green: #2a6c20;
+  --basic-yellow: #dcad42;
+
+  --light-gray: #c4c4c4;
+  --full-dark-gray: #44515d;
+  --dark-gray: rgba(68, 81, 93, 0.8);
+  --semi-dark-gray: rgba(68, 81, 93, 0.7);
+  --medium-dark-gray: rgba(68, 81, 93, 0.3);
+  --bg-gray: #f6f6f7;
+  --dark-red: #9f2323;
 }
 
-h1 {
+/* Global */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Custom styles */
+
+.page-body {
+  margin: 0;
+  padding: 0;
+
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+
+  background-color: var(--basic-white);
+  color: var(--basic-black);
+}
+
+.page-title {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 60px;
 }
 
-.text {
-  color: palevioletred;
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Layout */
+
+@media (min-width: 320px) {
+  .page-body {
+    min-width: 320px;
+  }
+}
+
+@media (min-width: 600px) {
+  .page-body {
+    min-width: 600px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .page-body {
+    min-width: 1000px;
+  }
 }
