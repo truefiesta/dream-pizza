@@ -1,0 +1,138 @@
+.header-main {
+  height: 80px;
+}
+
+.logo {
+  display: block;
+  width: 118px;
+
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  color: var(--basic-red);
+}
+
+.nav-main-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.nav-main-item a {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 12px;
+  text-decoration: none;
+  color: var(--basic-black);
+}
+
+.nav-main-toggle {
+  display: none;
+}
+
+.nav-user-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 320px) {
+  .header-main {
+    height: 150px;
+  }
+
+  .header-main-top {
+    height: 80px;
+    background-color: var(--basic-white);
+
+    position: relative;
+  }
+
+  .logo {
+    position: absolute;
+    bottom: 30px;
+    left: 10px;
+  }
+
+  .nav-main-item {
+    border-bottom: 1px solid var(--basic-white);
+  }
+
+  .nav-main-item:last-child {
+    border-bottom: 1px solid var(--bg-gray);
+  }
+
+  .nav-main-item a {
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+
+    background-color: var(--bg-gray);
+    color: var(--semi-dark-gray);
+  }
+
+  .nav-main-item a:hover {
+    background-color: var(--medium-dark-gray);
+    color: var(--basic-black);
+  }
+
+  .nav-main-toggle {
+    display: block;
+    width: 30px;
+    height: 30px;
+
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+
+    border: none;
+    cursor: pointer;
+  }
+
+  .nav-user-list {
+    display: flex;
+    background-color: var(--bg-gray);
+  }
+
+  .nav-user-list li {
+    width: 50%;
+  }
+
+  .nav-user-link {
+    display: block;
+    padding: 10px 0;
+
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    color: var(--dark-gray);
+
+    background-color: var(--bg-gray);
+  }
+
+  .nav-user-link:hover {
+    background-color: var(--medium-dark-gray);
+  }
+
+  .nav-icon-block {
+    margin-top: 5px;
+  }
+
+  .nav-icon-block svg {
+    margin-right: 10px;
+  }
+
+  .nav-icon-block span {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+
+    vertical-align: baseline;
+  }
+}
