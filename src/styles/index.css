@@ -1,15 +1,15 @@
-@import '~normalize.css';
-@import 'fonts.css';
+@import "~normalize.css";
+@import "fonts.css";
 
 body {
-    color: white;
-    background-color: black;
+  color: white;
+  background-color: black;
 }
 
 h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 60px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 60px;
 }
 
 .text {

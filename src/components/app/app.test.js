@@ -7,12 +7,9 @@ describe(`Pass`, () => {
   //   expect(2+2).toEqual(4);
   // })
 
-    it(`should render`, () => {
-        const tree = renderer.create(
-            <App />
-        )
-        .toJSON();
+  it(`should render`, () => {
+    const tree = renderer.create(<App />).toJSON();
 
-        expect(tree).toMatchSnapshot();
-    })
-})
+    expect(tree).toMatchSnapshot();
+  });
+});
