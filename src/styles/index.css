@@ -9,6 +9,7 @@
   --basic-red: #b72828;
   --basic-green: #2a6c20;
   --basic-yellow: #dcad42;
+  --opacity-white: rgba(255, 255, 255, 0.8);
 
   --light-gray: #c4c4c4;
   --full-dark-gray: #44515d;
@@ -17,6 +18,8 @@
   --medium-dark-gray: rgba(68, 81, 93, 0.3);
   --bg-gray: #f6f6f7;
   --dark-red: #9f2323;
+
+  --border-radius: 10px;
 }
 
 /* Global */
@@ -28,7 +31,11 @@ img {
 
 /* Custom styles */
 
+.app,
 .page-body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   margin: 0;
   padding: 0;
 
