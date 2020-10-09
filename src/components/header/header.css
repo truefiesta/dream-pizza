@@ -38,6 +38,11 @@
   list-style: none;
 }
 
+.nav-favorites-empty .favorites-fill,
+.nav-cart-empty .cart-fill {
+  fill: none;
+}
+
 @media (min-width: 320px) {
   .header-main {
     height: 150px;
@@ -134,5 +139,15 @@
     line-height: 24px;
 
     vertical-align: baseline;
+  }
+
+  .nav-icon-fill-stroke {
+    fill: #44515d;
+  }
+}
+
+@media (min-width: 600px) {
+  .nav-icon-fill-stroke {
+    fill: #181818;
   }
 }
