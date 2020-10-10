@@ -1,0 +1,142 @@
+.card {
+  display: flex;
+  position: relative;
+
+  margin: 0;
+  padding: 10px;
+
+  background: var(--basic-white);
+  border-radius: var(--border-radius);
+}
+
+.card-image-container-link {
+  cursor: pointer;
+}
+
+.card-button {
+  position: absolute;
+}
+
+.card-details {
+  display: flex;
+}
+
+.card-title,
+.card-title-link {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 5px;
+
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--basic-black);
+  cursor: pointer;
+}
+
+.card-title-link:hover,
+.card-title-link:focus {
+  color: var(--basic-red);
+}
+
+.card-pizza-type {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 2px;
+
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  text-transform: uppercase;
+  color: var(--semi-dark-gray);
+}
+
+.card-rating-value,
+.card-price small {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 10px;
+  color: var(--full-dark-gray);
+}
+
+.card-price small {
+  line-height: 16px;
+}
+
+.card-price {
+  padding: 0;
+  margin: 0;
+  margin-top: auto;
+
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 20px;
+  color: var(--basic-black);
+}
+
+.card-button {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.card-not-added .card-fill {
+  fill: transparent;
+}
+
+@media (min-width: 320px) {
+  .card-image-container-link {
+    width: 106px;
+    height: 106px;
+    margin-right: 20px;
+  }
+
+  .card-details {
+    flex-direction: column;
+    padding-right: 30px;
+  }
+
+  .favorites-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    background-color: var(--basic-white);
+  }
+
+  .card-button:hover .card-fill {
+    fill: var(--basic-red);
+  }
+
+  .cart-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+
+    background-color: var(--bg-gray);
+  }
+
+  .cart-button:hover {
+    background-color: var(--medium-dark-gray);
+  }
+}
+
+@media (min-width: 600px) {
+  .favorites-button {
+    background-color: var(--bg-gray);
+  }
+
+  .favorites-button:hover {
+    background-color: var(--medium-dark-gray);
+  }
+}
