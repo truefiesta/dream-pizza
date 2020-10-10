@@ -44,7 +44,7 @@ img {
   font-size: 12px;
   line-height: 14px;
 
-  background-color: var(--basic-white);
+  background-color: var(--bg-gray);
   color: var(--basic-black);
 }
 
@@ -68,11 +68,31 @@ img {
   display: none;
 }
 
+.wrapper {
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--basic-black);
+}
+
 /* Layout */
 
 @media (min-width: 320px) {
   .page-body {
     min-width: 320px;
+  }
+
+  .wrapper {
+    padding: 0 10px;
+  }
+
+  .section-title {
+    text-align: center;
   }
 }
 
