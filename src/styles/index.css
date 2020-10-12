@@ -54,6 +54,20 @@ img {
   font-size: 60px;
 }
 
+.button {
+  display: inline-block;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--full-dark-gray);
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: transparent;
+}
+
 .visually-hidden {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -92,6 +106,8 @@ img {
   }
 
   .section-title {
+    margin: 0;
+    margin-bottom: 20px;
     text-align: center;
   }
 }

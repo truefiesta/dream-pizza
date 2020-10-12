@@ -17,16 +17,7 @@
 }
 
 .sort-list-button {
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 12px;
-  text-transform: uppercase;
-  color: var(--full-dark-gray);
-  padding: 7px 12px;
   border: 2px solid transparent;
-  border-radius: 20px;
-  background: transparent;
 }
 
 .sort-list-button:hover {
