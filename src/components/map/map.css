@@ -1,0 +1,43 @@
+.map-container {
+  width: 100%;
+}
+
+.map-pin-info {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--basic-white);
+}
+
+.map-pin-title {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 5px;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: var(--basic-red);
+}
+
+.map-pin-text {
+  padding: 0;
+  margin: 0;
+
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--basic-black);
+}
+
+@media (min-width: 320px) {
+  .map-container {
+    height: 400px;
+    background-color: rgb(152, 196, 247);
+  }
+}
+
+@media (min-width: 1000px) {
+  .map-container {
+    height: 455px;
+  }
+}
