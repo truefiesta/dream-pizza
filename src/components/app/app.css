@@ -5,18 +5,54 @@
   position: relative;
 }
 
-.home-page-controls-list {
-  position: absolute;
-  right: 10px;
-  bottom: 0;
-}
-
 @media (min-width: 320px) {
   .wrapper.menu-container {
     margin-bottom: 40px;
   }
 
-  .home-page-button-full-menu {
+  .home-page .button-full-menu {
     order: 1;
+    position: static;
+  }
+
+  .home-page .sort-list {
+    margin: 20px 0 30px 0;
+  }
+
+  .home-page .controls-list {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+  }
+}
+
+@media (min-width: 600px) {
+  .home-page .button-full-menu {
+    order: 0;
+    position: absolute;
+  }
+
+  .home-page .sort-list {
+    margin: 0 0 30px 0;
+    max-width: 450px;
+    margin-left: auto;
+  }
+
+  .home-page .section-title {
+    padding-left: 30px;
+  }
+
+  .home-page .controls-list {
+    top: 60px;
+    bottom: auto;
+  }
+
+  .wrapper.menu-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .cards-list-wrapper {
+    width: 100%;
   }
 }

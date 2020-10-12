@@ -3,7 +3,7 @@ import "./prev-next-controls.css";
 
 const PrevNextControls = () => {
   return (
-    <ul className="controls-list home-page-controls-list">
+    <ul className="controls-list">
       <li>
         <button className="controls-button prev-button" type="button">
           <span className="visually-hidden">Go to previous items</span>

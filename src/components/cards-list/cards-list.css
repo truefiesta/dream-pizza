@@ -4,3 +4,10 @@
   margin: 0;
   margin-bottom: 20px;
 }
+
+@media (min-width: 600px) {
+  .cards-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

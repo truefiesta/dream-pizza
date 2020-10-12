@@ -106,6 +106,14 @@
     padding-right: 30px;
   }
 
+  .card-rating {
+    margin-bottom: 0;
+  }
+
+  .card-pizza-kcal {
+    display: none;
+  }
+
   .favorites-button {
     position: absolute;
     top: 10px;
@@ -138,5 +146,79 @@
 
   .favorites-button:hover {
     background-color: var(--medium-dark-gray);
+  }
+
+  .card {
+    box-sizing: border-box;
+    width: 180px;
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  .card-image-container-link {
+    margin: 0 auto;
+    width: 128px;
+    height: 128px;
+  }
+
+  .card-image-container-link img {
+    width: 128px;
+    height: 128px;
+  }
+
+  .card-details {
+    padding-right: 0;
+  }
+
+  .card-details-top {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-title,
+  .card-title-link {
+    font-size: 16px;
+  }
+
+  .favorites-button {
+    top: 15px;
+    right: 15px;
+  }
+
+  .cart-button {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .card-rating {
+    margin-bottom: 10px;
+    order: 1;
+  }
+
+  .card-rating-value {
+    font-size: 12px;
+  }
+
+  .card-pizza-kcal {
+    display: inline-block;
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 0;
+    order: 1;
+
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    color: var(--full-dark-gray);
+  }
+
+  .card-title {
+    order: 1;
+  }
+
+  .card-pizza-type {
+    order: 0;
+    margin-bottom: 5px;
   }
 }

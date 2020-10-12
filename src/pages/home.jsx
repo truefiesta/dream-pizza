@@ -12,15 +12,18 @@ const Home = () => {
   return (
     <>
       <Header />
-      <main>
+      <main className="home-page">
         <h1 className="visually-hidden">Welcome to Dream Pizza</h1>
         <Hero />
         <div className="wrapper menu-container">
           {/* TABS ?  */}
           <ButtonFullMenu />
           <Sort />
-          <h2 className="section-title">What’s new on our Menu</h2>
-          <CardsList />
+          <div className="cards-list-wrapper">
+            <h2 className="section-title">What’s new on our Menu</h2>
+            <CardsList />
+          </div>
+
           <PrevNextControls />
           {/* TABS ?  */}
         </div>

@@ -24,6 +24,7 @@ const Card = () => {
             <span className="visually-hidden">Rating</span>
             <span className="card-rating-value">4.0</span>
           </div>
+          <p className="card-pizza-kcal">270 kcal</p>
         </div>
         <p className="card-price">
           <small>Starts from</small>
