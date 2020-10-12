@@ -98,6 +98,8 @@
 
   .nav-user-list {
     display: flex;
+    border-top: 1px solid var(--medium-dark-gray);
+    border-bottom: 1px solid var(--medium-dark-gray);
     background-color: var(--bg-gray);
   }
 
@@ -149,5 +151,9 @@
 @media (min-width: 600px) {
   .nav-icon-fill-stroke {
     fill: #181818;
+  }
+
+  .nav-user-list {
+    border: none;
   }
 }
