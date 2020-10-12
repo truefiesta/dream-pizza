@@ -6,14 +6,16 @@ import CardsList from "../components/cards-list/cards-list.jsx";
 import ButtonFullMenu from "../components/button-full-menu/button-full-menu.jsx";
 import PrevNextControls from "../components/prev-next-controls/prev-next-controls.jsx";
 import Map from "../components/map/map.jsx";
+import Hero from "../components/hero/hero.jsx";
 
 const Home = () => {
   return (
     <>
       <Header />
       <main>
+        <h1 className="visually-hidden">Welcome to Dream Pizza</h1>
+        <Hero />
         <div className="wrapper menu-container">
-          <h1 className="visually-hidden">Welcome to Dream Pizza</h1>
           {/* TABS ?  */}
           <ButtonFullMenu />
           <Sort />

@@ -1,0 +1,158 @@
+@media (min-width: 320px) {
+  .hero {
+    display: none;
+  }
+}
+
+@media (min-width: 600px) {
+  .hero {
+    display: block;
+    width: 100%;
+    height: 350px;
+
+    background-color: var(--full-dark-gray);
+  }
+
+  .hero-image {
+    min-height: 350px;
+    background-image: url(../../assets/img/hero-tablet.jpg);
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover;
+    background-color: var(--full-dark-gray);
+  }
+
+  .hero-details-wrapper {
+    background: linear-gradient(
+      90deg,
+      #44515d 0.25%,
+      rgba(68, 81, 93, 0) 70%,
+      rgba(68, 81, 93, 0) 90%,
+      #44515d 100%
+    );
+  }
+
+  .hero-details-content {
+    padding-left: 10px;
+    height: 350px;
+    width: 60%;
+    overflow: hidden;
+  }
+
+  .hero-title {
+    margin: 0;
+    padding: 0;
+    margin-top: 40px;
+    margin-bottom: 30px;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 50px;
+    color: var(--basic-yellow);
+  }
+
+  .hero-text {
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 0;
+
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--basic-white);
+  }
+
+  .hero-text:last-of-type {
+    margin-bottom: 40px;
+  }
+
+  .hero-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+  }
+
+  .hero-links-list li {
+    margin-right: 10px;
+  }
+
+  .hero-links-list li:last-child {
+    margin-right: 0;
+  }
+
+  .hero-link {
+    display: block;
+    padding: 10px 20px;
+    border: 2px solid var(--basic-white);
+    border-radius: 20px;
+
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--basic-white);
+  }
+
+  .hero-link:hover,
+  .hero-link:focus {
+    color: var(--basic-red);
+    border-color: var(--basic-red);
+  }
+
+  .hero-link-main {
+    background-color: var(--basic-red);
+    border-color: var(--basic-red);
+  }
+
+  .hero-link-main:hover,
+  .hero-link-main:focus {
+    color: var(--basic-white);
+    background-color: var(--dark-red);
+    border-color: var(--dark-red);
+  }
+}
+
+@media (min-width: 1000px) {
+  .hero {
+    height: 450px;
+  }
+
+  .hero-image {
+    margin: 0 auto;
+    min-height: 450px;
+    max-width: 1200px;
+    background-image: url(../../assets/img/hero-desktop.jpg);
+  }
+
+  .hero-details-content {
+    padding: 0;
+    height: 450px;
+  }
+
+  .hero-details {
+    margin: 0 auto;
+    width: 930px;
+  }
+
+  .hero-title {
+    margin-top: 80px;
+    font-size: 48px;
+    line-height: 50px;
+  }
+
+  .hero-text {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .hero-text:last-of-type {
+    margin-bottom: 50px;
+  }
+}
