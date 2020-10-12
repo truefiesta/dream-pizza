@@ -1,3 +1,22 @@
-.text {
-  color: blue;
+/* Home page */
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.home-page-controls-list {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+}
+
+@media (min-width: 320px) {
+  .wrapper.menu-container {
+    margin-bottom: 40px;
+  }
+
+  .home-page-button-full-menu {
+    order: 1;
+  }
 }
