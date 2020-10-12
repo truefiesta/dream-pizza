@@ -1,5 +1,5 @@
 .header-main {
-  height: 80px;
+  background-color: var(--basic-white);
 }
 
 .logo {
@@ -44,10 +44,6 @@
 }
 
 @media (min-width: 320px) {
-  .header-main {
-    height: 150px;
-  }
-
   .header-main-top {
     height: 80px;
     background-color: var(--basic-white);
@@ -131,6 +127,8 @@
   }
 
   .nav-icon-block svg {
+    width: 25px;
+    height: 22px;
     margin-right: 10px;
   }
 
@@ -149,11 +147,138 @@
 }
 
 @media (min-width: 600px) {
-  .nav-icon-fill-stroke {
-    fill: #181818;
+  .header-main-container {
+    position: relative;
+  }
+
+  .nav-main-toggle {
+    display: none;
+  }
+
+  .nav-main {
+    background-color: var(--basic-yellow);
+  }
+
+  .nav-main-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+  }
+
+  .nav-main-item {
+    margin-right: 30px;
+    border-bottom: none;
+  }
+
+  .nav-main-item:last-child {
+    border: none;
+  }
+
+  .nav-main-item a {
+    color: var(--basic-black);
+    padding: 10px 0;
+    background-color: transparent;
+  }
+
+  .nav-main-item a:hover,
+  .nav-main-item a:focus,
+  .nav-main-item a:active {
+    background-color: transparent;
+    color: var(--basic-red);
   }
 
   .nav-user-list {
-    border: none;
+    border-top: none;
+    border-bottom: none;
+    background-color: var(--basic-white);
+    width: 170px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+
+    position: absolute;
+    top: 25px;
+    right: 10px;
+  }
+
+  .nav-user-list li {
+    width: 80px;
+  }
+
+  .nav-user-link {
+    padding: 8px 15px;
+    border-radius: 15px;
+  }
+
+  .nav-user-link-title {
+    display: none;
+  }
+
+  .nav-icon-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0;
+  }
+
+  .nav-icon-block svg {
+    width: 16px;
+    height: 14px;
+    margin-right: 0;
+  }
+
+  .nav-icon-block span {
+    font-size: 14px;
+    line-height: 14px;
+    color: var(--basic-black);
+  }
+
+  .nav-icon-fill-stroke {
+    fill: #181818;
+  }
+}
+
+@media (min-width: 1000px) {
+  .header-main-container {
+    width: 930px;
+    margin: 0 auto;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    position: static;
+    bottom: auto;
+    left: auto;
+  }
+
+  .header-main-top {
+    height: auto;
+    width: 120px;
+    margin-right: 20px;
+  }
+
+  .nav-main {
+    max-width: 500px;
+    background-color: transparent;
+  }
+
+  .nav-main-list {
+    margin-left: 0;
+  }
+
+  .nav-main-item a {
+    font-size: 14px;
+    line-height: 14px;
+
+    padding: 0;
+  }
+
+  .nav-user-list {
+    position: static;
+    top: auto;
+    left: auto;
   }
 }
