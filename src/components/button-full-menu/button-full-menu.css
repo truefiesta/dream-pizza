@@ -1,0 +1,11 @@
+.button-full-menu {
+  box-sizing: border-box;
+  width: 126px;
+  border: 2px solid var(--full-dark-gray);
+
+  text-align: center;
+}
+
+.button-full-menu:hover {
+  background-color: var(--medium-dark-gray);
+}
