@@ -4,7 +4,10 @@ import "./map.css";
 const Map = () => {
   return (
     <section className="map">
-      <h2 className="section-title">Our restaurants</h2>
+      <div className="map-derails-container">
+        <h2 className="section-title">Our restaurants</h2>
+      </div>
+
       <div className="map-container">
         <article className="map-pin-info">
           <h3 className="map-pin-title">Dream Pizza - Rose Bay</h3>

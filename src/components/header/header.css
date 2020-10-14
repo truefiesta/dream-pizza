@@ -240,7 +240,8 @@
 
 @media (min-width: 1000px) {
   .header-main-container {
-    width: 930px;
+    width: 970px;
+    padding: 0 15px;
     margin: 0 auto;
     min-height: 80px;
     display: flex;

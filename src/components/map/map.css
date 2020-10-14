@@ -40,4 +40,9 @@
   .map-container {
     height: 455px;
   }
+
+  .map-derails-container {
+    width: 970px;
+    padding: 0 15px;
+  }
 }
