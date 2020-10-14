@@ -5,6 +5,9 @@ import pizzaImg from "../../assets/img/pizza-small.jpg";
 const Card = () => {
   return (
     <li className="card">
+      <div className="card-mark mark-new">New</div>
+      <div className="card-mark mark-top">Top</div>
+      <div className="card-mark mark-sale">-25%</div>
       <a className="card-image-container-link">
         <img
           src={pizzaImg}
@@ -19,16 +22,91 @@ const Card = () => {
             <a className="card-title-link">Dream special</a>
           </h3>
           <p className="card-pizza-type">Meat</p>
-          <div className="card-rating">
-            <span style={{ width: "80%" }}></span>
+          <div className="card-rating rating">
+            <div className="rating-stars">
+              <span
+                className="rating-stars-active"
+                style={{ width: "80%" }}
+              ></span>
+            </div>
             <span className="visually-hidden">Rating</span>
             <span className="card-rating-value">4.0</span>
           </div>
           <p className="card-pizza-kcal">270 kcal</p>
         </div>
+        <div className="card-details-bottom">
+          <div className="card-options-row">
+            <p className="card-options-title">crust</p>
+            <p className="card-options">
+              <input
+                id="thin"
+                className="visually-hidden card-input"
+                type="radio"
+                name="crust"
+                value="thin"
+                checked
+              />
+              <label className="card-label" htmlFor="thin">
+                thin
+              </label>
+
+              <input
+                id="thick"
+                className="visually-hidden card-input"
+                type="radio"
+                name="crust"
+                value="thick"
+              />
+              <label className="card-label" htmlFor="thick">
+                thick
+              </label>
+            </p>
+          </div>
+          <div className="card-options-row">
+            <p className="card-options-title">size</p>
+            <p className="card-options">
+              <input
+                id="small"
+                className="visually-hidden card-input"
+                type="radio"
+                name="size"
+                value="small"
+              />
+              <label className="card-label" htmlFor="small">
+                18&quot;
+              </label>
+
+              <input
+                id="medium"
+                className="visually-hidden card-input"
+                type="radio"
+                name="size"
+                value="medium"
+              />
+              <label className="card-label" htmlFor="medium">
+                22&quot;
+              </label>
+
+              <input
+                id="large"
+                className="visually-hidden card-input"
+                type="radio"
+                name="size"
+                value="large"
+              />
+              <label className="card-label" htmlFor="large">
+                28&quot;
+              </label>
+            </p>
+          </div>
+        </div>
         <p className="card-price">
-          <small>Starts from</small>
-          <br />$ 13
+          <small className="card-price-note">Starts from</small>
+          <b className="card-price-current">$ 13</b>
+          <div className="card-price-previous">
+            <span className="card-price-previous-number">$ 11</span>
+            <div className="card-price-previous-line"></div>
+          </div>
         </p>
       </div>
       <button className="card-button favorites-button card-not-added">
