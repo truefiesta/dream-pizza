@@ -56,3 +56,10 @@
     width: 100%;
   }
 }
+
+@media (min-width: 1000px) {
+  .wrapper.menu-container {
+    width: 970px;
+    padding: 0 15px;
+  }
+}
