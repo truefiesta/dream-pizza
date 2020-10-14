@@ -194,3 +194,55 @@
     padding: 10px 0;
   }
 }
+
+@media (min-width: 600px) {
+  .footer-main-top-container {
+    padding: 0 10px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .footer-details {
+    padding-left: 0;
+    overflow: hidden;
+  }
+
+  .footer-block {
+    width: 150px;
+    background-color: transparent;
+    padding-left: 0;
+  }
+
+  .footer-contacts {
+    margin-left: auto;
+    padding: 20px 0;
+    text-align: left;
+  }
+
+  .footer-social-media {
+    width: 100%;
+  }
+
+  .footer-social-list {
+    justify-content: flex-end;
+  }
+
+  .footer-main-bottom-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer-main-bottom p {
+    margin-top: 2px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .footer-main-top-container,
+  .footer-main-bottom-container {
+    margin: 0 auto;
+    max-width: 970px;
+    padding: 0 15px;
+  }
+}

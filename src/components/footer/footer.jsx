@@ -74,6 +74,9 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
+          </section>
+          <section className="footer-social-media">
+            <h3 className="visually-hidden">Join us on social media</h3>
             <ul className="footer-social-list">
               <li className="footer-social-item">
                 <a href="">
