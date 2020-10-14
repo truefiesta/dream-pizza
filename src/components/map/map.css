@@ -2,6 +2,10 @@
   width: 100%;
 }
 
+.map-title-container {
+  padding: 0 10px;
+}
+
 .map-pin-info {
   padding: 20px;
   border-radius: 10px;
@@ -19,6 +23,14 @@
   color: var(--basic-red);
 }
 
+.map-pin-title span {
+  color: var(--basic-black);
+}
+
+.map-pin-info:hover .map-pin-title span {
+  color: var(--basic-red);
+}
+
 .map-pin-text {
   padding: 0;
   margin: 0;
@@ -29,20 +41,50 @@
   color: var(--basic-black);
 }
 
-@media (min-width: 320px) {
-  .map-container {
-    height: 400px;
-    background-color: rgb(152, 196, 247);
-  }
+.map-container {
+  height: 400px;
+  background-color: rgb(152, 196, 247);
+}
+
+.map-details-container {
+  display: none;
 }
 
 @media (min-width: 1000px) {
-  .map-container {
-    height: 455px;
+  .map-content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
   }
 
-  .map-derails-container {
+  .map-title-container {
+    margin: 0 auto;
     width: 970px;
     padding: 0 15px;
+  }
+
+  .map-container {
+    height: 455px;
+    width: 750px;
+  }
+
+  .map-details-container {
+    display: block;
+    width: 290px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .map-details-container .map-pin-info {
+    background-color: transparent;
+    margin-bottom: 10px;
+  }
+
+  .map-details-container .map-pin-info:hover {
+    background-color: var(--basic-white);
+  }
+
+  .map-container .map-pin-info {
+    display: none;
   }
 }
