@@ -148,7 +148,7 @@ const Footer = () => {
       </div>
       <div className="footer-main-bottom">
         <div className="footer-main-bottom-container">
-          <p>Copyright © 2020 Truefiesta.com. All tights reserved.</p>
+          <p>Copyright © 2020 Truefiesta.com. All rights reserved.</p>
           <p>
             <a href="#">Privacy Policy</a>
           </p>
