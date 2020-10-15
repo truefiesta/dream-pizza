@@ -5,8 +5,12 @@
   position: relative;
 }
 
+.menu-page .wrapper {
+  padding-top: 30px;
+}
+
 @media (min-width: 320px) {
-  .wrapper.menu-container {
+  .home-page .wrapper {
     margin-bottom: 40px;
   }
 
@@ -55,10 +59,18 @@
   .cards-list-wrapper {
     width: 100%;
   }
+
+  .menu-page .main-title {
+    text-align: left;
+  }
+
+  .menu-page .menu-filters-container {
+    display: flex;
+  }
 }
 
 @media (min-width: 1000px) {
-  .wrapper.menu-container {
+  .home-page .wrapper {
     width: 970px;
     padding: 0 15px;
   }
