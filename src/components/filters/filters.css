@@ -1,0 +1,197 @@
+.filters {
+  display: flex;
+  flex-direction: column;
+}
+
+.filters-group {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.filters-group-title {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--full-dark-gray);
+
+  padding: 0;
+  margin: 0;
+  padding-top: 10px;
+
+  width: 75px;
+}
+
+.filters-group ul {
+  padding: 10px;
+  padding-right: 0;
+  margin: 0;
+  list-style: none;
+  border-radius: 5px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  background-color: var(--light-dark-gray);
+}
+
+.filter-option label {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
+  color: var(--full-dark-gray);
+
+  display: block;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.filter-input-radio:hover + label,
+.filter-input-checkbox:hover + label {
+  background-color: var(--medium-dark-gray);
+}
+
+.filter-input-radio:checked + label,
+.filter-input-checkbox:checked + label {
+  font-weight: 600;
+  background-color: var(--medium-dark-gray);
+}
+
+.filters-group .filter-tags-list {
+  background-color: transparent;
+}
+
+.filter-tags-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.filter-tags-list li {
+  margin-bottom: 10px;
+}
+
+.filter-tags-list label {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  color: var(--light-gray);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  display: block;
+  padding: 2px 5px;
+  border: 2px solid var(--light-gray);
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.filter-tag-checkbox:hover + label {
+  border: 2px solid var(--basic-red);
+  color: var(--basic-red);
+}
+
+.filter-tag-checkbox:checked + label {
+  border: 2px solid var(--basic-red);
+  color: var(--basic-red);
+}
+
+.filters-reset {
+  width: auto;
+  margin-bottom: 20px;
+  margin-left: 85px;
+}
+
+@media (min-width: 600px) {
+  .filters {
+    width: 165px;
+    margin-right: 20px;
+  }
+
+  .filters-reset {
+    margin-left: 0;
+  }
+
+  .filters-group {
+    flex-direction: column;
+  }
+
+  .filters-group ul {
+    padding: 0;
+    background-color: transparent;
+
+    flex-direction: column;
+  }
+
+  .filter-input-radio:hover + label,
+  .filter-input-checkbox:hover + label {
+    background-color: transparent;
+  }
+
+  .filter-input-radio:checked + label,
+  .filter-input-checkbox:checked + label {
+    font-weight: 400;
+    background-color: transparent;
+  }
+
+  .filters-group-title {
+    padding: 0;
+    margin-bottom: 15px;
+  }
+
+  .filter-option label {
+    border-radius: 0;
+    padding: 0;
+    padding-left: 30px;
+    margin-right: 0;
+    margin-bottom: 15px;
+
+    position: relative;
+  }
+
+  .filter-option label::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background-color: var(--light-gray);
+    position: absolute;
+    top: 0;
+    left: 5px;
+  }
+
+  .filter-input-radio + label::before {
+    border-radius: 50%;
+  }
+
+  .filter-input-radio:checked + label::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: var(--basic-red);
+    border-radius: 50%;
+
+    position: absolute;
+    top: 2px;
+    left: 7px;
+  }
+
+  .filter-input-checkbox:checked + label::after {
+    content: "";
+    width: 13px;
+    height: 14px;
+    background-image: url(../../assets/img/checkbox.svg);
+    background-repeat: no-repeat;
+
+    position: absolute;
+    top: -4px;
+    left: 7px;
+  }
+
+  .filters-group .filter-tags-list {
+    flex-direction: row;
+  }
+}
