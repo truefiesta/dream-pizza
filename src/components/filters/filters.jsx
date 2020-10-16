@@ -76,6 +76,21 @@ const Filters = () => {
       </section>
       <section className="filters-group">
         <h3 className="filters-group-title">Price</h3>
+        <div className="filter-range-container">
+          <div className="filter-range">
+            <div className="scale">
+              <div className="bar" style={{ width: `100%` }}></div>
+              {/* 0 - 100% */}
+            </div>
+            {/* label range = 0% - 58% */}
+            <label className="filter-max-price" style={{ left: `58%` }}>
+              $
+              <input type="number" name="filter-max-price" value="100" />
+            </label>
+            {/* toggle range =  5% - 85% */}
+            <div className="toggle" tabIndex="0" style={{ left: `85%` }}></div>
+          </div>
+        </div>
       </section>
       <section className="filters-group">
         <h3 className="filters-group-title">Tags</h3>
