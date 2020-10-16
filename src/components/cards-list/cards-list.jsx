@@ -6,6 +6,10 @@ const CardsList = () => {
   return (
     <ul className="cards-list">
       <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
     </ul>
   );
 };
