@@ -178,6 +178,11 @@
   background-position: center;
 }
 
+.card-details-new-button {
+  margin-top: auto;
+  margin-bottom: 5px;
+}
+
 @media (min-width: 320px) {
   .card-mark {
     box-sizing: border-box;
@@ -341,6 +346,10 @@
   .card-pizza-type {
     margin-bottom: 5px;
   }
+
+  .card-details-new-button {
+    margin-bottom: 0;
+  }
 }
 
 @media (min-width: 1000px) {
@@ -374,6 +383,16 @@
     padding: 10px;
     border-radius: 5px;
     background-color: var(--bg-gray);
+  }
+
+  .card-details-bottom p {
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: var(--full-dark-gray);
   }
 
   .card-options-row {

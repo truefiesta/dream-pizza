@@ -5,11 +5,11 @@ import "./cards-list.css";
 const CardsList = () => {
   return (
     <ul className="cards-list">
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <Card newCard={true} />
+      <Card newCard={false} />
+      <Card newCard={false} />
+      <Card newCard={false} />
+      <Card newCard={false} />
     </ul>
   );
 };
