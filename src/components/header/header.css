@@ -168,6 +168,7 @@
   .nav-main-item {
     margin-right: 30px;
     border-bottom: none;
+    padding: 4px 10px;
   }
 
   .nav-main-item:last-child {
@@ -185,6 +186,15 @@
   .nav-main-item a:active {
     background-color: transparent;
     color: var(--basic-red);
+  }
+
+  .nav-item-current {
+    background-color: var(--basic-yellow);
+    border-radius: 10px;
+  }
+
+  .nav-main-item.nav-item-current a {
+    color: var(--basic-white);
   }
 
   .nav-user-list {

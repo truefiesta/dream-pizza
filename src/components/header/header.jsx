@@ -13,7 +13,7 @@ const Header = () => {
         </div>
         <nav className="nav-main">
           <ul className="nav-main-list">
-            <li className="nav-main-item">
+            <li className="nav-main-item nav-item-current">
               <a href="">Menu</a>
             </li>
             <li className="nav-main-item">
