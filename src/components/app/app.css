@@ -14,6 +14,47 @@
   margin: 0 auto;
 }
 
+.favorites-page .section-title {
+  text-align: left;
+}
+
+.favorites-top-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.favorites-page .wrapper {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.favorites-page .cart-button {
+  display: none;
+}
+
+.favorites-page .favorites-button {
+  top: auto;
+  bottom: 10px;
+  background-color: var(--bg-gray);
+}
+
+.favorites-page .card-mark {
+  display: none;
+}
+
+.favorites-page .favorites-button:hover {
+  background-color: var(--medium-dark-gray);
+}
+
+.favorites-page .card-pizza-kcal {
+  display: none;
+}
+
+.favorites-list-section {
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
 @media (min-width: 320px) {
   .home-page .wrapper {
     margin-bottom: 40px;
@@ -103,6 +144,62 @@
   .menu-page .card:nth-child(2n) {
     margin-right: 0;
   }
+
+  .favorites-list-section {
+    width: 440px;
+  }
+
+  .favorites-page .cards-list {
+    flex-direction: column;
+  }
+
+  .favorites-page .card {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .favorites-page .card-image-container-link {
+    margin: 0;
+    margin-right: 20px;
+    width: 93px;
+    height: 93px;
+  }
+
+  .favorites-page .card-image-container-link img {
+    width: 93px;
+    height: 93px;
+  }
+
+  .favorites-page .rating-stars {
+    display: none;
+  }
+
+  .favorites-page .ingredients-favorites {
+    display: block;
+    width: 260px;
+  }
+
+  .favorites-page .rating-favorites {
+    display: inline-block;
+  }
+
+  .favorites-page .card-rating-value {
+    font-size: 13px;
+    line-height: 13px;
+  }
+
+  .favorites-page .card-rating {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .favorites-page .card-price-note {
+    width: auto;
+    margin-top: auto;
+    margin-right: 10px;
+    line-height: 10px;
+  }
 }
 
 @media (min-width: 800px) {
@@ -142,6 +239,39 @@
   }
 
   .menu-page .wrapper {
+    width: 970px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 60px;
+  }
+
+  .favorites-list-section {
+    width: 610px;
+  }
+
+  .favorites-page .card-image-container-link,
+  .favorites-page .card-image-container-link img {
+    width: 111px;
+    height: 111px;
+  }
+
+  .favorites-page .card-details-bottom {
+    display: none;
+  }
+
+  .favorites-page .favorites-button {
+    width: 52px;
+    height: 52px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .favorites-page .favorites-button svg {
+    width: 25px;
+    height: 22px;
+  }
+
+  .favorites-page .wrapper {
     width: 970px;
     padding-left: 15px;
     padding-right: 15px;

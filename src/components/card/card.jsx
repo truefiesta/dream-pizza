@@ -62,10 +62,14 @@ const Card = ({ newCard }) => {
                     style={{ width: "80%" }}
                   ></span>
                 </div>
+                <span className="rating-favorites"></span>
                 <span className="visually-hidden">Rating</span>
-                <span className="card-rating-value">4.0</span>
+                <span className="card-rating-value">4.0 / 5.0</span>
               </div>
               <p className="card-pizza-kcal">270 kcal</p>
+              <p className="ingredients-favorites">
+                Marinara sauce, pepperoni, mozzarella, fresh basil
+              </p>
             </div>
             <div className="card-details-bottom">
               <div className="card-options-row">
