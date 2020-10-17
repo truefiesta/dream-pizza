@@ -78,10 +78,10 @@ const Card = ({ newCard }) => {
             <p className="card-price">
               <small className="card-price-note">Starts from</small>
               <b className="card-price-current">$ 13</b>
-              <div className="card-price-previous">
+              <span className="card-price-previous">
                 <span className="card-price-previous-number">$ 11</span>
-                <div className="card-price-previous-line"></div>
-              </div>
+                <span className="card-price-previous-line"></span>
+              </span>
             </p>
           </div>
           <button className="card-button favorites-button card-not-added">

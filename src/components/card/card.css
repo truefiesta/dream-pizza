@@ -108,6 +108,7 @@
 }
 
 .card-price-previous-line {
+  display: block;
   height: 1px;
   background-color: var(--light-gray);
   margin-top: -6px;
