@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import CardOptions from "../card-options/card-options.jsx";
 import "./card.css";
 import pizzaImg from "../../assets/img/pizza-small.jpg";
 import newPizza from "../../assets/img/new-pizza.jpg";
@@ -72,70 +73,7 @@ const Card = ({ newCard }) => {
               </p>
             </div>
             <div className="card-details-bottom">
-              <div className="card-options-row">
-                <p className="card-options-title">crust</p>
-                <p className="card-options">
-                  <input
-                    id="thin"
-                    className="visually-hidden card-input"
-                    type="radio"
-                    name="crust"
-                    value="thin"
-                    checked
-                  />
-                  <label className="card-label" htmlFor="thin">
-                    thin
-                  </label>
-
-                  <input
-                    id="thick"
-                    className="visually-hidden card-input"
-                    type="radio"
-                    name="crust"
-                    value="thick"
-                  />
-                  <label className="card-label" htmlFor="thick">
-                    thick
-                  </label>
-                </p>
-              </div>
-              <div className="card-options-row">
-                <p className="card-options-title">size</p>
-                <p className="card-options">
-                  <input
-                    id="small"
-                    className="visually-hidden card-input"
-                    type="radio"
-                    name="size"
-                    value="small"
-                  />
-                  <label className="card-label" htmlFor="small">
-                    18&quot;
-                  </label>
-
-                  <input
-                    id="medium"
-                    className="visually-hidden card-input"
-                    type="radio"
-                    name="size"
-                    value="medium"
-                  />
-                  <label className="card-label" htmlFor="medium">
-                    22&quot;
-                  </label>
-
-                  <input
-                    id="large"
-                    className="visually-hidden card-input"
-                    type="radio"
-                    name="size"
-                    value="large"
-                  />
-                  <label className="card-label" htmlFor="large">
-                    28&quot;
-                  </label>
-                </p>
-              </div>
+              <CardOptions />
             </div>
             <p className="card-price">
               <small className="card-price-note">Starts from</small>
