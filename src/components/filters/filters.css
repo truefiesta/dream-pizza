@@ -140,12 +140,16 @@
   border-radius: 50%;
   background-color: var(--light-gray);
   border: 6px solid var(--basic-red);
-  box-shadow: 0 0 2px 2px var(--medium-dark-gray);
+  box-shadow: 0 0 5px 1px var(--full-dark-gray);
 
   position: absolute;
   bottom: 5px;
   left: 0;
   cursor: pointer;
+}
+
+.filter-range .toggle:hover {
+  box-shadow: 0 0 10px 1px var(--full-dark-gray);
 }
 
 .filter-max-price {
