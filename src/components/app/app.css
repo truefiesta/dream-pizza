@@ -55,6 +55,10 @@
   margin-bottom: 50px;
 }
 
+.pizza-page .wrapper {
+  padding-top: 30px;
+}
+
 @media (min-width: 320px) {
   .home-page .wrapper {
     margin-bottom: 40px;
