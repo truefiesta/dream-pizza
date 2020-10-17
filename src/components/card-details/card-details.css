@@ -1,0 +1,201 @@
+.pizza-details {
+  padding: 20px;
+  background-color: var(--basic-white);
+  border-radius: 10px;
+  position: relative;
+}
+
+.pizza-details-mark {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1px;
+  color: var(--basic-white);
+
+  width: 43px;
+  padding: 5px 0;
+
+  position: absolute;
+}
+
+.pizza-details-mark-new {
+  border-radius: 10px 0;
+  background-color: var(--basic-green);
+  top: 0;
+  left: 0;
+}
+
+.pizza-details-mark-top {
+  border-radius: 10px 0;
+  background-color: var(--basic-yellow);
+  top: 0;
+  left: 0;
+}
+
+.pizza-details-mark-sale {
+  border-radius: 0 10px;
+  background-color: var(--basic-red);
+  top: 0;
+  right: 0;
+}
+
+.pizza-photo {
+  width: 106px;
+  height: 106px;
+  margin: 0 20px 10px 0;
+  float: left;
+}
+
+.pizza-details-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.pizza-details-title {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 5px;
+  order: 1;
+
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.pizza-details-type {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 5px;
+  order: 0;
+
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 10px;
+  text-transform: uppercase;
+  color: var(--semi-dark-gray);
+}
+
+.pizza-details-kcal {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+  order: 1;
+
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
+  color: var(--full-dark-gray);
+}
+
+.pizza-toggle-ingredients {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 10px;
+  cursor: pointer;
+  order: 1;
+
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
+  text-align: left;
+  color: var(--full-dark-gray);
+}
+
+.pizza-details-price {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pizza-details-price-current {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 18px;
+  color: var(--basic-black);
+  margin-right: 5px;
+}
+
+.pizza-details-price-previous-number {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  vertical-align: top;
+  color: var(--light-gray);
+  padding: 0 3px;
+}
+
+.pizza-details-price-previous-line {
+  display: block;
+  height: 1px;
+  background-color: var(--light-gray);
+  margin-top: -6px;
+}
+
+.price-plus-minus-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.add-to-cart-favorite-container {
+  width: 240px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pizza-details-add-to-cart {
+  width: 189px;
+  padding: 12px 0;
+
+  border: none;
+  border-radius: 20px;
+  background-color: var(--basic-green);
+  cursor: pointer;
+
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--basic-white);
+}
+
+.pizza-details-favorites-button {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+}
+
+.pizza-details-favorites-button svg {
+  width: 22px;
+  height: 20px;
+}
+
+.pizza-details-card-not-added .card-fill {
+  fill: none;
+}
+
+.pizza-details-favorites-button:hover .card-fill {
+  fill: #b92f2f;
+}
