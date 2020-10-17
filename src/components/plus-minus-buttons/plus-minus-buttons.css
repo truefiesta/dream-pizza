@@ -1,0 +1,48 @@
+.plus-minus-buttons {
+  width: 85px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.plus-minus-counter {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 18px;
+  color: var(--basic-black);
+}
+
+.plus-minus-buttons button {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--light-gray);
+  cursor: pointer;
+}
+
+.plus-minus-buttons button:hover {
+  box-shadow: 0 0 10px 2px var(--full-dark-gray);
+}
+
+.plus-minus-buttons button:disabled {
+  opacity: 0.4;
+  cursor: default;
+  box-shadow: none;
+}
+
+.plus-button {
+  background-image: url(../../assets/img/plus.svg);
+  background-repeat: no-repeat;
+  background-size: 13px 13px;
+  background-position: center;
+}
+
+.minus-button {
+  background-image: url(../../assets/img/minus.svg);
+  background-repeat: no-repeat;
+  background-size: 13px 1px;
+  background-position: center;
+}
