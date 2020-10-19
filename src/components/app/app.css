@@ -59,6 +59,33 @@
   padding-top: 30px;
 }
 
+.pizza-page .pizza-details {
+  margin-bottom: 50px;
+}
+
+.pizza-page .reviews {
+  margin-bottom: 30px;
+}
+
+.pizza-page .controls-list {
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.pizza-page .reviews-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.pizza-page .reviews-count {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  color: var(--full-dark-gray);
+}
+
 @media (min-width: 320px) {
   .home-page .wrapper {
     margin-bottom: 40px;
