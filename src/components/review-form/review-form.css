@@ -1,0 +1,115 @@
+.new-review {
+  margin-bottom: 50px;
+}
+
+.new-review-title-container {
+  text-align: center;
+}
+
+.review-title {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 3px;
+
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--basic-black);
+  text-align: center;
+}
+
+.review-title-note,
+.review-form-note {
+  margin: 0;
+  margin-bottom: 10px;
+
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 10px;
+  color: var(--dark-gray);
+}
+
+.review-form-note {
+  width: 235px;
+  line-height: 12px;
+  margin-bottom: 20px;
+}
+
+.review-form {
+  box-sizing: border-box;
+  padding: 20px;
+  background-color: var(--basic-white);
+  border-radius: 10px;
+}
+
+.review-form-title {
+  display: block;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  color: var(--full-dark-gray);
+}
+
+.review-form-text {
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 75px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--bg-gray);
+
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  color: var(--semi-dark-gray);
+}
+
+.review-form-submit {
+  margin-left: auto;
+}
+
+.review-form-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+
+/* Rating */
+
+.review-form-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.review-form-rating-label {
+  display: block;
+  width: 22px;
+  height: 20px;
+  margin-right: 3px;
+  cursor: pointer;
+}
+
+.review-form-rating-label svg {
+  fill: var(--light-gray);
+  transition: fill 0.3s;
+}
+
+.review-form-rating-input:checked ~ .review-form-rating-label svg,
+.review-form-rating-input:focus ~ .review-form-rating-label svg,
+.review-form-rating-label:hover svg,
+.review-form-rating-label:hover ~ .review-form-rating-label svg {
+  fill: var(--basic-yellow);
+}
