@@ -86,6 +86,10 @@ const ReviewForm = () => {
               </svg>
             </label>
           </div>
+          <p className="reiview-error">
+            Your review haven’t been submited.
+            Please, try again later.
+          </p>
         </div>
         <textarea
           id="review-text"
@@ -93,13 +97,15 @@ const ReviewForm = () => {
           className="review-form-text"
           placeholder="Tell us what you think about your order"
         ></textarea>
-        <p className="review-form-note">
-          To submit review please make sure to set rating and describe your
-          experience with at least 30 characters.
-        </p>
-        <button type="submit" className="dark-button review-form-submit">
-          Submit review
-        </button>
+        <div className="review-form-bottom">
+          <p className="review-form-note">
+            To submit review please make sure to set rating and describe your
+            experience with at least 30 characters.
+          </p>
+          <button type="submit" className="dark-button review-form-submit">
+            Submit review
+          </button>
+        </div>
       </form>
     </section>
   );

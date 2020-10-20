@@ -244,6 +244,10 @@
     line-height: 10px;
   }
 
+  .pizza-page .reviews {
+    margin-bottom: 50px;
+  }
+
   .pizza-page .reviews-top {
     justify-content: flex-start;
     margin-bottom: 30px;
@@ -293,6 +297,12 @@
 
   .pizza-page .reviews {
     position: relative;
+  }
+
+  .pizza-page .review-container {
+    display: flex;
+    padding-bottom: 30px;
+    overflow: scroll;
   }
 
   .pizza-page .controls-list {
@@ -377,5 +387,41 @@
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 60px;
+  }
+
+  .pizza-page .wrapper {
+    width: 970px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 60px;
+  }
+
+  .pizza-page .reviews-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .pizza-page .reviews {
+    width: 470px;
+  }
+
+  .pizza-page .new-review {
+    width: 470px;
+    margin: 0;
+  }
+
+  .pizza-page .reivews-new-review-link {
+    display: none;
+  }
+
+  .pizza-page .review-container {
+    overflow: hidden;
+    padding-bottom: 0;
+    flex-direction: column;
+    min-height: 240px;
+  }
+
+  .pizza-page .controls-list {
+    right: 20px;
   }
 }

@@ -12,11 +12,10 @@
   margin-bottom: 3px;
 
   font-family: "Montserrat", sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 18px;
   line-height: 22px;
   color: var(--basic-black);
-  text-align: center;
 }
 
 .review-title-note,
@@ -56,6 +55,10 @@
   color: var(--full-dark-gray);
 }
 
+.review-form-text::placeholder {
+  color: var(--semi-dark-gray);
+}
+
 .review-form-text {
   margin-bottom: 10px;
   box-sizing: border-box;
@@ -80,8 +83,22 @@
 .review-form-top {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: baseline;
   margin-bottom: 20px;
+}
+
+.reiview-error {
+  margin: 0;
+  margin-top: 10px;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  line-height: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--bg-error);
+  color: var(--basic-red);
+  width: 100%;
 }
 
 /* Rating */
@@ -111,4 +128,60 @@
 .review-form-rating-label:hover svg,
 .review-form-rating-label:hover ~ .review-form-rating-label svg {
   fill: var(--basic-yellow);
+}
+
+@media (min-width: 600px) {
+  .new-review {
+    width: 310px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+
+  .new-review-title-container {
+    text-align: left;
+  }
+}
+
+@media (min-width: 1000px) {
+  .new-review-title-container {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 20px;
+  }
+
+  .review-title {
+    margin-right: 10px;
+  }
+
+  .review-form-top {
+    flex-direction: column;
+    position: relative;
+  }
+
+  .review-form-title {
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 10px;
+  }
+
+  .review-form-text {
+    margin-bottom: 20px;
+  }
+
+  .review-form-bottom {
+    display: flex;
+    align-items: center;
+  }
+
+  .review-form-note {
+    margin-bottom: 0;
+  }
+
+  .reiview-error {
+    margin-top: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 180px;
+  }
 }

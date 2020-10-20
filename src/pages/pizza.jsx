@@ -16,6 +16,7 @@ const Pizza = () => {
           <h1 className="visually-hidden">Pizza page</h1>
           <Breadcrumbs />
           <CardDetails />
+          <div className="reviews-wrapper">
           <section id="reviews" className="reviews">
             <div className="reviews-top">
               <h2 className="reviews-title">Reviews</h2>
@@ -24,10 +25,15 @@ const Pizza = () => {
             </div>
             <div className="review-container">
               <Review />
+              <Review />
+              <Review />
+              <Review />
+              <Review />
             </div>
             <PrevNextControls />
           </section>
           <ReviewForm />
+          </div>
         </div>
       </main>
       <Footer />
