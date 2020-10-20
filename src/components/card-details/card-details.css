@@ -80,6 +80,69 @@
   color: var(--semi-dark-gray);
 }
 
+.pizza-details-rating {
+  order: 1;
+  margin-bottom: 10px;
+}
+
+.pizza-details-rating-star {
+  display: none;
+}
+
+.pizza-details-rating-stars {
+  display: inline-block;
+  height: 12px;
+  width: 64px;
+  margin-right: 5px;
+  position: relative;
+}
+
+.pizza-details-rating-stars::before {
+  content: "";
+  height: 12px;
+  width: 64px;
+  background-size: 64px 12px;
+  background-image: url(../../assets/img/stars.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.pizza-details-rating-stars-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  height: 100%;
+  overflow: hidden;
+}
+
+.pizza-details-rating-stars-active::before {
+  content: "";
+  display: inline-block;
+  height: 12px;
+  width: 64px;
+  background-image: url(../../assets/img/stars-active.svg);
+  background-size: 64px 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.pizza-details-rating-value {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 10px;
+  vertical-align: text-top;
+  color: var(--full-dark-gray);
+}
+
+.pizza-details-rating-full-value {
+  display: none;
+}
+
 .pizza-details-kcal {
   padding: 0;
   margin: 0;
@@ -107,6 +170,12 @@
   line-height: 12px;
   text-align: left;
   color: var(--full-dark-gray);
+}
+
+.pizza-toggle-ingredients:hover,
+.pizza-toggle-ingredients:focus {
+  outline: none;
+  text-decoration: underline;
 }
 
 .pizza-details-price {
@@ -174,6 +243,10 @@
   color: var(--basic-white);
 }
 
+.pizza-details-add-to-cart:hover {
+  opacity: 0.7;
+}
+
 .pizza-details-favorites-button {
   width: 36px;
   height: 36px;
@@ -198,4 +271,132 @@
 
 .pizza-details-favorites-button:hover .card-fill {
   fill: #b92f2f;
+}
+
+@media (min-width: 600px) {
+  .pizza-details {
+    padding: 0;
+    background-color: transparent;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .pizza-photo {
+    box-sizing: border-box;
+    height: 310px;
+    width: 310px;
+    padding: 20px;
+    background-color: var(--basic-white);
+    border-radius: 10px;
+    float: none;
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
+  .pizza-photo img {
+    width: 280px;
+    height: 280px;
+  }
+
+  .pizza-details-mark-sale {
+    top: 0;
+    right: auto;
+    left: 267px;
+  }
+
+  .pizza-details-info-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pizza-details-top {
+    width: 240px;
+  }
+
+  .pizza-details-bottom {
+    width: 240px;
+    margin-top: auto;
+  }
+
+  .pizza-page .card-options-wrapper {
+    background-color: var(--basic-white);
+  }
+
+  .pizza-page .card-options-title {
+    padding-right: 20px;
+  }
+
+  .pizza-page .card-options label {
+    margin-right: 10px;
+  }
+
+  .pizza-details-title {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 34px;
+  }
+
+  .pizza-details-type {
+    order: 1;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .pizza-details-rating-stars {
+    display: none;
+  }
+
+  .pizza-details-rating-star {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(../../assets/img/star.svg);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    margin-right: 5px;
+    vertical-align: text-bottom;
+  }
+
+  .pizza-details-rating-full-value {
+    display: inline;
+  }
+
+  .pizza-details-rating-value,
+  .pizza-details-rating-full-value a {
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    text-decoration: none;
+    color: var(--full-dark-gray);
+  }
+
+  .pizza-details-rating-full-value a:hover,
+  .pizza-details-rating-full-value a:focus {
+    text-decoration: underline;
+  }
+
+  .pizza-details-nutritional-info-container {
+    display: flex;
+    justify-content: flex-start;
+    order: 1;
+  }
+
+  .pizza-details-kcal {
+    margin-right: 20px;
+  }
+
+  .pizza-details-price-current {
+    font-size: 28px;
+    line-height: 28px;
+  }
+
+  .pizza-details-price-previous-number {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .pizza-details-price-previous-line {
+    margin-top: -9px;
+  }
 }

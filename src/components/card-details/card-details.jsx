@@ -13,13 +13,27 @@ const CardDetails = () => {
       <div className="pizza-photo">
         <img src={pizzaImg} width="106" height="106" alt="pizza photo" />
       </div>
+      <div className="pizza-details-info-container">
       <div className="pizza-details-top">
         <h2 className="pizza-details-title">Dream special</h2>
         <p className="pizza-details-type">Meat</p>
-        <p className="pizza-details-kcal">270 kcal</p>
-        <button type="button" className="pizza-toggle-ingredients">
-          See ingredients
-        </button>
+        <div className="pizza-details-rating">
+          <div className="pizza-details-rating-stars">
+            <span
+              className="pizza-details-rating-stars-active"
+              style={{ width: "80%" }}
+            ></span>
+          </div>
+          <span className="pizza-details-rating-star"></span>
+          <span className="visually-hidden">Rating</span>
+          <span className="pizza-details-rating-value">4.0 <span className="pizza-details-rating-full-value">/ 5 <a href="#reviews">(365 reviews)</a></span></span>
+        </div>
+        <div className="pizza-details-nutritional-info-container">
+          <p className="pizza-details-kcal">270 kcal</p>
+          <button type="button" className="pizza-toggle-ingredients">
+            See ingredients
+          </button>
+        </div>
       </div>
       <div className="pizza-details-bottom">
         <CardOptions />
@@ -57,6 +71,7 @@ const CardDetails = () => {
             </svg>
           </button>
         </div>
+      </div>
       </div>
     </section>
   );

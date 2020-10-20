@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../components/header/header.jsx";
+import Breadcrumbs from "../components/breadcrumbs/breadcrumbs.jsx";
 import CardDetails from "../components/card-details/card-details.jsx";
 import Review from "../components/review/review.jsx";
 import ReviewForm from "../components/review-form/review-form.jsx";
@@ -13,8 +14,9 @@ const Pizza = () => {
       <main className="pizza-page">
         <div className="wrapper">
           <h1 className="visually-hidden">Pizza page</h1>
+          <Breadcrumbs />
           <CardDetails />
-          <section className="reviews">
+          <section id="reviews" className="reviews">
             <div className="reviews-top">
               <h2 className="section-title">Reviews</h2>
               <p className="reviews-count">4.8 / 5 (365 reviews)</p>
