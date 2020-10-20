@@ -78,12 +78,24 @@
   align-items: baseline;
 }
 
+.pizza-page .reviews-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 18px;
+  color: var(--basic-black);
+}
+
 .pizza-page .reviews-count {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 12px;
   color: var(--full-dark-gray);
+}
+
+.pizza-page .reivews-new-review-link {
+  display: none;
 }
 
 @media (min-width: 320px) {
@@ -230,6 +242,64 @@
     margin-top: auto;
     margin-right: 10px;
     line-height: 10px;
+  }
+
+  .pizza-page .reviews-top {
+    justify-content: flex-start;
+    margin-bottom: 30px;
+  }
+
+  .pizza-page .reviews-title {
+    padding: 0;
+    margin: 0;
+    margin-right: 20px;
+  }
+
+  .pizza-page .reviews-count {
+    position: relative;
+    padding-left: 25px;
+    font-size: 14px;
+    line-height: 14px;
+    margin: 0;
+    margin-right: 10px;
+  }
+
+  .pizza-page .reviews-count::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-image: url(../../assets/img/star.svg);
+    background-size: 20px 20px;
+    background-position: left center;
+    background-repeat: no-repeat;
+  }
+
+  .pizza-page .reivews-new-review-link {
+    display: inline-block;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    color: var(--full-dark-gray);
+    text-decoration: none;
+  }
+
+  .pizza-page .reivews-new-review-link:hover {
+    text-decoration: underline;
+  }
+
+  .pizza-page .reviews {
+    position: relative;
+  }
+
+  .pizza-page .controls-list {
+    margin: 0;
+    position: absolute;
+    top: -5px;
+    right: 0;
   }
 }
 

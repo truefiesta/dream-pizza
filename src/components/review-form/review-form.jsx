@@ -3,7 +3,7 @@ import "./review-form.css";
 
 const ReviewForm = () => {
   return (
-    <section className="new-review">
+    <section id="new-review" className="new-review">
       <div className="new-review-title-container">
         <h2 className="review-title">Write a review</h2>
         <p className="review-title-note">
