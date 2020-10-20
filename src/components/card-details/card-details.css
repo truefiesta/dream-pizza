@@ -58,7 +58,6 @@
   padding: 0;
   margin: 0;
   margin-bottom: 5px;
-  order: 1;
 
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
@@ -70,7 +69,7 @@
   padding: 0;
   margin: 0;
   margin-bottom: 5px;
-  order: 0;
+  order: -1;
 
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 500;
@@ -81,7 +80,6 @@
 }
 
 .pizza-details-rating {
-  order: 1;
   margin-bottom: 10px;
 }
 
@@ -147,7 +145,6 @@
   padding: 0;
   margin: 0;
   margin-bottom: 10px;
-  order: 1;
 
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -162,7 +159,6 @@
   padding: 0;
   margin-bottom: 10px;
   cursor: pointer;
-  order: 1;
 
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -176,6 +172,29 @@
 .pizza-toggle-ingredients:focus {
   outline: none;
   text-decoration: underline;
+}
+
+.pizza-details-ingredients {
+  display: none;
+  margin-bottom: 20px;
+}
+
+.pizza-details-ingredients p {
+  margin: 0;
+  margin-top: 5px;
+  padding: 0;
+
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--full-dark-gray);
+}
+
+.pizza-details-ingredients .pizza-ingredients-title {
+  color: var(--basic-black);
+  display: inline-block;
+  margin-right: 10px;
 }
 
 .pizza-details-price {
@@ -294,8 +313,8 @@
   }
 
   .pizza-photo img {
-    width: 280px;
-    height: 280px;
+    width: 270px;
+    height: 270px;
   }
 
   .pizza-details-mark-sale {
@@ -309,12 +328,11 @@
     flex-direction: column;
   }
 
-  .pizza-details-top {
+  .pizza-details-info-container {
     width: 240px;
   }
 
   .pizza-details-bottom {
-    width: 240px;
     margin-top: auto;
   }
 
@@ -337,7 +355,7 @@
   }
 
   .pizza-details-type {
-    order: 1;
+    order: 0;
     font-size: 12px;
     line-height: 14px;
   }
@@ -398,5 +416,97 @@
 
   .pizza-details-price-previous-line {
     margin-top: -9px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .pizza-details-mark {
+    font-size: 14px;
+    line-height: 14px;
+    padding: 5px;
+  }
+
+  .pizza-details-mark-sale {
+    left: 417px;
+  }
+
+  .pizza-photo {
+    width: 470px;
+    height: 470px;
+  }
+
+  .pizza-photo img {
+    width: 430px;
+    height: 430px;
+  }
+
+  .pizza-details-info-container {
+    width: 470px;
+  }
+
+  .pizza-details-bottom {
+    width: 240px;
+  }
+
+  .price-plus-minus-container {
+    margin-bottom: 20px;
+  }
+
+  .pizza-details-title {
+    font-size: 36px;
+    line-height: 43px;
+  }
+
+  .pizza-details-rating {
+    margin-bottom: 20px;
+  }
+
+  .pizza-details-rating-stars {
+    display: inline-block;
+    width: 107px;
+    height: 20px;
+  }
+
+  .pizza-details-rating {
+    display: flex;
+    align-items: center;
+  }
+
+  .pizza-details-rating-stars::before {
+    height: 20px;
+    width: 107px;
+    background-size: 107px 20px;
+  }
+
+  .pizza-details-rating-stars-active::before {
+    height: 20px;
+    width: 107px;
+    background-size: 107px 20px;
+  }
+
+  .pizza-details-rating-star {
+    display: none;
+  }
+
+  .pizza-toggle-ingredients {
+    display: none;
+  }
+
+  .pizza-details-price-current {
+    font-size: 36px;
+    line-height: 36px;
+  }
+
+  .pizza-details-price-previous-number {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .pizza-details-price-previous-line {
+    margin-top: -12px;
+  }
+
+  .pizza-details-ingredients {
+    display: block;
   }
 }

@@ -34,6 +34,20 @@ const CardDetails = () => {
             See ingredients
           </button>
         </div>
+        <div className="pizza-details-ingredients">
+          <p>
+            <span className="pizza-ingredients-title">Sauce:</span>
+            <span className="pizza-ingredients">marinara</span>
+          </p>
+          <p>
+            <span className="pizza-ingredients-title">Main ingredients:</span>
+            <span className="pizza-ingredients">pepperoni, mozzarella,</span>
+          </p>
+          <p>
+            <span className="pizza-ingredients-title">Toppings:</span>
+            <span className="pizza-ingredients">fresh basil</span>
+          </p>
+        </div>
       </div>
       <div className="pizza-details-bottom">
         <CardOptions />
