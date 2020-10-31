@@ -10,21 +10,23 @@ class MockApi {
   }
 
   getAllPizzas() {
-    return this._pizzas;
+    return Promise.resolve(this._pizzas);
   }
 
   getPizzaReviews(pizzaId) {
-    return this._reviews.filter(review => review.pizza_id === pizzaId);
+    return Promise.resolve(this._reviews.filter(review => review.pizza_id === pizzaId));
   }
 
   getFavorites() {
-    return this._favorites;
+    return Promise.resolve(this._favorites);
   }
 
   addToFavorites(pizzaId) {
     if (!this._favorites.includes(pizzaId)) {
       this._favorites.push(pizzaId);
     }
+
+    return Promise.resolve('');
   }
 
   removeFromFavorites(pizzaId) {
@@ -32,10 +34,12 @@ class MockApi {
     if (pizzaIndex !== -1) {
       this._favorites = [...this._favorites.slice(0, pizzaIndex), ...this._favorites(pizzaIndex + 1)];
     }
+
+    return Promise.resolve('');
   }
 
   getCartItems() {
-    return this._cart;
+    return Promise.resolve(this._cart);
   }
 
   addToCart(pizzaId, crust, size, quantity, pricePerOne) {
@@ -45,11 +49,11 @@ class MockApi {
 
     if (foundItems.length > 0) {
       if (foundItems[0].pricePerOne !== pricePerOne) {
-        throw new Error(`Wrong price`);
+        return Promise.reject(new Error(`Wrong price`));
       }
 
       foundItems[0].quantity += quantity;
-      return foundItems[0].id;
+      return Promise.resolve(foundItems[0].id);
     }
 
     const newCartItem = {
@@ -62,7 +66,7 @@ class MockApi {
     }
 
     this._cart.push(newCartItem);
-    return newCartItem.id;
+    return Promise.resolve(newCartItem.id);
   }
 
   removeFromCart(cartItemId) {
@@ -70,6 +74,8 @@ class MockApi {
     if (foundItemIndex !== -1) {
       this._cart = [...this._cart.slice(0, foundItemIndex), ...this._cart.slice(foundItemIndex + 1)];
     }
+
+    return Promise.resolve('');
   }
 
   increaseItemQuantity(cartItemId) {
@@ -77,6 +83,8 @@ class MockApi {
     if (foundItems.length === 1) {
       foundItems[0].quantity += 1;
     }
+
+    return Promise.resolve('');
   }
 
   decreaseItemQuantity(cartItemId) {
@@ -84,6 +92,8 @@ class MockApi {
     if (foundItems.length === 1 && foundItems[0].quantity > 1) {
       foundItems[0].quantity -= 1;
     }
+
+    return Promise.resolve('');
   }
 }
 

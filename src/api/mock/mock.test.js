@@ -9,26 +9,28 @@ describe(`Get pizzas`, () => {
   });
 
   it(`returns pizza objects`, () => {
-    const pizzas = api.getAllPizzas();
-    expect(pizzas).toHaveLength(11);
+      return api.getAllPizzas().then(pizzas => {
+        expect(pizzas).toHaveLength(11);
+      })
   });
 
   it(`returns reviews for a particular pizza`, () => {
     const pizzaId = "pizza-1";
-    const pizzaReviews = api.getPizzaReviews(pizzaId);
-    expect(pizzaReviews).toHaveLength(2);
+    return api.getPizzaReviews(pizzaId).then(pizzaReviews => {
+      expect(pizzaReviews).toHaveLength(2);
+    });
   });
 
   it(`adds pizza to favorites`, () => {
-    expect(api.getFavorites()).toHaveLength(0);
     const pizzaId = "pizza-6";
     api.addToFavorites(pizzaId);
-    expect(api.getFavorites()).toHaveLength(1);
+
+    return api.getFavorites().then(favorites => {
+      expect(favorites).toHaveLength(1);
+    })
   });
 
   it(`adds items to the cart`, () => {
-    expect(api.getCartItems()).toHaveLength(0);
-
     const pizzaId1 = "pizza-6";
     const crust1 = "thick";
     const size1 = 11;
@@ -36,122 +38,117 @@ describe(`Get pizzas`, () => {
     const price1 = 10;
 
     api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
-    let cartItems = api.getCartItems();
-    expect(cartItems).toHaveLength(1);
-    expect(cartItems[0].pizzaId).toEqual(pizzaId1);
-    expect(cartItems[0].crust).toEqual(crust1);
-    expect(cartItems[0].size).toEqual(size1);
-    expect(cartItems[0].quantity).toEqual(quantity1);
-    expect(cartItems[0].pricePerOne).toEqual(price1);
+
+    return api.getCartItems().then(cartItems => {
+      expect(cartItems).toHaveLength(1);
+      expect(cartItems[0].pizzaId).toEqual(pizzaId1);
+      expect(cartItems[0].crust).toEqual(crust1);
+      expect(cartItems[0].size).toEqual(size1);
+      expect(cartItems[0].quantity).toEqual(quantity1);
+      expect(cartItems[0].pricePerOne).toEqual(price1);
+    });
   });
 
     it(`can add the same item twice and the item will be in the cart with the right quantity`, () => {
-    expect(api.getCartItems()).toHaveLength(0);
     const pizzaId1 = "pizza-6";
     const crust1 = "thick";
     const size1 = 11;
     const quantity1 = 1;
     const price1 = 10;
 
-    const addedItemId = api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
-    let cartItems = api.getCartItems();
-    expect(cartItems).toHaveLength(1);
-    expect(cartItems[0].id).toEqual(addedItemId);
-    expect(cartItems[0].pizzaId).toEqual(pizzaId1);
-    expect(cartItems[0].quantity).toEqual(quantity1);
+    api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
+    api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
 
-    const addedItemId2 = api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
-    expect(addedItemId).toEqual(addedItemId2);
-    cartItems = api.getCartItems();
-    expect(cartItems).toHaveLength(1);
-    expect(cartItems[0].pizzaId).toEqual(pizzaId1);
-    expect(cartItems[0].quantity).toEqual(quantity1 + quantity1);
+    return api.getCartItems().then(cartItems => {
+      expect(cartItems).toHaveLength(1);
+      expect(cartItems[0].pizzaId).toEqual(pizzaId1);
+      expect(cartItems[0].quantity).toEqual(quantity1 + quantity1);
+    })
   });
 
   it(`should throw an error if the same item is added twice, but with a different price`, () => {
-    expect(api.getCartItems()).toHaveLength(0);
     const pizzaId1 = "pizza-6";
     const crust1 = "thick";
     const size1 = 11;
     const quantity1 = 1;
     const price1 = 10;
-    const addedItemId = api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
-    const cartItems = api.getCartItems();
-    expect(cartItems).toHaveLength(1);
-    expect(cartItems[0].id).toEqual(addedItemId);
-    expect(cartItems[0].quantity).toEqual(quantity1);
-
+    api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
     const price2 = 20;
+    expect.assertions(1);
 
-    expect(() => {
-      api.addToCart(pizzaId1, crust1, size1, quantity1, price2)
-    }).toThrow(`Wrong price`);
+    return api.addToCart(pizzaId1, crust1, size1, quantity1, price2).catch(e => expect(e.message).toMatch(`Wrong price`));
   });
 
-  it(`removes item from the cart`, () => {
-    expect(api.getCartItems()).toHaveLength(0);
+    it(`removes item from the cart`, async () => {
     const pizzaId1 = "pizza-6";
     const crust1 = "thick";
     const size1 = 11;
     const quantity1 = 1;
     const price1 = 10;
+    expect.assertions(1);
 
-    const addedItemId = api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
-    let cartItems = api.getCartItems();
-    expect(cartItems).toHaveLength(1);
-    expect(cartItems[0].pizzaId).toEqual(pizzaId1);
-    expect(cartItems[0].quantity).toEqual(quantity1);
+    const addedItemId = await api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
+    await api.removeFromCart(addedItemId);
+    const cartItems = await api.getCartItems();
+    expect(cartItems).toHaveLength(0);
 
-    api.removeFromCart(addedItemId)
-    expect(api.getCartItems()).toHaveLength(0);
+    // return api.addToCart(pizzaId1, crust1, size1, quantity1, price1)
+    //   .then(id => {
+    //     return api.removeFromCart(id);
+    //   })
+    //   .then(() => {
+    //     return api.getCartItems();
+    //   })
+    //   .then((cartItems) => {
+    //     expect(cartItems).toHaveLength(0);
+    //   });
   });
 
-  it(`can increase item quantity`, () => {
-    expect(api.getCartItems()).toHaveLength(0);
+  it(`can increase item quantity`, async () => {
     const pizzaId1 = "pizza-6";
     const crust1 = "thick";
     const size1 = 11;
     const quantity1 = 3;
     const price1 = 10;
+    expect.assertions(3);
 
-    api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
-    let cartItems = api.getCartItems();
-    expect(cartItems).toHaveLength(1);
-    expect(cartItems[0].pizzaId).toEqual(pizzaId1);
-    expect(cartItems[0].quantity).toEqual(quantity1);
+    const addedItemId = await api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
+    await api.increaseItemQuantity(addedItemId);
+    const cartItems = await api.getCartItems();
 
-    const addedItemId = cartItems[0].id;
-
-    api.increaseItemQuantity(addedItemId);
     expect(cartItems).toHaveLength(1);
     expect(cartItems[0].pizzaId).toEqual(pizzaId1);
     expect(cartItems[0].quantity).toEqual(quantity1 + 1);
   });
 
-  it(`can decrease item quantity`, () => {
-    expect(api.getCartItems()).toHaveLength(0);
+  it(`can decrease item quantity`, async () => {
     const pizzaId1 = "pizza-6";
     const crust1 = "thick";
     const size1 = 11;
     const quantity1 = 3;
     const price1 = 10;
-    const addedItemId = api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
-    api.decreaseItemQuantity(addedItemId);
-    let cartItems = api.getCartItems();
+    expect.assertions(2);
+
+    const addedItemId = await api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
+    await api.decreaseItemQuantity(addedItemId);
+    let cartItems = await api.getCartItems();
+
     expect(cartItems).toHaveLength(1);
     expect(cartItems[0].quantity).toEqual(quantity1 - 1);
   });
 
-    it(`cannot decrease item quantity if the quantity is equal to one`, () => {
-    expect(api.getCartItems()).toHaveLength(0);
+    it(`cannot decrease item quantity if the quantity is equal to one`, async () => {
     const pizzaId1 = "pizza-6";
     const crust1 = "thick";
     const size1 = 11;
     const quantity1 = 1;
     const price1 = 10;
-    const addedItemId = api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
-    api.decreaseItemQuantity(addedItemId);
-    let cartItems = api.getCartItems();
+    expect.assertions(2);
+
+    const addedItemId = await api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
+    await api.decreaseItemQuantity(addedItemId);
+    let cartItems = await api.getCartItems();
+
     expect(cartItems).toHaveLength(1);
     expect(cartItems[0].quantity).toEqual(quantity1);
   });
