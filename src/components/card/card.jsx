@@ -1,11 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import CardOptions from "../card-options/card-options.jsx";
+import { capitalize, convertStarRatingToWidthPercent } from '../../utils.js';
+import CardOptionsRow from "../card-options-row/card-options-row.jsx";
+import FavoritesButton from "../favorites-button/favorites-button.jsx";
 import "./card.css";
-import pizzaImg from "../../assets/img/pizza-small.jpg";
 import newPizza from "../../assets/img/new-pizza.jpg";
 
-const Card = ({ newCard }) => {
+const PIZZA_OPTION = {
+  CRUST: `crust`,
+  SIZE: `size`
+}
+
+const CRUST_TYPE = {
+  THICK: `thick`,
+  THIN: `thin`,
+};
+
+const crustTypes = Object.values(CRUST_TYPE);
+
+const PIZZA_SIZE = {
+  SMALL: `13`,
+  MEDIUM: `14`,
+  LARGE: `15`,
+}
+
+const InchesToSizeTitle = {
+  "13": `small`,
+  "14": `medium`,
+  "15": `large`,
+}
+
+const pizzaSizes = Object.values(PIZZA_SIZE);
+
+const Card = ({ newCard, pizza }) => {
+  const [crust, setCrust] = useState(CRUST_TYPE.THIN);
+  const [size, setSize] = useState(PIZZA_SIZE.MEDIUM);
+
+  const {id, image, name, type, rating, kcal, ingredients, prices, discountPercent, isNew, isTop} = pizza;
+  const allIngredients = [...ingredients.sauces, ...ingredients.mainIngredients, ...ingredients.toppings].join(', ');
+
+  let previousPrice, currentPrice, previousPriceMarkup;
+  if (discountPercent > 0) {
+    previousPrice = prices[crust][InchesToSizeTitle[size]];
+    currentPrice = (previousPrice - (previousPrice * discountPercent / 100)).toFixed(0);
+    previousPriceMarkup = (
+      <span className="card-price-previous">
+        <span className="card-price-previous-number">$ {previousPrice}</span>
+        <span className="card-price-previous-line"></span>
+      </span>
+    );
+  } else {
+    currentPrice = prices[crust][InchesToSizeTitle[size]];
+    previousPriceMarkup = '';
+  }
+
+
+  const discountLabel = discountPercent > 0 ? <div className="card-mark mark-sale">{`-${discountPercent}%`}</div> : '';
+  const newLabel = isNew ? <div className="card-mark mark-new">New</div> : '';
+  const topLabel = isTop ? <div className="card-mark mark-top">Top</div> : '';
+
   return (
     <>
       {newCard ? (
@@ -39,70 +92,68 @@ const Card = ({ newCard }) => {
         </li>
       ) : (
         <li className="card">
-          <div className="card-mark mark-new">New</div>
-          <div className="card-mark mark-top">Top</div>
-          <div className="card-mark mark-sale">-25%</div>
+          {newLabel}
+          {topLabel}
+          {discountLabel}
           <a className="card-image-container-link">
             <img
-              src={pizzaImg}
+              src={image}
               width="106"
               height="106"
-              alt="Dream special pizza photo"
+              alt={`${name} pizza photo`}
             />
           </a>
           <div className="card-details">
             <div className="card-details-top">
               <h3 className="card-title">
-                <a className="card-title-link">Dream special</a>
+                <a className="card-title-link">{name}</a>
               </h3>
-              <p className="card-pizza-type">Meat</p>
+              <p className="card-pizza-type">{type}</p>
               <div className="card-rating rating">
                 <div className="rating-stars">
                   <span
                     className="rating-stars-active"
-                    style={{ width: "80%" }}
+                    style={{ width: `${convertStarRatingToWidthPercent(rating)}%` }}
                   ></span>
                 </div>
                 <span className="rating-favorites"></span>
                 <span className="visually-hidden">Rating</span>
-                <span className="card-rating-value">4.0 / 5.0</span>
+                <span className="card-rating-value">{`${rating.toFixed(1)} / 5.0`}</span>
               </div>
-              <p className="card-pizza-kcal">270 kcal</p>
+              <p className="card-pizza-kcal">{kcal} kcal</p>
               <p className="ingredients-favorites">
-                Marinara sauce, pepperoni, mozzarella, fresh basil
+                {capitalize(allIngredients)}
               </p>
             </div>
             <div className="card-details-bottom">
-              <CardOptions />
+              <div className="card-options-wrapper">
+                <CardOptionsRow
+                  cardId={id}
+                  title={PIZZA_OPTION.CRUST}
+                  checkedOption={crust}
+                  options={crustTypes}
+                  onOptionChange={(crust) => {setCrust(crust)}}
+                />
+                <CardOptionsRow
+                  cardId={id}
+                  title={PIZZA_OPTION.SIZE}
+                  checkedOption={size}
+                  options={pizzaSizes}
+                  onOptionChange={(size) => {setSize(size)}}
+                />
+              </div>
+              <p className="card-options-chosen-note">{capitalize(crust)} crust, {size} inches size</p>
             </div>
             <p className="card-price">
               <small className="card-price-note">Starts from</small>
-              <b className="card-price-current">$ 13</b>
-              <span className="card-price-previous">
-                <span className="card-price-previous-number">$ 11</span>
-                <span className="card-price-previous-line"></span>
-              </span>
+              <b className="card-price-current">$ {currentPrice}</b>
+              {previousPriceMarkup}
             </p>
           </div>
-          <button className="card-button favorites-button card-not-added">
-            <span className="visually-hidden">Add to Favorites</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 18 15.66"
-              width="18"
-              height="16"
-            >
-              <path
-                className="card-fill"
-                d="M16.35 5.26C16.35 7.74 10.6 12.1 9 14c-1.6-1.9-7.35-6.26-7.35-8.74C1.65 2.05 5.81 0 9 3.48c3.19-3.48 7.35-1.43 7.35 1.78z"
-                fill="#b92f2f"
-              />
-              <path
-                d="M16.42 1.51A5.39 5.39 0 0012.66 0 6.23 6.23 0 009 1.26 6.19 6.19 0 005.34 0a5.35 5.35 0 00-3.75 1.51A5.15 5.15 0 000 5.26C0 7.55 2.34 9.92 5.66 13c.86.81 1.67 1.57 2.07 2.05a1.66 1.66 0 001.27.61h.05a1.65 1.65 0 001.22-.59c.4-.48 1.22-1.24 2.08-2.05C15.66 9.92 18 7.55 18 5.26a5.18 5.18 0 00-1.58-3.75zm-3.76.14zM9 14c-1.6-1.9-7.35-6.26-7.35-8.74a3.63 3.63 0 013.69-3.61A5 5 0 019 3.48a5 5 0 013.66-1.83 3.63 3.63 0 013.69 3.61C16.35 7.74 10.6 12.1 9 14z"
-                fill="#181818"
-              />
-            </svg>
-          </button>
+          <FavoritesButton
+            pizzaId={id}
+          />
+
           <button className="card-button cart-button card-not-added">
             <span className="visually-hidden">Add to Cart</span>
             <svg
@@ -136,6 +187,34 @@ const Card = ({ newCard }) => {
 
 Card.propTypes = {
   newCard: PropTypes.bool.isRequired,
+  pizza: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    kcal: PropTypes.number.isRequired,
+    ingredients: PropTypes.shape({
+      sauces: PropTypes.array,
+      mainIngredients: PropTypes.array,
+      toppings: PropTypes.array
+    }),
+    prices: PropTypes.shape({
+      thin: PropTypes.shape({
+        small: PropTypes.number.isRequired,
+        medium: PropTypes.number.isRequired,
+        large: PropTypes.number.isRequired,
+      }),
+      thick: PropTypes.shape({
+        small: PropTypes.number.isRequired,
+        medium: PropTypes.number.isRequired,
+        large: PropTypes.number.isRequired,
+      })
+    }),
+    discountPercent: PropTypes.number,
+    isNew: PropTypes.bool.isRequired,
+    isTop: PropTypes.bool.isRequired
+  })
 };
 
 export default Card;

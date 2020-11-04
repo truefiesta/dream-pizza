@@ -1,4 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { selectPizzas } from "../reducer/pizzas/selectors.js";
+
 import Header from "../components/header/header.jsx";
 import Footer from "../components/footer/footer.jsx";
 import Sort from "../components/sort/sort.jsx";
@@ -9,6 +12,8 @@ import Map from "../components/map/map.jsx";
 import Hero from "../components/hero/hero.jsx";
 
 const Home = () => {
+  const pizzas = useSelector(selectPizzas);
+
   return (
     <>
       <Header />
@@ -21,7 +26,7 @@ const Home = () => {
           <Sort />
           <div className="cards-list-wrapper">
             <h2 className="section-title">What’s new on our Menu</h2>
-            <CardsList />
+            <CardsList pizzas={pizzas} />
           </div>
 
           <PrevNextControls />
