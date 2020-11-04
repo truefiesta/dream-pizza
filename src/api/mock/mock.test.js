@@ -21,13 +21,26 @@ describe(`Get pizzas`, () => {
     });
   });
 
-  it(`adds pizza to favorites`, () => {
+  it(`adds pizza to favorites`, async () => {
     const pizzaId = "pizza-6";
-    api.addToFavorites(pizzaId);
 
-    return api.getFavorites().then(favorites => {
-      expect(favorites).toHaveLength(1);
-    })
+    expect.assertions(2);
+    const favorites = await api.addToFavorites(pizzaId);
+    expect(favorites).toEqual([pizzaId]);
+    const allFavorites = await api.getFavorites();
+    expect(allFavorites).toEqual([pizzaId]);
+  });
+
+  it(`removes pizza from favorites`, async () => {
+    const pizzaId = "pizza-6";
+    const pizzaId2 = "pizza-1";
+
+    expect.assertions(2);
+    api.addToFavorites(pizzaId)
+    const favorites = await api.addToFavorites(pizzaId2);
+    expect(favorites).toEqual([pizzaId, pizzaId2]);
+    const remainingFavorites = await api.removeFromFavorites(pizzaId2);
+    expect(remainingFavorites).toEqual([pizzaId]);
   });
 
   it(`adds items to the cart`, () => {
@@ -49,7 +62,7 @@ describe(`Get pizzas`, () => {
     });
   });
 
-    it(`can add the same item twice and the item will be in the cart with the right quantity`, () => {
+  it(`can add the same item twice and the item will be in the cart with the right quantity`, () => {
     const pizzaId1 = "pizza-6";
     const crust1 = "thick";
     const size1 = 11;

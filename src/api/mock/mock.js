@@ -26,16 +26,16 @@ class MockApi {
       this._favorites.push(pizzaId);
     }
 
-    return Promise.resolve('');
+    return Promise.resolve(this._favorites);
   }
 
   removeFromFavorites(pizzaId) {
     const pizzaIndex = this._favorites.indexOf(pizzaId);
     if (pizzaIndex !== -1) {
-      this._favorites = [...this._favorites.slice(0, pizzaIndex), ...this._favorites(pizzaIndex + 1)];
+      this._favorites = [...this._favorites.slice(0, pizzaIndex), ...this._favorites.slice(pizzaIndex + 1)];
     }
 
-    return Promise.resolve('');
+    return Promise.resolve(this._favorites);
   }
 
   getCartItems() {
