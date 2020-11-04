@@ -18,7 +18,7 @@ class MockApi {
   }
 
   getFavorites() {
-    return Promise.resolve(this._favorites);
+    return Promise.resolve(this._favorites.slice());
   }
 
   addToFavorites(pizzaId) {
@@ -26,7 +26,7 @@ class MockApi {
       this._favorites.push(pizzaId);
     }
 
-    return Promise.resolve(this._favorites);
+    return Promise.resolve(this._favorites.slice());
   }
 
   removeFromFavorites(pizzaId) {
@@ -35,11 +35,11 @@ class MockApi {
       this._favorites = [...this._favorites.slice(0, pizzaIndex), ...this._favorites.slice(pizzaIndex + 1)];
     }
 
-    return Promise.resolve(this._favorites);
+    return Promise.resolve(this._favorites.slice());
   }
 
   getCartItems() {
-    return Promise.resolve(this._cart);
+    return Promise.resolve(this._cart.slice());
   }
 
   addToCart(pizzaId, crust, size, quantity, pricePerOne) {
