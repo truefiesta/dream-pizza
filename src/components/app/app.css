@@ -176,7 +176,8 @@
   .home-page .controls-list {
     position: absolute;
     right: 15px;
-    bottom: 0;
+    top: 60px;
+    bottom: auto;
   }
 
   .menu-page .main-title {
