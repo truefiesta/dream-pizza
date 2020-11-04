@@ -2,7 +2,7 @@
   "pizzas": [
     {
       "id": "pizza-1",
-      "image": "img/pizza-1.jpg",
+      "image": "img/pizza-1.png",
       "name": "Supreme",
       "type": "traditional",
       "rating": 4.9,
@@ -30,7 +30,7 @@
     },
     {
       "id": "pizza-2",
-      "image": "img/pizza-2.jpg",
+      "image": "img/pizza-2.png",
       "name": "Veggie Special",
       "type": "vegetarian",
       "rating": 4.8,
@@ -86,7 +86,7 @@
     },
     {
       "id": "pizza-4",
-      "image": "img/pizza-4.jpg",
+      "image": "img/pizza-4.png",
       "name": "Chicken BBQ",
       "type": "traditional",
       "rating": 4.6,
@@ -114,7 +114,7 @@
     },
     {
       "id": "pizza-5",
-      "image": "img/pizza-5.jpg",
+      "image": "img/pizza-5.png",
       "name": "Hawaiian",
       "type": "traditional",
       "rating": 4.5,
@@ -142,7 +142,7 @@
     },
     {
       "id": "pizza-6",
-      "image": "img/pizza-6.jpg",
+      "image": "img/pizza-6.png",
       "name": "Veggie Special",
       "type": "vegetarian",
       "rating": 4.2,
@@ -170,7 +170,7 @@
     },
     {
       "id": "pizza-7",
-      "image": "img/pizza-7.jpg",
+      "image": "img/pizza-7.png",
       "name": "Veggie Feta",
       "type": "vegetarian",
       "rating": 4.2,
@@ -198,7 +198,7 @@
     },
     {
       "id": "pizza-8",
-      "image": "img/pizza-8.jpg",
+      "image": "img/pizza-8.png",
       "name": "Margherita",
       "type": "traditional",
       "rating": 4.5,
@@ -226,7 +226,7 @@
     },
     {
       "id": "pizza-9",
-      "image": "img/pizza-9.jpg",
+      "image": "img/pizza-9.png",
       "name": "Napoletana",
       "type": "traditional",
       "rating": 4.5,
@@ -254,7 +254,7 @@
     },
     {
       "id": "pizza-10",
-      "image": "img/pizza-10.jpg",
+      "image": "img/pizza-10.png",
       "name": "Seafood",
       "type": "traditional",
       "rating": 4.5,
@@ -282,7 +282,7 @@
     },
     {
       "id": "pizza-11",
-      "image": "img/pizza-11.jpg",
+      "image": "img/pizza-11.png",
       "name": "Dream special",
       "type": "vegetarian",
       "rating": 5.0,
