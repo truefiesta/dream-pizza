@@ -7,7 +7,6 @@ import { Operation as PizzasOperation } from "../../reducer/pizzas/pizzas.js";
 const FavoritesButton = ({pizzaId}) => {
   const favorites = useSelector(selectFavorites);
   const dispatch = useDispatch();
-console.log(`render`);
 
   let text, toggleFillClassName;
   if (favorites.includes(pizzaId)) {
