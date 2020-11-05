@@ -1,0 +1,312 @@
+{
+  "pizzas": [
+    {
+      "id": "pizza-1",
+      "image": "img/pizza-1.png",
+      "name": "Supreme",
+      "type": "traditional",
+      "rating": 4.9,
+      "kcal": 280,
+      "ingredients": {
+        "sauces": ["marinara sauce"],
+        "main_ingredients": ["pepperoni", "mozzarella", "italian sausage", "bacon", "mushrooms", "red onions", "black olives", "green peppers"],
+        "toppings": ["fresh basil"]
+      },
+      "prices": {
+        "thin": {
+          "small": 13,
+          "medium": 16,
+          "large": 18
+        },
+        "thick": {
+          "small": 14,
+          "medium": 17,
+          "large": 19
+        }
+      },
+      "discount_percent": 0,
+      "is_new": false,
+      "is_top": true
+    },
+    {
+      "id": "pizza-2",
+      "image": "img/pizza-2.png",
+      "name": "Veggie Special",
+      "type": "vegetarian",
+      "rating": 4.8,
+      "kcal": 250,
+      "ingredients": {
+        "sauces": ["marinara sauce"],
+        "main_ingredients": ["red onions", "mushrooms", "black olives", "vegan mozarella", "cherry tomatoes", "green peppers", "red peppers"],
+        "toppings": ["fresh basil", "fresh parsley"]
+      },
+      "prices": {
+        "thin": {
+          "small": 13,
+          "medium": 15,
+          "large": 17
+        },
+        "thick": {
+          "small": 14,
+          "medium": 16,
+          "large": 18
+        }
+      },
+      "discount_percent": 0,
+      "is_new": false,
+      "is_top": true
+    },
+    {
+      "id": "pizza-3",
+      "image": "img/pizza-3.jpg",
+      "name": "Pepperoni",
+      "type": "traditional",
+      "rating": 4.5,
+      "kcal": 240,
+      "ingredients": {
+        "sauces": ["marinara sauce"],
+        "main_ingredients": ["double pepperoni", "mozzarella"],
+        "toppings": ["fresh basil"]
+      },
+      "prices": {
+        "thin": {
+          "small": 10,
+          "medium": 12,
+          "large": 14
+        },
+        "thick": {
+          "small": 11,
+          "medium": 13,
+          "large": 15
+        }
+      },
+      "discount_percent": 20,
+      "is_new": false,
+      "is_top": false
+    },
+    {
+      "id": "pizza-4",
+      "image": "img/pizza-4.png",
+      "name": "Chicken BBQ",
+      "type": "traditional",
+      "rating": 4.6,
+      "kcal": 200,
+      "ingredients": {
+        "sauces": ["bbq sauce"],
+        "main_ingredients": ["grilled chicken", "bacon", "mozzarella", "red onions"],
+        "toppings": ["fresh basil"]
+      },
+      "prices": {
+        "thin": {
+          "small": 12,
+          "medium": 14,
+          "large": 16
+        },
+        "thick": {
+          "small": 13,
+          "medium": 15,
+          "large": 17
+        }
+      },
+      "discount_percent": 10,
+      "is_new": true,
+      "is_top": false
+    },
+    {
+      "id": "pizza-5",
+      "image": "img/pizza-5.png",
+      "name": "Hawaiian",
+      "type": "traditional",
+      "rating": 4.5,
+      "kcal": 240,
+      "ingredients": {
+        "sauces": ["marinara sauce"],
+        "main_ingredients": ["ham", "fresh pineapple", "mozzarella", "red peppers"],
+        "toppings": ["fresh basil"]
+      },
+      "prices": {
+        "thin": {
+          "small": 10,
+          "medium": 11,
+          "large": 12
+        },
+        "thick": {
+          "small": 10,
+          "medium": 11,
+          "large": 12
+        }
+      },
+      "discount_percent": 15,
+      "is_new": false,
+      "is_top": false
+    },
+    {
+      "id": "pizza-6",
+      "image": "img/pizza-6.png",
+      "name": "Veggie Special",
+      "type": "vegetarian",
+      "rating": 4.2,
+      "kcal": 210,
+      "ingredients": {
+        "sauces": ["marinara sauce"],
+        "main_ingredients": ["mushrooms", "black olives", "vegan mozarella", "cherry tomatoes", "green peppers", "red onions"],
+        "toppings": ["fresh parsley"]
+      },
+      "prices": {
+        "thin": {
+          "small": 13,
+          "medium": 15,
+          "large": 17
+        },
+        "thick": {
+          "small": 14,
+          "medium": 16,
+          "large": 18
+        }
+      },
+      "discount_percent": 0,
+      "is_new": false,
+      "is_top": true
+    },
+    {
+      "id": "pizza-7",
+      "image": "img/pizza-7.png",
+      "name": "Veggie Feta",
+      "type": "vegetarian",
+      "rating": 4.2,
+      "kcal": 210,
+      "ingredients": {
+        "sauces": ["marinara sauce"],
+        "main_ingredients": ["feta", "ricotta", "red onions", "mozarella", "red onions"],
+        "toppings": ["fresh spinach"]
+      },
+      "prices": {
+        "thin": {
+          "small": 10,
+          "medium": 11,
+          "large": 13
+        },
+        "thick": {
+          "small": 11,
+          "medium": 12,
+          "large": 13
+        }
+      },
+      "discount_percent": 0,
+      "is_new": true,
+      "is_top": false
+    },
+    {
+      "id": "pizza-8",
+      "image": "img/pizza-8.png",
+      "name": "Margherita",
+      "type": "traditional",
+      "rating": 4.5,
+      "kcal": 240,
+      "ingredients": {
+        "sauces": ["tomato sauce"],
+        "main_ingredients": ["mozzarella"],
+        "toppings": ["oregano", "fresh basil"]
+      },
+      "prices": {
+        "thin": {
+          "small": 10,
+          "medium": 12,
+          "large": 14
+        },
+        "thick": {
+          "small": 11,
+          "medium": 13,
+          "large": 15
+        }
+      },
+      "discount_percent": 15,
+      "is_new": false,
+      "is_top": false
+    },
+    {
+      "id": "pizza-9",
+      "image": "img/pizza-9.png",
+      "name": "Napoletana",
+      "type": "traditional",
+      "rating": 4.5,
+      "kcal": 240,
+      "ingredients": {
+        "sauces": ["tomato sauce"],
+        "main_ingredients": ["anchovies", "mozzarella", "green olives"],
+        "toppings": ["oregano"]
+      },
+      "prices": {
+        "thin": {
+          "small": 10,
+          "medium": 12,
+          "large": 14
+        },
+        "thick": {
+          "small": 11,
+          "medium": 13,
+          "large": 15
+        }
+      },
+      "discount_percent": 0,
+      "is_new": false,
+      "is_top": false
+    },
+    {
+      "id": "pizza-10",
+      "image": "img/pizza-10.png",
+      "name": "Seafood",
+      "type": "traditional",
+      "rating": 4.5,
+      "kcal": 240,
+      "ingredients": {
+        "sauces": ["tomato sauce"],
+        "main_ingredients": ["mixed seafood", "prawns", "mozzarella", "garlic"],
+        "toppings": ["oregano"]
+      },
+      "prices": {
+        "thin": {
+          "small": 13,
+          "medium": 14,
+          "large": 15
+        },
+        "thick": {
+          "small": 14,
+          "medium": 15,
+          "large": 16
+        }
+      },
+      "discount_percent": 0,
+      "is_new": false,
+      "is_top": true
+    },
+    {
+      "id": "pizza-11",
+      "image": "img/pizza-11.png",
+      "name": "Dream special",
+      "type": "vegetarian",
+      "rating": 5.0,
+      "kcal": 240,
+      "ingredients": {
+        "sauces": ["tomato sauce", "pesto sauce"],
+        "main_ingredients": ["bcconcini", "artichokes", "roasted peppers", "grilled zucchini", "sun-dried tomato", "mozzarella"],
+        "toppings": ["fresh basil"]
+      },
+      "prices": {
+        "thin": {
+          "small": 13,
+          "medium": 14,
+          "large": 15
+        },
+        "thick": {
+          "small": 14,
+          "medium": 15,
+          "large": 16
+        }
+      },
+      "discount_percent": 0,
+      "is_new": true,
+      "is_top": false
+    }
+  ]
+}

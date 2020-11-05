@@ -1,0 +1,100 @@
+{
+  "reviews": [
+    {
+      "user": {
+        "id": "user-1",
+        "name": "John Terensky",
+        "avatar": "/img/user-1.png"
+      },
+      "id": "rev-1",
+      "rating": 5.0,
+      "date": "25-04-2015 10:00:23",
+      "pizza_id": "pizza-1",
+      "text": "This is the really Supreme pizza. The crust was perfect. I will order again!"
+    },
+    {
+      "user": {
+        "id": "user-2",
+        "name": "Stella Johnes",
+        "avatar": "/img/user-2.png"
+      },
+      "id": "rev-2",
+      "rating": 4.9,
+      "date": "26-05-2015 10:00:23",
+      "pizza_id": "pizza-1",
+      "text": "This is the best pepperoni pizza I’ve eaten in my life. The crust was perfect. All ingredients were fresh. It was delivered on time. Great pizza place!"
+    },
+    {
+      "user": {
+        "id": "user-2",
+        "name": "Stella Johnes",
+        "avatar": "/img/user-2.png"
+      },
+      "id": "rev-3",
+      "rating": 4.5,
+      "date": "02-06-2015 11:00:23",
+      "pizza_id": "pizza-2",
+      "text": "Veggie Special was really nice. We ordered thin crust this time, but I prefer this pizza with thick crust."
+    },
+    {
+      "user": {
+        "id": "user-3",
+        "name": "James O'Connor",
+        "avatar": "/img/user-3.png"
+      },
+      "id": "rev-4",
+      "rating": 5.0,
+      "date": "12-06-2015 17:00:23",
+      "pizza_id": "pizza-3",
+      "text": "I liked pepperoni. But next time will order bigger size."
+    },
+    {
+      "user": {
+        "id": "user-4",
+        "name": "Thomas Williams",
+        "avatar": "/img/user-4.png"
+      },
+      "id": "rev-5",
+      "rating": 4.7,
+      "date": "13-06-2015 17:00:23",
+      "pizza_id": "pizza-4",
+      "text": "BBQ is my favorite. But I'd like if you added more chicken."
+    },
+    {
+      "user": {
+        "id": "user-5",
+        "name": "Aria Davis",
+        "avatar": "/img/user-5.png"
+      },
+      "id": "rev-6",
+      "rating": 3.2,
+      "date": "15-06-2015 17:00:23",
+      "pizza_id": "pizza-4",
+      "text": "I didn't like that BBQ sauce at all. And the delivery was late. The pizza was not hot enougth."
+    },
+    {
+      "user": {
+        "id": "user-5",
+        "name": "Aria Davis",
+        "avatar": "/img/user-5.png"
+      },
+      "id": "rev-7",
+      "rating": 4.2,
+      "date": "15-06-2015 18:00:23",
+      "pizza_id": "pizza-5",
+      "text": "It was good. But I am not a fan of pineapple in pizzas."
+    },
+    {
+      "user": {
+        "id": "user-5",
+        "name": "Aria Davis",
+        "avatar": "/img/user-5.png"
+      },
+      "id": "rev-8",
+      "rating": 5.0,
+      "date": "16-06-2015 18:00:23",
+      "pizza_id": "pizza-6",
+      "text": "Amazing. All the ingredients are perfect. Choose thick crust and large size. It's the best pizza!"
+    }
+  ]
+}
