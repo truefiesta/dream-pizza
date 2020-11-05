@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { AppRoute } from "../../const.js";
 import "./hero.css";
 
 const Hero = () => {
@@ -24,15 +26,14 @@ const Hero = () => {
               </p>
               <ul className="hero-links-list">
                 <li>
-                  <a className="hero-link hero-link-main" href="">
+                  <Link className="hero-link hero-link-main" to={AppRoute.MENU}>
                     Go to Menu
-                    {/* Choose from the Menu */}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="hero-link" href="">
+                  <Link className="hero-link" to={AppRoute.PIZZA_CREATOR}>
                     Create my own Pizza
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

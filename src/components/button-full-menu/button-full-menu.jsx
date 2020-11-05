@@ -1,11 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { AppRoute } from "../../const.js";
 import "./button-full-menu.css";
 
 const ButtonFullMenu = () => {
   return (
-    <a className="button button-full-menu" href="/menu">
+    <Link className="button button-full-menu" to={AppRoute.MENU}>
       See full menu
-    </a>
+    </Link>
   );
 };
 
