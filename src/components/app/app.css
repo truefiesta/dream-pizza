@@ -124,7 +124,7 @@
     position: static;
   }
 
-  .home-page .sort-list {
+  .home-page .tags-list {
     margin: 20px 0 30px 0;
   }
 
@@ -141,7 +141,7 @@
     position: absolute;
   }
 
-  .home-page .sort-list {
+  .home-page .tags-list {
     margin: 0 0 30px 0;
     max-width: 450px;
     margin-left: auto;

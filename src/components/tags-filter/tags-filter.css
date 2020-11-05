@@ -1,4 +1,4 @@
-.sort-list {
+.tags-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -8,30 +8,31 @@
   justify-content: center;
 }
 
-.sort-list-item {
+.tags-list-item {
   margin: 0;
   margin-right: 10px;
 }
 
-.sort-list-item:last-child {
+.tags-list-item:last-child {
   margin-right: 0;
 }
 
-.sort-list-button {
+.tags-list-button {
   border: 2px solid transparent;
+  cursor: pointer;
 }
 
-.sort-list-button:hover {
+.tags-list-button:hover {
   color: var(--basic-red);
 }
 
-.active-item .sort-list-button {
+.active-item .tags-list-button {
   border: 2px solid var(--basic-red);
   color: var(--basic-red);
 }
 
 @media (min-width: 320px) {
-  .sort-list-item:nth-child(3n) {
+  .tags-list-item:nth-child(3n) {
     margin-right: 0;
   }
 }

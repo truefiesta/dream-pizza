@@ -4,7 +4,7 @@ import { selectPizzas } from "../reducer/pizzas/selectors.js";
 
 import Header from "../components/header/header.jsx";
 import Footer from "../components/footer/footer.jsx";
-import Sort from "../components/sort/sort.jsx";
+import TagsFilter from "../components/tags-filter/tags-filter.jsx";
 import CardsList from "../components/cards-list/cards-list.jsx";
 import ButtonFullMenu from "../components/button-full-menu/button-full-menu.jsx";
 import PrevNextControls from "../components/prev-next-controls/prev-next-controls.jsx";
@@ -23,7 +23,7 @@ const Home = () => {
         <div className="wrapper menu-container">
           {/* TABS ?  */}
           <ButtonFullMenu />
-          <Sort />
+          <TagsFilter />
           <div className="cards-list-wrapper">
             <h2 className="section-title">What’s new on our Menu</h2>
             <CardsList pizzas={pizzas} />
