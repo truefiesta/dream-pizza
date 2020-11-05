@@ -10,3 +10,15 @@ export const capitalize = (str) => {
 export const convertStarRatingToWidthPercent = (rating) => {
   return Math.floor(rating) * 20;
 };
+
+export const getItemsForPageNumber = (page, maxItemsPerPage, items) => {
+  let indexOfFirstItemToShow;
+  if (page === 1) {
+    indexOfFirstItemToShow = 0;
+  } else {
+    indexOfFirstItemToShow = (page - 1) * maxItemsPerPage;
+  }
+  let indexOfLastItemToShow = page * maxItemsPerPage;
+
+  return items.slice(indexOfFirstItemToShow, indexOfLastItemToShow);
+}

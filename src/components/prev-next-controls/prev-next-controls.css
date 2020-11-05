@@ -30,6 +30,11 @@
   background-color: var(--semi-dark-gray);
 }
 
+.controls-button:disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
 .next-button {
   transform: rotate(180deg);
 }
