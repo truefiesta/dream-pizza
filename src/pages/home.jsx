@@ -1,6 +1,8 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { selectPizzas } from "../reducer/pizzas/selectors.js";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { selectCurrentTag, selectPizzasWithTag } from "../reducer/filters/selectors.js";
+import { ActionCreator as FiltersActionCreator } from "../reducer/filters/filters.js";
+import { getItemsForPageNumber } from "../utils.js";
 
 import Header from "../components/header/header.jsx";
 import Footer from "../components/footer/footer.jsx";
@@ -11,8 +13,16 @@ import PrevNextControls from "../components/prev-next-controls/prev-next-control
 import Map from "../components/map/map.jsx";
 import Hero from "../components/hero/hero.jsx";
 
+const MAX_ITEMS_TO_SHOW = 4;
+
 const Home = () => {
-  const pizzas = useSelector(selectPizzas);
+  const currentTag = useSelector(selectCurrentTag);
+  const pizzas = useSelector(selectPizzasWithTag);
+  const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
+
+  const pizzasNumber = pizzas.length;
+  let pizzasToShow = getItemsForPageNumber(page, MAX_ITEMS_TO_SHOW, pizzas);
 
   return (
     <>
@@ -21,16 +31,22 @@ const Home = () => {
         <h1 className="visually-hidden">Welcome to Dream Pizza</h1>
         <Hero />
         <div className="wrapper menu-container">
-          {/* TABS ?  */}
           <ButtonFullMenu />
-          <TagsFilter />
+          <TagsFilter
+            currentTag={currentTag}
+            onTagChange={(tag) => {dispatch(FiltersActionCreator.changeTag(tag))}}
+          />
           <div className="cards-list-wrapper">
-            <h2 className="section-title">What’s new on our Menu</h2>
-            <CardsList pizzas={pizzas} />
+            <h2 className="section-title">{currentTag} on our Menu</h2>
+            <CardsList pizzas={pizzasToShow} />
           </div>
-
-          <PrevNextControls />
-          {/* TABS ?  */}
+          <PrevNextControls
+            currentPage={page}
+            itemsNumber={pizzasNumber}
+            maxItemsPerPage={MAX_ITEMS_TO_SHOW}
+            onPrevClick={(page) => {setPage(page)}}
+            onNextClick={(page) => {setPage(page)}}
+          />
         </div>
         <Map />
       </main>
