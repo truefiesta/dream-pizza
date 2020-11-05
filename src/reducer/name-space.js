@@ -1,5 +1,6 @@
 const NameSpace = {
-  PIZZAS: `PIZZAS`
+  PIZZAS: `PIZZAS`,
+  FILTERS: `FILTERS`,
 }
 
 export default NameSpace;
