@@ -1,10 +1,16 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { selectFavorites } from "../../reducer/pizzas/selectors.js";
 import { NavLink, Link } from "react-router-dom";
 import { NavHashLink } from 'react-router-hash-link';
 import { AppRoute } from "../../const.js";
 import "./header.css";
 
 const Header = () => {
+  const favorites = useSelector(selectFavorites);
+  const favoritesNumber = favorites.length;
+  const noFavorites = favoritesNumber === 0;
+
   return (
     <header className="header-main">
       <div className="header-main-container">
@@ -29,9 +35,9 @@ const Header = () => {
         </nav>
         <ul className="nav-user-list">
           <li>
-            <a className="nav-user-link" href="">
+            <Link to={AppRoute.FAVORITES} className="nav-user-link">
               <span className="nav-user-link-title">My Favorites</span>
-              <div className="nav-icon-block nav-favorites-icon-block nav-favorites-empty">
+              <div className={`nav-icon-block nav-favorites-icon-block ${noFavorites ? `nav-favorites-empty` : ``}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 18 15.66"
@@ -49,12 +55,12 @@ const Header = () => {
                     fill="#181818"
                   />
                 </svg>
-                <span>0</span>
+                <span>{favoritesNumber}</span>
               </div>
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="nav-user-link" href="">
+            <Link to={AppRoute.CART} className="nav-user-link">
               <span className="nav-user-link-title">My Cart</span>
               <div className="nav-icon-block nav-cart-icon-block nav-cart-empty">
                 <svg
@@ -91,7 +97,7 @@ const Header = () => {
                 </svg>
                 <span>0</span>
               </div>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
