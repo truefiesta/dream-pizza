@@ -1,46 +1,21 @@
 import React from "react";
+import React, { useState } from "react";
+import FilterRadio from "../filter-radio/filter-radio.jsx";
 
 import "./filters.css";
 
+const FILTER_TYPE_TITLE = `pizza type`;
+const FILTER_BY_TYPE_SUFFIX = `type`;
+const FilterByType = {
+  ANY_TYPE: `any`,
+  TRADITIONAL: `traditional`,
+  VEGETARIAN: `vegetarian`
+};
+const types = Object.values(FilterByType);
 const Filters = () => {
+  const [type, setType] = useState(FilterByType.ANY_TYPE);
   return (
     <form className="filters" method="GET" action="">
-      <section className="filters-group">
-        <h3 className="filters-group-title">Pizza type</h3>
-        <ul>
-          <li className="filter-option filter-radio">
-            <input
-              className="visually-hidden filter-input-radio"
-              type="radio"
-              name="pizza-type"
-              value="any-type"
-              id="any-type"
-              checked
-            />
-            <label htmlFor="any-type">Any type</label>
-          </li>
-          <li className="filter-option filter-radio">
-            <input
-              className="visually-hidden filter-input-radio"
-              type="radio"
-              name="pizza-type"
-              value="traditional-type"
-              id="traditional-type"
-            />
-            <label htmlFor="traditional-type">Traditional</label>
-          </li>
-          <li className="filter-option filter-radio">
-            <input
-              className="visually-hidden filter-input-radio"
-              type="radio"
-              name="pizza-type"
-              value="vegetarian-type"
-              id="vegetarian-type"
-            />
-            <label htmlFor="vegetarian-type">Vegetarian</label>
-          </li>
-        </ul>
-      </section>
       <section className="filters-group">
         <h3 className="filters-group-title">Ingredients</h3>
         <ul>
@@ -92,6 +67,13 @@ const Filters = () => {
           </div>
         </div>
       </section>
+      <FilterRadio
+        title={FILTER_TYPE_TITLE}
+        suffix={FILTER_BY_TYPE_SUFFIX}
+        options={types}
+        checkedOption={type}
+        onOptionChange={(type) => setType(type)}
+      />
       <section className="filters-group">
         <h3 className="filters-group-title">Tags</h3>
         <ul className="filter-tags-list">
