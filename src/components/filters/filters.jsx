@@ -1,6 +1,7 @@
 import React from "react";
 import React, { useState } from "react";
 import FilterRadio from "../filter-radio/filter-radio.jsx";
+import FilterCheckbox from "../filter-checkbox/filter-checkbox.jsx";
 
 import "./filters.css";
 
@@ -12,43 +13,21 @@ const FilterByType = {
   VEGETARIAN: `vegetarian`
 };
 const types = Object.values(FilterByType);
+
+const FILTER_INGREDIENTS_TITLE = `ingredients`;
+const FILTER_BY_INGREDIENTS_SUFFIX = `pizza`;
+const FilterByIngredients = {
+  SEAFOOD: `seafood`,
+  CHICKEN: `chicken`,
+  MEAT: `meat`
+};
+const ingredientOptions = Object.values(FilterByIngredients);
+
 const Filters = () => {
   const [type, setType] = useState(FilterByType.ANY_TYPE);
+  const [ingredients, setIngredients] = useState([]);
   return (
     <form className="filters" method="GET" action="">
-      <section className="filters-group">
-        <h3 className="filters-group-title">Ingredients</h3>
-        <ul>
-          <li className="filter-option filter-checkbox">
-            <input
-              className="visually-hidden filter-input-checkbox"
-              type="checkbox"
-              name="seafood-pizza"
-              id="seafood-pizza"
-              checked
-            />
-            <label htmlFor="seafood-pizza">Seafood</label>
-          </li>
-          <li className="filter-option filter-checkbox">
-            <input
-              className="visually-hidden filter-input-checkbox"
-              type="checkbox"
-              name="chicken-pizza"
-              id="chicken-pizza"
-            />
-            <label htmlFor="chicken-pizza">Chicken</label>
-          </li>
-          <li className="filter-option filter-checkbox">
-            <input
-              className="visually-hidden filter-input-checkbox"
-              type="checkbox"
-              name="meat-pizza"
-              id="meat-pizza"
-            />
-            <label htmlFor="meat-pizza">Meat</label>
-          </li>
-        </ul>
-      </section>
       <section className="filters-group">
         <h3 className="filters-group-title">Price</h3>
         <div className="filter-range-container">
@@ -73,6 +52,24 @@ const Filters = () => {
         options={types}
         checkedOption={type}
         onOptionChange={(type) => setType(type)}
+      />
+      <FilterCheckbox
+        title={FILTER_INGREDIENTS_TITLE}
+        suffix={FILTER_BY_INGREDIENTS_SUFFIX}
+        options={ingredientOptions}
+        checkedOptions={ingredients}
+        onOptionsChange={
+          (value) => {
+            let newIngredients = ingredients.slice();
+            const valueIndex = ingredients.indexOf(value);
+            if (valueIndex !== -1) {
+              newIngredients = [...ingredients.slice(0, valueIndex), ...ingredients.slice(valueIndex + 1)];
+            } else {
+              newIngredients.push(value);
+            }
+            setIngredients(newIngredients);
+          }
+        }
       />
       <section className="filters-group">
         <h3 className="filters-group-title">Tags</h3>
