@@ -5,5 +5,5 @@ export const AppRoute = {
   MENU: `/menu`,
   PIZZA: `/pizza/:id`,
   PIZZA_CREATOR: `/pizza-creator`,
-  ROOT: `/`,
+  HOME: `/`,
 };
