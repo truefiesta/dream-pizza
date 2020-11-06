@@ -1,4 +1,7 @@
 import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import { NavHashLink } from 'react-router-hash-link';
+import { AppRoute } from "../../const.js";
 import "./header.css";
 
 const Header = () => {
@@ -6,21 +9,21 @@ const Header = () => {
     <header className="header-main">
       <div className="header-main-container">
         <div className="header-main-top">
-          <a className="logo">Dream Pizza</a>
+          <Link to={AppRoute.HOME} className="logo">Dream Pizza</Link>
           <button className="nav-main-toggle" type="button">
             <span className="visually-hidden">Open menu</span>
           </button>
         </div>
         <nav className="nav-main">
           <ul className="nav-main-list">
-            <li className="nav-main-item nav-item-current">
-              <a href="">Menu</a>
+            <li className="nav-main-item">
+              <NavLink to={AppRoute.MENU} activeClassName="nav-item-current-link">Menu</NavLink>
             </li>
             <li className="nav-main-item">
-              <a href="">Pizza Creator</a>
+              <NavLink to={AppRoute.PIZZA_CREATOR} activeClassName="nav-item-current-link">Pizza Creator</NavLink>
             </li>
             <li className="nav-main-item">
-              <a href="">Locations</a>
+              <NavHashLink strict to={`${AppRoute.HOME}#locations`} activeClassName="nav-item-current-link">Locations</NavHashLink>
             </li>
           </ul>
         </nav>
