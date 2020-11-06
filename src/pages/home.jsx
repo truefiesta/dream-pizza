@@ -4,8 +4,6 @@ import { selectCurrentTag, selectPizzasWithTag } from "../reducer/filters/select
 import { ActionCreator as FiltersActionCreator } from "../reducer/filters/filters.js";
 import { getItemsForPageNumber } from "../utils.js";
 
-import Header from "../components/header/header.jsx";
-import Footer from "../components/footer/footer.jsx";
 import TagsFilter from "../components/tags-filter/tags-filter.jsx";
 import CardsList from "../components/cards-list/cards-list.jsx";
 import ButtonFullMenu from "../components/button-full-menu/button-full-menu.jsx";
@@ -25,33 +23,29 @@ const Home = () => {
   let pizzasToShow = getItemsForPageNumber(page, MAX_ITEMS_TO_SHOW, pizzas);
 
   return (
-    <>
-      <Header />
-      <main className="home-page">
-        <h1 className="visually-hidden">Welcome to Dream Pizza</h1>
-        <Hero />
-        <div className="wrapper menu-container">
-          <ButtonFullMenu />
-          <TagsFilter
-            currentTag={currentTag}
-            onTagChange={(tag) => {dispatch(FiltersActionCreator.changeTag(tag))}}
-          />
-          <div className="cards-list-wrapper">
-            <h2 className="section-title">{currentTag} on our Menu</h2>
-            <CardsList pizzas={pizzasToShow} />
-          </div>
-          <PrevNextControls
-            currentPage={page}
-            itemsNumber={pizzasNumber}
-            maxItemsPerPage={MAX_ITEMS_TO_SHOW}
-            onPrevClick={(page) => {setPage(page)}}
-            onNextClick={(page) => {setPage(page)}}
-          />
+    <main className="home-page">
+      <h1 className="visually-hidden">Welcome to Dream Pizza</h1>
+      <Hero />
+      <div className="wrapper menu-container">
+        <ButtonFullMenu />
+        <TagsFilter
+          currentTag={currentTag}
+          onTagChange={(tag) => {dispatch(FiltersActionCreator.changeTag(tag))}}
+        />
+        <div className="cards-list-wrapper">
+          <h2 className="section-title">{currentTag} on our Menu</h2>
+          <CardsList pizzas={pizzasToShow} />
         </div>
-        <Map />
-      </main>
-      <Footer />
-    </>
+        <PrevNextControls
+          currentPage={page}
+          itemsNumber={pizzasNumber}
+          maxItemsPerPage={MAX_ITEMS_TO_SHOW}
+          onPrevClick={(page) => {setPage(page)}}
+          onNextClick={(page) => {setPage(page)}}
+        />
+      </div>
+      <Map />
+    </main>
   );
 };
 

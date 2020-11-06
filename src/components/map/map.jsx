@@ -3,7 +3,7 @@ import "./map.css";
 
 const Map = () => {
   return (
-    <section className="map">
+    <section className="map" id="locations">
       <div className="map-title-container">
         <h2 className="section-title">Our restaurants</h2>
       </div>
