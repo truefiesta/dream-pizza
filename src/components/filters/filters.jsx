@@ -1,7 +1,7 @@
-import React from "react";
 import React, { useState } from "react";
 import FilterRadio from "../filter-radio/filter-radio.jsx";
 import FilterCheckbox from "../filter-checkbox/filter-checkbox.jsx";
+import Slider from "../slider/slider.jsx";
 
 import "./filters.css";
 
@@ -26,26 +26,10 @@ const ingredientOptions = Object.values(FilterByIngredients);
 const Filters = () => {
   const [type, setType] = useState(FilterByType.ANY_TYPE);
   const [ingredients, setIngredients] = useState([]);
+  const [price, setPrice] = useState(25);
+
   return (
     <form className="filters" method="GET" action="">
-      <section className="filters-group">
-        <h3 className="filters-group-title">Price</h3>
-        <div className="filter-range-container">
-          <div className="filter-range">
-            <div className="scale">
-              <div className="bar" style={{ width: `100%` }}></div>
-              {/* 0 - 100% */}
-            </div>
-            {/* label range = 0% - 58% */}
-            <label className="filter-max-price" style={{ left: `58%` }}>
-              $
-              <input type="number" name="filter-max-price" value="100" />
-            </label>
-            {/* toggle range =  5% - 85% */}
-            <div className="toggle" tabIndex="0" style={{ left: `85%` }}></div>
-          </div>
-        </div>
-      </section>
       <FilterRadio
         title={FILTER_TYPE_TITLE}
         suffix={FILTER_BY_TYPE_SUFFIX}
@@ -70,6 +54,11 @@ const Filters = () => {
             setIngredients(newIngredients);
           }
         }
+      />
+      <Slider
+        initialValue={price}
+        maxValue={25}
+        onChange={(price) => setPrice(price)}
       />
       <section className="filters-group">
         <h3 className="filters-group-title">Tags</h3>
