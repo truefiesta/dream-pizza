@@ -1,4 +1,4 @@
-import { Tag } from "../../components/tags-filter/tags-filter.jsx";
+import { Tag } from "../../const.js";
 
 const initialState = {
   currentTag: Tag.NEW

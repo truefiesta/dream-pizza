@@ -1,5 +1,5 @@
 import { reducer, ActionCreator, ActionType, initialState } from "./filters.js";
-import { Tag } from "../../components/tags-filter/tags-filter.jsx";
+import { Tag } from "../../const.js";
 
 describe(`Action creators`, () => {
   it(`changeTag returns correct type and payload`, () => {

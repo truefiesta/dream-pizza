@@ -1,7 +1,7 @@
 import NameSpace from "../name-space.js";
 import { createSelector } from "reselect";
 import { selectPizzas } from "../pizzas/selectors.js";
-import { Tag } from "../../components/tags-filter/tags-filter.jsx";
+import { Tag } from "../../const.js";
 
 const NAME_SPACE = NameSpace.FILTERS;
 
