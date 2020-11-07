@@ -17,7 +17,9 @@ const Slider = ({ initialValue, maxValue, onChange}) => {
 
   const diff = React.useRef();
 
-  const initialPercentage = getTogglePercentage(initialValue, maxValue);
+  const initialTogglePercentage = getTogglePercentage(initialValue, maxValue);
+  const initialLabelPercentage = getLabelRercentage(initialValue, maxValue);
+  const initialBarPercentage = getBarPercentage(initialValue, maxValue);
 
   const handleMouseMove = evt => {
     let newX = evt.clientX - diff.current - scaleRef.current.getBoundingClientRect().left;
@@ -64,7 +66,7 @@ const Slider = ({ initialValue, maxValue, onChange}) => {
             <div
               ref={barRef}
               className="bar"
-              style={{ width: `100%` }}
+              style={{ width: getLeft(initialBarPercentage) }}
             />
             {/* 0 - 100% */}
           </div>
@@ -72,7 +74,7 @@ const Slider = ({ initialValue, maxValue, onChange}) => {
           <label
             ref={labelRef}
             className="filter-max-price"
-            style={{ left: `58%` }}
+            style={{ left: getLeft(initialLabelPercentage) }}
           >
             $
             <input
@@ -91,7 +93,7 @@ const Slider = ({ initialValue, maxValue, onChange}) => {
             onMouseDown={handleMouseDown}
             className="toggle"
             tabIndex="0"
-            style={{ left: getLeft(initialPercentage) }}
+            style={{ left: getLeft(initialTogglePercentage) }}
           />
         </div>
       </div>
