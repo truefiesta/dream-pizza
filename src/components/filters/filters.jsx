@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import FilterRadio from "../filter-radio/filter-radio.jsx";
 import FilterCheckbox from "../filter-checkbox/filter-checkbox.jsx";
+import FilterCheckboxTags from "../filter-checkbox-tags/filter-checkbox-tags.jsx";
 import Slider from "../slider/slider.jsx";
-
+import { Tag } from "../../const.js";
 import "./filters.css";
 
 const FILTER_TYPE_TITLE = `pizza type`;
@@ -23,10 +24,20 @@ const FilterByIngredients = {
 };
 const ingredientOptions = Object.values(FilterByIngredients);
 
+const tagOptions = Object.values(Tag);
+
 const Filters = () => {
   const [type, setType] = useState(FilterByType.ANY_TYPE);
   const [ingredients, setIngredients] = useState([]);
   const [price, setPrice] = useState(25);
+  const [tags, setTags] = useState([]);
+
+  const resetHandle = () => {
+    setType(FilterByType.ANY_TYPE);
+    setIngredients([]);
+    setPrice(25);
+    setTags([]);
+  }
 
   return (
     <form className="filters" method="GET" action="">
@@ -60,40 +71,27 @@ const Filters = () => {
         maxValue={25}
         onChange={(price) => setPrice(price)}
       />
-      <section className="filters-group">
-        <h3 className="filters-group-title">Tags</h3>
-        <ul className="filter-tags-list">
-          <li className="filter-tags-item">
-            <input
-              className="visually-hidden filter-tag-checkbox"
-              type="checkbox"
-              name="tag-new"
-              id="tag-new"
-            />
-            <label htmlFor="tag-new">New</label>
-          </li>
-          <li className="filter-tags-item">
-            <input
-              className="visually-hidden filter-tag-checkbox"
-              type="checkbox"
-              name="tag-top"
-              id="tag-top"
-            />
-            <label htmlFor="tag-top">Top</label>
-          </li>
-          <li className="filter-tags-item">
-            <input
-              className="visually-hidden filter-tag-checkbox"
-              type="checkbox"
-              name="tag-discount"
-              id="tag-discount"
-              checked
-            />
-            <label htmlFor="tag-discount">Discount</label>
-          </li>
-        </ul>
-      </section>
-      <button className="dark-button filters-reset" type="reset">
+      <FilterCheckboxTags
+        checkedOptions={tags}
+        options={tagOptions}
+        onOptionChange={
+          (value) => {
+            let newTags = tags.slice();
+            const valueIndex = tags.indexOf(value);
+            if (valueIndex !== -1) {
+              newTags = [...tags.slice(0, valueIndex), ...tags.slice(valueIndex + 1)];
+            } else {
+              newTags.push(value);
+            }
+            setTags(newTags);
+          }
+        }
+      />
+      <button
+        onClick={resetHandle}
+        className="dark-button filters-reset"
+        type="reset"
+      >
         Reset filters
       </button>
     </form>

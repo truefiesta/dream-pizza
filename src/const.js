@@ -7,3 +7,9 @@ export const AppRoute = {
   PIZZA_CREATOR: `/pizza-creator`,
   HOME: `/`,
 };
+
+export const Tag = {
+  NEW: `new`,
+  TOP: `top`,
+  DISCOUNT: `discount`
+};

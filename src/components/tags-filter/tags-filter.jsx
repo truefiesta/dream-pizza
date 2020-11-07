@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Tag } from "../../const.js";
 import "./tags-filter.css";
 
-export const Tag = {
-  NEW: `New pizzas`,
-  TOP: `Top rated`,
-  DISCOUNT: `Discounts`
-}
+const TagFilterTitle = {
+  [Tag.NEW]: `New pizzas`,
+  [Tag.TOP]: `Top rated`,
+  [Tag.DISCOUNT]: `Discounts`
+};
 
 const tags = Object.values(Tag);
 
@@ -22,7 +23,7 @@ const TagsFilter = ({currentTag, onTagChange}) => {
           type="button"
           value={tag}
         >
-          {tag}
+          {TagFilterTitle[tag]}
         </button>
       </li>
     );
