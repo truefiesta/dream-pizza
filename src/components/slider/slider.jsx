@@ -61,16 +61,38 @@ const Slider = ({ initialValue, maxValue, onChange}) => {
       <div className="filter-range-container">
         <div className="filter-range">
           <div ref={scaleRef} className="scale">
-            <div ref={barRef} className="bar" style={{ width: `100%` }}></div>
+            <div
+              ref={barRef}
+              className="bar"
+              style={{ width: `100%` }}
+            />
             {/* 0 - 100% */}
           </div>
           {/* label range = 0% - 58% */}
-          <label ref={labelRef} className="filter-max-price" style={{ left: `58%` }}>
+          <label
+            ref={labelRef}
+            className="filter-max-price"
+            style={{ left: `58%` }}
+          >
             $
-            <input ref={valueRef} type="number" name="filter-max-price" defaultValue={initialValue} />
+            <input
+              ref={valueRef}
+              type="number"
+              min="0"
+              max={maxValue}
+              readOnly="readonly"
+              name="filter-max-price"
+              defaultValue={initialValue}
+            />
           </label>
           {/* toggle range =  5% - 85% */}
-          <div ref={toggleRef} onMouseDown={handleMouseDown} className="toggle" tabIndex="0" style={{ left: getLeft(initialPercentage) }}></div>
+          <div
+            ref={toggleRef}
+            onMouseDown={handleMouseDown}
+            className="toggle"
+            tabIndex="0"
+            style={{ left: getLeft(initialPercentage) }}
+          />
         </div>
       </div>
     </section>
