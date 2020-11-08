@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
+import { selectPizzas } from "../../reducer/pizzas/selectors";
+import { AppRoute } from "../../const.js";
 import "./app.css";
 
 import Header from "../header/header.jsx";
@@ -10,8 +12,6 @@ import Menu from "../../pages/menu.jsx";
 import Pizza from "../../pages/pizza.jsx";
 import Favorites from "../../pages/favorites.jsx";
 import Cart from "../../pages/cart.jsx";
-import PizzaCreator from "../../pages/pizza-creator.jsx";
-import { selectPizzas } from "../../reducer/pizzas/selectors";
 
 const App = () => {
   const pizzas = useSelector(selectPizzas);
@@ -24,24 +24,11 @@ const App = () => {
     <>
       <Header />
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/menu">
-            <Menu />
-          </Route>
-          <Route path="/pizza">
-            <Pizza />
-          </Route>
-          <Route path="/pizza-creator">
-            <PizzaCreator />
-          </Route>
-          <Route path="/favorites">
-            <Favorites />
-          </Route>
-          <Route path="/cart">
-            <Cart />
-          </Route>
+          <Route exact path={AppRoute.HOME} component={Home} />
+          <Route path={AppRoute.MENU} component={Menu} />
+          <Route path={AppRoute.PIZZA} component={Pizza} />
+          <Route path={AppRoute.FAVORITES} component={Favorites} />
+          <Route path={AppRoute.CART} component={Cart} />
         </Switch>
       <Footer />
     </>
