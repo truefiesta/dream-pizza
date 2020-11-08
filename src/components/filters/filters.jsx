@@ -1,94 +1,51 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import FilterRadio from "../filter-radio/filter-radio.jsx";
 import FilterCheckbox from "../filter-checkbox/filter-checkbox.jsx";
 import FilterCheckboxTags from "../filter-checkbox-tags/filter-checkbox-tags.jsx";
 import Slider from "../slider/slider.jsx";
-import { Tag } from "../../const.js";
 import "./filters.css";
 
 const FILTER_TYPE_TITLE = `pizza type`;
 const FILTER_BY_TYPE_SUFFIX = `type`;
-const FilterByType = {
-  ANY_TYPE: `any`,
-  TRADITIONAL: `traditional`,
-  VEGETARIAN: `vegetarian`
-};
-const types = Object.values(FilterByType);
-
 const FILTER_INGREDIENTS_TITLE = `ingredients`;
 const FILTER_BY_INGREDIENTS_SUFFIX = `pizza`;
-const FilterByIngredients = {
-  SEAFOOD: `seafood`,
-  CHICKEN: `chicken`,
-  MEAT: `meat`
-};
-const ingredientOptions = Object.values(FilterByIngredients);
 
-const tagOptions = Object.values(Tag);
-
-const Filters = () => {
-  const [type, setType] = useState(FilterByType.ANY_TYPE);
-  const [ingredients, setIngredients] = useState([]);
-  const [price, setPrice] = useState(25);
-  const [tags, setTags] = useState([]);
-
-  const resetHandle = () => {
-    setType(FilterByType.ANY_TYPE);
-    setIngredients([]);
-    setPrice(25);
-    setTags([]);
-  }
+const Filters = ({
+    typeFilterOptions, ingredientFilterOptions, tagFilterOptions,
+    currentType, currentIngredients, currentTags, currentPrice, maxPrice,
+    onTypeFilterChange, onIngredientFilterChange, onTagFilterChange, onPriceChange,
+    onReset
+  }) => {
 
   return (
-    <form className="filters" method="GET" action="">
+    <form className="filters">
       <FilterRadio
         title={FILTER_TYPE_TITLE}
         suffix={FILTER_BY_TYPE_SUFFIX}
-        options={types}
-        checkedOption={type}
-        onOptionChange={(type) => setType(type)}
+        options={typeFilterOptions}
+        checkedOption={currentType}
+        onOptionChange={onTypeFilterChange}
       />
       <FilterCheckbox
         title={FILTER_INGREDIENTS_TITLE}
         suffix={FILTER_BY_INGREDIENTS_SUFFIX}
-        options={ingredientOptions}
-        checkedOptions={ingredients}
-        onOptionsChange={
-          (value) => {
-            let newIngredients = ingredients.slice();
-            const valueIndex = ingredients.indexOf(value);
-            if (valueIndex !== -1) {
-              newIngredients = [...ingredients.slice(0, valueIndex), ...ingredients.slice(valueIndex + 1)];
-            } else {
-              newIngredients.push(value);
-            }
-            setIngredients(newIngredients);
-          }
-        }
+        options={ingredientFilterOptions}
+        checkedOptions={currentIngredients}
+        onOptionsChange={onIngredientFilterChange}
       />
       <Slider
-        initialValue={price}
-        maxValue={25}
-        onChange={(price) => setPrice(price)}
+        initialValue={currentPrice}
+        maxValue={maxPrice}
+        onChange={onPriceChange}
       />
       <FilterCheckboxTags
-        checkedOptions={tags}
-        options={tagOptions}
-        onOptionChange={
-          (value) => {
-            let newTags = tags.slice();
-            const valueIndex = tags.indexOf(value);
-            if (valueIndex !== -1) {
-              newTags = [...tags.slice(0, valueIndex), ...tags.slice(valueIndex + 1)];
-            } else {
-              newTags.push(value);
-            }
-            setTags(newTags);
-          }
-        }
+        checkedOptions={currentTags}
+        options={tagFilterOptions}
+        onOptionChange={onTagFilterChange}
       />
       <button
-        onClick={resetHandle}
+        onClick={onReset}
         className="dark-button filters-reset"
         type="reset"
       >
@@ -96,6 +53,22 @@ const Filters = () => {
       </button>
     </form>
   );
+};
+
+Filters.propTypes = {
+  typeFilterOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  ingredientFilterOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  tagFilterOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  currentType: PropTypes.string.isRequired,
+  currentIngredients: PropTypes.arrayOf(PropTypes.string).isRequired,
+  currentTags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  currentPrice: PropTypes.number.isRequired,
+  maxPrice: PropTypes.number.isRequired,
+  onTypeFilterChange: PropTypes.func.isRequired,
+  onIngredientFilterChange: PropTypes.func.isRequired,
+  onTagFilterChange: PropTypes.func.isRequired,
+  onPriceChange: PropTypes.func.isRequired,
+  onReset: PropTypes.func.isRequired
 };
 
 export default Filters;
