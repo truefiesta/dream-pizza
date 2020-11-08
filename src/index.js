@@ -10,6 +10,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { Provider } from "react-redux";
+import history from "./history.js";
 import reducer from "./reducer/reducer.js";
 import thunkMiddleware from "redux-thunk";
 
@@ -29,7 +30,7 @@ store.dispatch(PizzasOperation.loadAllPizzas());
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
+    <Router history={history}>
       <App />
     </Router>
   </Provider>,
