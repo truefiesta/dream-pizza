@@ -1,17 +1,28 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
+import { selectPizzaById } from "../reducer/pizzas/selectors.js";
+
 import Breadcrumbs from "../components/breadcrumbs/breadcrumbs.jsx";
 import CardDetails from "../components/card-details/card-details.jsx";
 import Review from "../components/review/review.jsx";
 import ReviewForm from "../components/review-form/review-form.jsx";
 import PrevNextControls from "../components/prev-next-controls/prev-next-controls.jsx";
 
-const Pizza = () => {
+const Pizza = ({ match }) => {
+
+  const pizzaId = match.params.id;
+  const pizza = useSelector(selectPizzaById(pizzaId));
+  if (!pizza) return null;
+
   return (
     <main className="pizza-page">
       <div className="wrapper">
         <h1 className="visually-hidden">Pizza page</h1>
         <Breadcrumbs />
-        <CardDetails />
+        <CardDetails
+          pizza={pizza}
+        />
         <div className="reviews-wrapper">
         <section id="reviews" className="reviews">
           <div className="reviews-top">
@@ -34,5 +45,13 @@ const Pizza = () => {
     </main>
   );
 };
+
+Pizza.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired
+    }).isRequired,
+  }).isRequired
+}
 
 export default Pizza;

@@ -45,6 +45,7 @@
   line-height: 18px;
   color: var(--basic-black);
   cursor: pointer;
+  text-decoration: none;
 }
 
 .card-title-link:hover,

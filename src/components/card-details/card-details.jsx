@@ -1,22 +1,27 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { capitalize } from "../../utils.js";
+
 import CardOptions from "../card-options/card-options.jsx";
 import PlusMinusButtons from "../plus-minus-buttons/plus-minus-buttons.jsx";
 import "./card-details.css";
-import pizzaImg from "../../assets/img/pizza-small.jpg";
 
-const CardDetails = () => {
+const CardDetails = ({ pizza }) => {
+  console.log(pizza);
+  const { image, name, type, kcal, ingredients } = pizza;
+
   return (
     <section className="pizza-details">
       <div className="pizza-details-mark pizza-details-mark-new">New</div>
       <div className="pizza-details-mark pizza-details-mark-top">Top</div>
       <div className="pizza-details-mark pizza-details-mark-sale">-25%</div>
       <div className="pizza-photo">
-        <img src={pizzaImg} width="106" height="106" alt="pizza photo" />
+        <img src={image} width="106" height="106" alt="pizza photo" />
       </div>
       <div className="pizza-details-info-container">
       <div className="pizza-details-top">
-        <h2 className="pizza-details-title">Dream special</h2>
-        <p className="pizza-details-type">Meat</p>
+        <h2 className="pizza-details-title">{capitalize(name)}</h2>
+        <p className="pizza-details-type">{capitalize(type)}</p>
         <div className="pizza-details-rating">
           <div className="pizza-details-rating-stars">
             <span
@@ -29,7 +34,7 @@ const CardDetails = () => {
           <span className="pizza-details-rating-value">4.0 <span className="pizza-details-rating-full-value">/ 5 <a href="#reviews">(365 reviews)</a></span></span>
         </div>
         <div className="pizza-details-nutritional-info-container">
-          <p className="pizza-details-kcal">270 kcal</p>
+          <p className="pizza-details-kcal">{kcal} kcal</p>
           <button type="button" className="pizza-toggle-ingredients">
             See ingredients
           </button>
@@ -37,15 +42,15 @@ const CardDetails = () => {
         <div className="pizza-details-ingredients">
           <p>
             <span className="pizza-ingredients-title">Sauce:</span>
-            <span className="pizza-ingredients">marinara</span>
+            <span className="pizza-ingredients">{ingredients.sauces.join(', ')}</span>
           </p>
           <p>
             <span className="pizza-ingredients-title">Main ingredients:</span>
-            <span className="pizza-ingredients">pepperoni, mozzarella,</span>
+            <span className="pizza-ingredients">{ingredients.mainIngredients.join(', ')}</span>
           </p>
           <p>
             <span className="pizza-ingredients-title">Toppings:</span>
-            <span className="pizza-ingredients">fresh basil</span>
+            <span className="pizza-ingredients">{ingredients.toppings.join(', ')}</span>
           </p>
         </div>
       </div>
@@ -90,5 +95,36 @@ const CardDetails = () => {
     </section>
   );
 };
+
+CardDetails.propTypes = {
+  pizza: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    kcal: PropTypes.number.isRequired,
+    ingredients: PropTypes.shape({
+      sauces: PropTypes.array,
+      mainIngredients: PropTypes.array,
+      toppings: PropTypes.array
+    }),
+    prices: PropTypes.shape({
+      thin: PropTypes.shape({
+        small: PropTypes.number.isRequired,
+        medium: PropTypes.number.isRequired,
+        large: PropTypes.number.isRequired,
+      }),
+      thick: PropTypes.shape({
+        small: PropTypes.number.isRequired,
+        medium: PropTypes.number.isRequired,
+        large: PropTypes.number.isRequired,
+      })
+    }),
+    discountPercent: PropTypes.number,
+    isNew: PropTypes.bool.isRequired,
+    isTop: PropTypes.bool.isRequired
+  })
+}
 
 export default CardDetails;

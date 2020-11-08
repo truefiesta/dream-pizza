@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { capitalize, convertStarRatingToWidthPercent } from '../../utils.js';
 import CardOptionsRow from "../card-options-row/card-options-row.jsx";
 import FavoritesButton from "../favorites-button/favorites-button.jsx";
@@ -95,18 +96,18 @@ const Card = ({ newCard, pizza }) => {
           {newLabel}
           {topLabel}
           {discountLabel}
-          <a className="card-image-container-link">
+          <Link to={`/pizza/${id}`} className="card-image-container-link">
             <img
               src={image}
               width="106"
               height="106"
               alt={`${name} pizza photo`}
             />
-          </a>
+          </Link>
           <div className="card-details">
             <div className="card-details-top">
               <h3 className="card-title">
-                <a className="card-title-link">{name}</a>
+                <Link to={`/pizza/${id}`} className="card-title-link">{name}</Link>
               </h3>
               <p className="card-pizza-type">{type}</p>
               <div className="card-rating rating">
