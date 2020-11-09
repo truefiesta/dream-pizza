@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectFavorites } from "../../reducer/pizzas/selectors.js";
 import { Operation as PizzasOperation } from "../../reducer/pizzas/pizzas.js";
 
-const FavoritesButton = ({pizzaId}) => {
+const FavoritesButton = ({pizzaId, className}) => {
   const favorites = useSelector(selectFavorites);
   const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ const FavoritesButton = ({pizzaId}) => {
   }
 
   return (
-    <button onClick={() => {dispatch(PizzasOperation.changeFavorites(pizzaId))}} type="button" className={`card-button favorites-button ${toggleFillClassName}`}>
+    <button onClick={() => {dispatch(PizzasOperation.changeFavorites(pizzaId))}} type="button" className={`${className} ${toggleFillClassName}`}>
       <span className="visually-hidden">{text}</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,8 @@ const FavoritesButton = ({pizzaId}) => {
 };
 
 FavoritesButton.propTypes = {
-  pizzaId: PropTypes.string.isRequired
+  pizzaId: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
 }
 
 export default FavoritesButton;

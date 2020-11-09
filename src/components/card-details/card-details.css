@@ -284,10 +284,6 @@
   height: 20px;
 }
 
-.pizza-details-card-not-added .card-fill {
-  fill: none;
-}
-
 .pizza-details-favorites-button:hover .card-fill {
   fill: #b92f2f;
 }

@@ -153,8 +153,8 @@ const Card = ({ newCard, pizza }) => {
           </div>
           <FavoritesButton
             pizzaId={id}
+            className={FavoritesClass.BASIC}
           />
-
           <button className="card-button cart-button card-not-added">
             <span className="visually-hidden">Add to Cart</span>
             <svg
