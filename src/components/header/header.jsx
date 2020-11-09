@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectFavorites } from "../../reducer/pizzas/selectors.js";
+import { selectFavorites, selectPizzasInCartQuantity } from "../../reducer/pizzas/selectors.js";
 import { NavLink, Link } from "react-router-dom";
 import { NavHashLink } from 'react-router-hash-link';
 import { AppRoute } from "../../const.js";
@@ -8,8 +8,10 @@ import "./header.css";
 
 const Header = () => {
   const favorites = useSelector(selectFavorites);
+  const pizzasInCartNumber = useSelector(selectPizzasInCartQuantity);
   const favoritesNumber = favorites.length;
   const noFavorites = favoritesNumber === 0;
+  const noItemsInCart = pizzasInCartNumber === 0;
 
   return (
     <header className="header-main">
@@ -62,7 +64,7 @@ const Header = () => {
           <li>
             <Link to={AppRoute.CART} className="nav-user-link">
               <span className="nav-user-link-title">My Cart</span>
-              <div className="nav-icon-block nav-cart-icon-block nav-cart-empty">
+              <div className={`nav-icon-block nav-cart-icon-block ${noItemsInCart ? `nav-cart-empty` : ``}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 18 15.36"
@@ -95,7 +97,7 @@ const Header = () => {
                     r="2.25"
                   />
                 </svg>
-                <span>0</span>
+                <span>{pizzasInCartNumber}</span>
               </div>
             </Link>
           </li>
