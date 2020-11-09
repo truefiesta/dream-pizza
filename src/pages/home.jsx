@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectCurrentTag, selectPizzasWithTag } from "../reducer/filters/selectors.js";
 import { ActionCreator as FiltersActionCreator } from "../reducer/filters/filters.js";
-import { getItemsForPageNumber } from "../utils.js";
+import { getItemsForPageNumber, capitalize } from "../utils.js";
+import { Tag } from "../const.js";
 
 import TagsFilter from "../components/tags-filter/tags-filter.jsx";
 import CardsList from "../components/cards-list/cards-list.jsx";
@@ -22,6 +23,8 @@ const Home = () => {
   const pizzasNumber = pizzas.length;
   let pizzasToShow = getItemsForPageNumber(page, MAX_ITEMS_TO_SHOW, pizzas);
 
+  const filterTitle = currentTag === Tag.DISCOUNT ? `Our ${currentTag}s` : `${capitalize(currentTag)} on our Menu`
+
   return (
     <main className="home-page">
       <h1 className="visually-hidden">Welcome to Dream Pizza</h1>
@@ -33,7 +36,7 @@ const Home = () => {
           onTagChange={(tag) => {dispatch(FiltersActionCreator.changeTag(tag))}}
         />
         <div className="cards-list-wrapper">
-          <h2 className="section-title">{currentTag} on our Menu</h2>
+          <h2 className="section-title">{filterTitle}</h2>
           <CardsList pizzas={pizzasToShow} />
         </div>
         <PrevNextControls
