@@ -4,12 +4,13 @@ import { selectFavorites } from "./selectors.js";
 const initialState = {
   pizzas: [],
   favoritePizzas: [],
+  pizzasInCart: []
 }
 
 const ActionType = {
   SET_ALL_PIZZAS: `SET_ALL_PIZZAS`,
   SET_FAVORITES: `SET_FAVORITES`,
-  CHANGE_FAVORITES: `CHANGE_FAVORITES`
+  SET_CART: `SET_CART`
 }
 
 const ActionCreator = {
@@ -21,9 +22,9 @@ const ActionCreator = {
     type: ActionType.SET_FAVORITES,
     payload: pizzaIds
   }),
-  changeFavorites: (pizzaId) => ({
-    type: ActionType.CHANGE_FAVORITES,
-    payload: pizzaId
+  setCart: (pizzas) => ({
+    type: ActionType.SET_CART,
+    payload: pizzas
   })
 }
 
@@ -43,6 +44,12 @@ const Operation = {
         dispatch(ActionCreator.setFavorites(response));
       })
   },
+  loadCart: () => (dispatch, getState, api) => {
+    return api.getCartItems()
+      .then(response => {
+        dispatch(ActionCreator.setCart(response));
+      })
+  },
   changeFavorites: (pizzaId) => (dispatch, getState, api) => {
     const favorites = selectFavorites(getState()).slice();
     const pizzaIdIndex = favorites.indexOf(pizzaId);
@@ -57,6 +64,13 @@ const Operation = {
           dispatch(ActionCreator.setFavorites(response))
         })
     }
+  },
+  addToCart: (pizzaCartObj) => (dispatch, getState, api) => {
+    const { pizzaId, crust, size, quantity, pricePerOne } = pizzaCartObj;
+    return api.addToCart(pizzaId, crust, size, quantity, pricePerOne)
+      .then(response => {
+        dispatch(ActionCreator.setCart(response))
+      })
   }
 };
 
@@ -70,6 +84,10 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         favoritePizzas: action.payload
       });
+    case ActionType.SET_CART:
+      return Object.assign({}, state, {
+        pizzasInCart: action.payload
+      })
   }
 
   return state;

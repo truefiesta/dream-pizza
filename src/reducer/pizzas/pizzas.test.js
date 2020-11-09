@@ -25,15 +25,6 @@ describe(`Action creators`, () => {
       payload: pizzaIds
     });
   });
-
-  it(`changeFavorites returns correct type and payload`, () => {
-    const pizzaId = 'pizza-6';
-
-    expect(ActionCreator.changeFavorites(pizzaId)).toEqual({
-      type: ActionType.CHANGE_FAVORITES,
-      payload: pizzaId
-    });
-  });
 });
 
 describe(`Operations`, () => {
@@ -118,6 +109,34 @@ describe(`Operations`, () => {
     expect(dispatch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenNthCalledWith(1,
       ActionCreator.setFavorites([id1, id2, id3])
+    );
+  });
+
+  it(`addToCart should make a correct api call on adding pizza to the cart`, async () => {
+    const pizzaId = 'pizza-1';
+    const crust = 'thick';
+    const size = '13';
+    const quantity = 1;
+    const pricePerOne = 11;
+
+    const cartItem = {
+      id: expect.any(String), pizzaId, crust, size, quantity, pricePerOne
+    };
+
+    const cartItem2 = {
+      id: expect.any(String), pizzaId, crust, size, quantity: 2, pricePerOne
+    };
+
+    const dispatch = jest.fn();
+    const getState = () => {};
+    const addToCart = Operation.addToCart(cartItem);
+
+    expect.assertions(2);
+    await addToCart(dispatch, getState, apiMock);
+    await addToCart(dispatch, getState, apiMock);
+    expect(dispatch).toHaveBeenCalledTimes(2);
+    expect(dispatch).toHaveBeenNthCalledWith(2,
+      ActionCreator.setCart([cartItem2])
     );
   });
 });

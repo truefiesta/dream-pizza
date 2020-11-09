@@ -1,20 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { capitalize } from "../../utils.js";
+import { useDispatch } from "react-redux";
+import { Operation as PizzasOperation } from "../../reducer/pizzas/pizzas.js";
 
-import CardOptions from "../card-options/card-options.jsx";
+import { capitalize, convertStarRatingToWidthPercent } from "../../utils.js";
+import { PIZZA_OPTION, CRUST_TYPE, crustTypes, PIZZA_SIZE, pizzaSizes, InchesToSizeTitle, FavoritesClass } from "../../const.js";
+
+import CardOptionsRow from "../card-options-row/card-options-row.jsx";
+import FavoritesButton from "../favorites-button/favorites-button.jsx";
 import PlusMinusButtons from "../plus-minus-buttons/plus-minus-buttons.jsx";
 import "./card-details.css";
 
+const MIN_PIZZA_QUANTITY = 1;
+
 const CardDetails = ({ pizza }) => {
-  console.log(pizza);
-  const { image, name, type, kcal, ingredients } = pizza;
+  const [crust, setCrust] = useState(CRUST_TYPE.THIN);
+  const [size, setSize] = useState(PIZZA_SIZE.MEDIUM);
+  const [quantity, setQuantity] = useState(MIN_PIZZA_QUANTITY)
+  const dispatch = useDispatch();
+
+  const { id, image, name, type, rating, kcal, ingredients, prices, discountPercent, isNew, isTop } = pizza;
+  const discountLabelMarkup = discountPercent > 0 ? <div className="pizza-details-mark pizza-details-mark-sale">-{discountPercent}%</div> : ``;
+
+  let previousPrice, currentPrice, previousPriceMarkup;
+  if (discountPercent > 0) {
+    previousPrice = prices[crust][InchesToSizeTitle[size]];
+    currentPrice = (previousPrice - (previousPrice * discountPercent / 100)).toFixed(0);
+    previousPriceMarkup = (
+      <span className="pizza-details-price-previous">
+        <span className="pizza-details-price-previous-number">$ {previousPrice}</span>
+        <span className="pizza-details-price-previous-line"></span>
+      </span>
+    );
+  } else {
+    currentPrice = prices[crust][InchesToSizeTitle[size]];
+    previousPriceMarkup = '';
+  }
+
+  const increment = () => {
+    setQuantity(prev => prev + 1);
+  }
+
+  const decrement = () => {
+    setQuantity(prev => prev - 1);
+  }
+
+  const createPizzaCartObject = () => {
+    return {
+      pizzaId: id,
+      crust,
+      size,
+      quantity,
+      pricePerOne: currentPrice
+    }
+  };
+
+  const addToCartHandle = () => {
+    dispatch(PizzasOperation.addToCart(createPizzaCartObject()))
+    setQuantity(MIN_PIZZA_QUANTITY);
+  }
 
   return (
     <section className="pizza-details">
-      <div className="pizza-details-mark pizza-details-mark-new">New</div>
-      <div className="pizza-details-mark pizza-details-mark-top">Top</div>
-      <div className="pizza-details-mark pizza-details-mark-sale">-25%</div>
+      {isNew && <div className="pizza-details-mark pizza-details-mark-new">New</div>}
+      {isTop && <div className="pizza-details-mark pizza-details-mark-top">Top</div>}
+      {discountLabelMarkup}
       <div className="pizza-photo">
         <img src={image} width="106" height="106" alt="pizza photo" />
       </div>
@@ -26,12 +76,12 @@ const CardDetails = ({ pizza }) => {
           <div className="pizza-details-rating-stars">
             <span
               className="pizza-details-rating-stars-active"
-              style={{ width: "80%" }}
+              style={{ width: convertStarRatingToWidthPercent(rating) }}
             ></span>
           </div>
           <span className="pizza-details-rating-star"></span>
           <span className="visually-hidden">Rating</span>
-          <span className="pizza-details-rating-value">4.0 <span className="pizza-details-rating-full-value">/ 5 <a href="#reviews">(365 reviews)</a></span></span>
+          <span className="pizza-details-rating-value">{rating} <span className="pizza-details-rating-full-value">/ 5.0 <a href="#reviews">(365 reviews)</a></span></span>
         </div>
         <div className="pizza-details-nutritional-info-container">
           <p className="pizza-details-kcal">{kcal} kcal</p>
@@ -55,19 +105,41 @@ const CardDetails = ({ pizza }) => {
         </div>
       </div>
       <div className="pizza-details-bottom">
-        <CardOptions />
+        <div className="card-options-wrapper">
+          <CardOptionsRow
+            cardId={id}
+            title={PIZZA_OPTION.CRUST}
+            checkedOption={crust}
+            options={crustTypes}
+            onOptionChange={(crust) => {setCrust(crust)}}
+          />
+          <CardOptionsRow
+            cardId={id}
+            title={PIZZA_OPTION.SIZE}
+            checkedOption={size}
+            options={pizzaSizes}
+            onOptionChange={(size) => {setSize(size)}}
+          />
+        </div>
+        <p className="card-options-chosen-note">{capitalize(crust)} crust, {size} inches size</p>
         <div className="price-plus-minus-container">
           <p className="pizza-details-price">
-            <b className="pizza-details-price-current">$ 11</b>
-            <span className="pizza-details-price-previous">
-              <span className="pizza-details-price-previous-number">$ 13</span>
-              <span className="pizza-details-price-previous-line"></span>
-            </span>
+            <b className="pizza-details-price-current">$ {currentPrice}</b>
+            {previousPriceMarkup}
           </p>
-          <PlusMinusButtons />
+          <PlusMinusButtons
+            currentValue={quantity}
+            minPossibleValue={MIN_PIZZA_QUANTITY}
+            onMinusClick={decrement}
+            onPlusClick={increment}
+          />
         </div>
         <div className="add-to-cart-favorite-container">
-          <button type="button" className="pizza-details-add-to-cart">
+          <button
+            onClick={addToCartHandle}
+            type="button"
+            className="pizza-details-add-to-cart"
+          >
             Add to cart
           </button>
           <FavoritesButton
