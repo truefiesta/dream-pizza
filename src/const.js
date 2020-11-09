@@ -35,3 +35,34 @@ export const IngredientTypes = {
 export const typesOptions = Object.values(FilterByType);
 export const ingredientOptions = Object.values(FilterByIngredients);
 export const tagOptions = Object.values(Tag);
+
+export const InchesToSizeTitle = {
+  "13": `small`,
+  "14": `medium`,
+  "15": `large`,
+};
+
+export const PIZZA_OPTION = {
+  CRUST: `crust`,
+  SIZE: `size`
+}
+
+export const CRUST_TYPE = {
+  THICK: `thick`,
+  THIN: `thin`,
+};
+
+export const crustTypes = Object.values(CRUST_TYPE);
+
+export const PIZZA_SIZE = {
+  SMALL: `13`,
+  MEDIUM: `14`,
+  LARGE: `15`,
+};
+
+export const pizzaSizes = Object.values(PIZZA_SIZE);
+
+export const FavoritesClass = {
+  DETAILS: `pizza-details-favorites-button`,
+  BASIC: `card-button favorites-button`
+};

@@ -1,37 +1,13 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { capitalize, convertStarRatingToWidthPercent } from '../../utils.js';
+import { capitalize, convertStarRatingToWidthPercent } from "../../utils.js";
+import { PIZZA_OPTION, CRUST_TYPE, crustTypes, PIZZA_SIZE, pizzaSizes, InchesToSizeTitle, FavoritesClass } from "../../const.js";
+
 import CardOptionsRow from "../card-options-row/card-options-row.jsx";
 import FavoritesButton from "../favorites-button/favorites-button.jsx";
 import "./card.css";
 import newPizza from "../../assets/img/new-pizza.jpg";
-
-const PIZZA_OPTION = {
-  CRUST: `crust`,
-  SIZE: `size`
-}
-
-const CRUST_TYPE = {
-  THICK: `thick`,
-  THIN: `thin`,
-};
-
-const crustTypes = Object.values(CRUST_TYPE);
-
-const PIZZA_SIZE = {
-  SMALL: `13`,
-  MEDIUM: `14`,
-  LARGE: `15`,
-}
-
-const InchesToSizeTitle = {
-  "13": `small`,
-  "14": `medium`,
-  "15": `large`,
-}
-
-const pizzaSizes = Object.values(PIZZA_SIZE);
 
 const Card = ({ newCard, pizza }) => {
   const [crust, setCrust] = useState(CRUST_TYPE.THIN);
