@@ -100,8 +100,9 @@ describe(`Get pizzas`, () => {
     const price1 = 10;
     expect.assertions(1);
 
-    const addedItemId = await api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
-    await api.removeFromCart(addedItemId);
+    const addedItems = await api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
+    const addedItemsIndex = addedItems[0].id;
+    await api.removeFromCart(addedItemsIndex);
     const cartItems = await api.getCartItems();
     expect(cartItems).toHaveLength(0);
 
@@ -125,7 +126,8 @@ describe(`Get pizzas`, () => {
     const price1 = 10;
     expect.assertions(3);
 
-    const addedItemId = await api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
+    const addedItems = await api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
+    const addedItemId = addedItems[0].id;
     await api.increaseItemQuantity(addedItemId);
     const cartItems = await api.getCartItems();
 
@@ -142,7 +144,8 @@ describe(`Get pizzas`, () => {
     const price1 = 10;
     expect.assertions(2);
 
-    const addedItemId = await api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
+    const addedItems = await api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
+    const addedItemId = addedItems[0].id;
     await api.decreaseItemQuantity(addedItemId);
     let cartItems = await api.getCartItems();
 

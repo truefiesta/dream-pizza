@@ -53,7 +53,7 @@ class MockApi {
       }
 
       foundItems[0].quantity += quantity;
-      return Promise.resolve(foundItems[0].id);
+      return Promise.resolve(this._cart.slice());
     }
 
     const newCartItem = {
@@ -66,7 +66,7 @@ class MockApi {
     }
 
     this._cart.push(newCartItem);
-    return Promise.resolve(newCartItem.id);
+    return Promise.resolve(this._cart.slice());
   }
 
   removeFromCart(cartItemId) {
@@ -75,7 +75,7 @@ class MockApi {
       this._cart = [...this._cart.slice(0, foundItemIndex), ...this._cart.slice(foundItemIndex + 1)];
     }
 
-    return Promise.resolve('');
+    return Promise.resolve(this._cart.slice());
   }
 
   increaseItemQuantity(cartItemId) {
