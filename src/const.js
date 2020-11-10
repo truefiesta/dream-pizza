@@ -66,3 +66,5 @@ export const FavoritesClass = {
   DETAILS: `pizza-details-favorites-button`,
   BASIC: `card-button favorites-button`
 };
+
+export const MIN_PIZZA_QUANTITY = 1;

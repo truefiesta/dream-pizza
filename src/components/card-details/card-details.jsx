@@ -4,14 +4,12 @@ import { useDispatch } from "react-redux";
 import { Operation as PizzasOperation } from "../../reducer/pizzas/pizzas.js";
 
 import { capitalize, convertStarRatingToWidthPercent } from "../../utils.js";
-import { PIZZA_OPTION, CRUST_TYPE, crustTypes, PIZZA_SIZE, pizzaSizes, InchesToSizeTitle, FavoritesClass } from "../../const.js";
+import { MIN_PIZZA_QUANTITY, PIZZA_OPTION, CRUST_TYPE, crustTypes, PIZZA_SIZE, pizzaSizes, InchesToSizeTitle, FavoritesClass } from "../../const.js";
 
 import CardOptionsRow from "../card-options-row/card-options-row.jsx";
 import FavoritesButton from "../favorites-button/favorites-button.jsx";
 import PlusMinusButtons from "../plus-minus-buttons/plus-minus-buttons.jsx";
 import "./card-details.css";
-
-const MIN_PIZZA_QUANTITY = 1;
 
 const CardDetails = ({ pizza }) => {
   const [crust, setCrust] = useState(CRUST_TYPE.THIN);
