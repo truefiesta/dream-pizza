@@ -4,7 +4,6 @@ export const AppRoute = {
   LOGIN: `/login`,
   MENU: `/menu`,
   PIZZA: `/pizza/:id`,
-  PIZZA_CREATOR: `/pizza-creator`,
   HOME: `/`,
 };
 

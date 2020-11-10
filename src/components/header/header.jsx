@@ -28,9 +28,6 @@ const Header = () => {
               <NavLink to={AppRoute.MENU} activeClassName="nav-item-current-link">Menu</NavLink>
             </li>
             <li className="nav-main-item">
-              <NavLink to={AppRoute.PIZZA_CREATOR} activeClassName="nav-item-current-link">Pizza Creator</NavLink>
-            </li>
-            <li className="nav-main-item">
               <NavHashLink strict to={`${AppRoute.HOME}#locations`} activeClassName="nav-item-current-link">Locations</NavHashLink>
             </li>
           </ul>

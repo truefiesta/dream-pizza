@@ -5,12 +5,11 @@ import "./cards-list.css";
 
 const CardsList = ({ pizzas }) => {
   const renderedPizzas = pizzas.map(pizza => {
-    return <Card key={pizza.id} pizza={pizza} newCard={false} />
+    return <Card key={pizza.id} pizza={pizza} />
   })
 
   return (
     <ul className="cards-list">
-      {/* <Card newCard={true} /> */}
       {renderedPizzas}
     </ul>
   );

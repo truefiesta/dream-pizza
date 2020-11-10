@@ -17,22 +17,12 @@ const Hero = () => {
                 that will be perfect for tonight.
               </p>
               <p className="hero-text">
-                Or create your own pizza, that we will bake using
-                <br />
-                only the ingredients, you want in your dream pizza.
-              </p>
-              <p className="hero-text">
                 It is a perfect time for a perfect pizza.
               </p>
               <ul className="hero-links-list">
                 <li>
                   <Link className="hero-link hero-link-main" to={AppRoute.MENU}>
                     Go to Menu
-                  </Link>
-                </li>
-                <li>
-                  <Link className="hero-link" to={AppRoute.PIZZA_CREATOR}>
-                    Create my own Pizza
                   </Link>
                 </li>
               </ul>
