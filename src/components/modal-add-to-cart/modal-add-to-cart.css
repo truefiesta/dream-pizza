@@ -1,0 +1,46 @@
+.modal-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--basic-black);
+  text-align: center;
+
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.modal-price-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-add-to-cart {
+  margin: 0 auto;
+}
+
+.modal-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+
+  border-radius: 5px;
+  background-color: var(--bg-gray);
+}
+
+.modal-total p {
+  margin: 0;
+  padding: 0;
+
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--full-dark-gray);
+}
+
+@media (min-width: 1000px) {
+}
