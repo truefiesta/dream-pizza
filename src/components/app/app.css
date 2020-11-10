@@ -114,6 +114,13 @@
   list-style: none;
 }
 
+.cart-page .cart-empty {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--full-dark-gray);
+}
+
 @media (min-width: 320px) {
   .home-page .wrapper {
     margin-bottom: 40px;

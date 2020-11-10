@@ -88,7 +88,7 @@ const ModalAddToCart = ({setClose}) => {
           minPossibleValue={MIN_PIZZA_QUANTITY}
           onMinusClick={decrement}
           onPlusClick={increment}
-          />
+        />
       </div>
       <div className="modal-total">
         <p>Total:</p>
