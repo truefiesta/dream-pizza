@@ -277,12 +277,10 @@
   fill: var(--basic-red);
 }
 
-.cart-button {
+.card-button {
   position: absolute;
   bottom: 10px;
   right: 10px;
-
-  background-color: var(--bg-gray);
 }
 
 .cart-button:hover {

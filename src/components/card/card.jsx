@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { Operation as PizzasOperation } from "../../reducer/pizzas/pizzas.js";
 import { capitalize, convertStarRatingToWidthPercent } from "../../utils.js";
-import { PIZZA_OPTION, CRUST_TYPE, crustTypes, PIZZA_SIZE, pizzaSizes, InchesToSizeTitle, FavoritesClass } from "../../const.js";
+import { MIN_PIZZA_QUANTITY, PIZZA_OPTION, CRUST_TYPE, crustTypes, PIZZA_SIZE, pizzaSizes, InchesToSizeTitle, FavoritesClass } from "../../const.js";
 
 import CardOptionsRow from "../card-options-row/card-options-row.jsx";
 import FavoritesButton from "../favorites-button/favorites-button.jsx";
+import PlusMinusButtons from "../plus-minus-buttons/plus-minus-buttons.jsx";
+import Modal from "../modal/modal.jsx";
 import "./card.css";
 import newPizza from "../../assets/img/new-pizza.jpg";
 
 const Card = ({ newCard, pizza }) => {
   const [crust, setCrust] = useState(CRUST_TYPE.THIN);
   const [size, setSize] = useState(PIZZA_SIZE.MEDIUM);
+  const [toggleModal, setToggleModal] = useState(false);
+  const [quantity, setQuantity] = useState(MIN_PIZZA_QUANTITY);
+  const dispatch = useDispatch();
 
   const {id, image, name, type, rating, kcal, ingredients, prices, discountPercent, isNew, isTop} = pizza;
   const allIngredients = [...ingredients.sauces, ...ingredients.mainIngredients, ...ingredients.toppings].join(', ');
@@ -31,6 +38,28 @@ const Card = ({ newCard, pizza }) => {
     previousPriceMarkup = '';
   }
 
+  const increment = () => {
+    setQuantity(prev => prev + 1);
+  }
+
+  const decrement = () => {
+    setQuantity(prev => prev - 1);
+  }
+
+  const createPizzaCartObject = () => {
+    return {
+      pizzaId: id,
+      crust,
+      size,
+      quantity,
+      pricePerOne: currentPrice
+    }
+  };
+
+  const addToCartHandle = () => {
+    dispatch(PizzasOperation.addToCart(createPizzaCartObject()))
+    setQuantity(MIN_PIZZA_QUANTITY);
+  }
 
   const discountLabel = discountPercent > 0 ? <div className="card-mark mark-sale">{`-${discountPercent}%`}</div> : '';
   const newLabel = isNew ? <div className="card-mark mark-new">New</div> : '';
@@ -131,7 +160,11 @@ const Card = ({ newCard, pizza }) => {
             pizzaId={id}
             className={FavoritesClass.BASIC}
           />
-          <button className="card-button cart-button card-not-added">
+          <button
+            onClick={() => setToggleModal(true)}
+            type="button"
+            className="card-button cart-button card-not-added"
+          >
             <span className="visually-hidden">Add to Cart</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -158,6 +191,50 @@ const Card = ({ newCard, pizza }) => {
           </button>
         </li>
       )}
+      <Modal
+        onClose={() => {setToggleModal(false)}}
+        show={toggleModal}
+      >
+        <div className="card-modal">
+          <h2 className="modal-title">{capitalize(name)}</h2>
+          <div className="card-options-wrapper modal-card-options-wrapper">
+            <CardOptionsRow
+              cardId={id}
+              title={PIZZA_OPTION.CRUST}
+              checkedOption={crust}
+              options={crustTypes}
+              onOptionChange={(crust) => {setCrust(crust)}}
+            />
+            <CardOptionsRow
+              cardId={id}
+              title={PIZZA_OPTION.SIZE}
+              checkedOption={size}
+              options={pizzaSizes}
+              onOptionChange={(size) => {setSize(size)}}
+            />
+          </div>
+          <div className="modal-price-block">
+            <b className="card-price-current">$ {currentPrice}</b>
+            <PlusMinusButtons
+              currentValue={quantity}
+              minPossibleValue={MIN_PIZZA_QUANTITY}
+              onMinusClick={decrement}
+              onPlusClick={increment}
+              />
+          </div>
+          <div className="modal-total">
+            <p>Total:</p>
+            <p>$ {currentPrice * quantity}</p>
+          </div>
+          <button
+            onClick={addToCartHandle}
+            type="button"
+            className="modal-add-to-cart dark-button"
+          >
+            Add to cart
+          </button>
+        </div>
+      </Modal>
     </>
   );
 };
