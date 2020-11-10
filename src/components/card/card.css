@@ -287,9 +287,13 @@
   background-color: var(--medium-dark-gray);
 }
 
-.card-details-bottom {
-  display: none;
+.card-details-top {
+  margin-bottom: 20px;
 }
+
+/* .card-details-bottom {
+  display: none;
+} */
 
 @media (min-width: 600px) {
   .card-mark {
@@ -384,10 +388,6 @@
 
   .mark-sale {
     display: block;
-  }
-
-  .card-price-note {
-    display: none;
   }
 
   .card-image-container-link {
