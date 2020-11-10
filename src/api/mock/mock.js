@@ -88,7 +88,7 @@ class MockApi {
       foundItems[0].quantity += 1;
     }
 
-    return Promise.resolve('');
+    return Promise.resolve(this._cart.slice());
   }
 
   decreaseItemQuantity(cartItemId) {
@@ -97,7 +97,7 @@ class MockApi {
       foundItems[0].quantity -= 1;
     }
 
-    return Promise.resolve('');
+    return Promise.resolve(this._cart.slice());
   }
 }
 

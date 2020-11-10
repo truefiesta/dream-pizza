@@ -169,6 +169,70 @@ describe(`Operations`, () => {
       ActionCreator.setCart([])
     );
   });
+
+  it(`increaseItemQuantityInCart should make a correct api call on increasing item quantity in the cart`, async () => {
+    const pizzaId = 'pizza-1';
+    const crust = 'thick';
+    const size = '13';
+    const quantity = 1;
+    const pricePerOne = 11;
+
+    const cartItem = {
+      pizzaId, crust, size, quantity, pricePerOne
+    };
+
+    const dispatch = jest.fn();
+    const getState = () => {};
+    const addToCart = Operation.addToCart(cartItem);
+
+    expect.assertions(2);
+    await addToCart(dispatch, getState, apiMock);
+    const expectedCartItem = Object.assign({}, cartItem, {id: expect.any(String)})
+    expect(dispatch).toHaveBeenNthCalledWith(1,
+      ActionCreator.setCart([expectedCartItem])
+    );
+    const cart = apiMock.getTestCartItems();
+    const addedPizzaCartId = cart[0].id;
+
+    const increaseItemQuantityInCart = Operation.increaseItemQuantityInCart(addedPizzaCartId);
+    await increaseItemQuantityInCart(dispatch, getState, apiMock);
+    const cartItemWithIncreasedQuantity = Object.assign({}, expectedCartItem, {quantity: 2});
+    expect(dispatch).toHaveBeenNthCalledWith(2,
+      ActionCreator.setCart([cartItemWithIncreasedQuantity])
+    );
+  });
+
+  it(`decreaseItemQuantityInCart should make a correct api call on decreasing item quantity in the cart`, async () => {
+    const pizzaId = 'pizza-1';
+    const crust = 'thick';
+    const size = '13';
+    const quantity = 4;
+    const pricePerOne = 11;
+
+    const cartItem = {
+      pizzaId, crust, size, quantity, pricePerOne
+    };
+
+    const dispatch = jest.fn();
+    const getState = () => {};
+    const addToCart = Operation.addToCart(cartItem);
+
+    expect.assertions(2);
+    await addToCart(dispatch, getState, apiMock);
+    const expectedCartItem = Object.assign({}, cartItem, {id: expect.any(String)})
+    expect(dispatch).toHaveBeenNthCalledWith(1,
+      ActionCreator.setCart([expectedCartItem])
+    );
+    const cart = apiMock.getTestCartItems();
+    const addedPizzaCartId = cart[0].id;
+
+    const decreaseItemQuantityInCart = Operation.decreaseItemQuantityInCart(addedPizzaCartId);
+    await decreaseItemQuantityInCart(dispatch, getState, apiMock);
+    const cartItemWithIncreasedQuantity = Object.assign({}, expectedCartItem, {quantity: 3});
+    expect(dispatch).toHaveBeenNthCalledWith(2,
+      ActionCreator.setCart([cartItemWithIncreasedQuantity])
+    );
+  });
 });
 
 describe(`Reducer`, () => {

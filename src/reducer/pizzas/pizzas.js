@@ -78,8 +78,20 @@ const Operation = {
         dispatch(ActionCreator.setCart(response))
       })
   },
-  removeFromCart: (cartObjId) => (dispatch, getSta, api) => {
+  removeFromCart: (cartObjId) => (dispatch, getState, api) => {
     return api.removeFromCart(cartObjId)
+      .then(response => {
+        dispatch(ActionCreator.setCart(response))
+      })
+  },
+  increaseItemQuantityInCart: (cartObjId) => (dispatch, getState, api) => {
+    return api.increaseItemQuantity(cartObjId)
+      .then(response => {
+        dispatch(ActionCreator.setCart(response))
+      })
+  },
+  decreaseItemQuantityInCart: (cartObjId) => (dispatch, getState, api) => {
+    return api.decreaseItemQuantity(cartObjId)
       .then(response => {
         dispatch(ActionCreator.setCart(response))
       })
