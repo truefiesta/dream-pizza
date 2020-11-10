@@ -38,6 +38,10 @@ class MockApi {
     return Promise.resolve(this._favorites.slice());
   }
 
+  getTestCartItems() {
+    return this._cart.slice();
+  }
+
   getCartItems() {
     return Promise.resolve(this._cart.slice());
   }

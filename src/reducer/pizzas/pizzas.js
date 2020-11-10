@@ -77,6 +77,12 @@ const Operation = {
       .then(response => {
         dispatch(ActionCreator.setCart(response))
       })
+  },
+  removeFromCart: (cartObjId) => (dispatch, getSta, api) => {
+    return api.removeFromCart(cartObjId)
+      .then(response => {
+        dispatch(ActionCreator.setCart(response))
+      })
   }
 };
 

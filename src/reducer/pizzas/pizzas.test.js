@@ -120,11 +120,7 @@ describe(`Operations`, () => {
     const pricePerOne = 11;
 
     const cartItem = {
-      id: expect.any(String), pizzaId, crust, size, quantity, pricePerOne
-    };
-
-    const cartItem2 = {
-      id: expect.any(String), pizzaId, crust, size, quantity: 2, pricePerOne
+      pizzaId, crust, size, quantity, pricePerOne
     };
 
     const dispatch = jest.fn();
@@ -135,8 +131,42 @@ describe(`Operations`, () => {
     await addToCart(dispatch, getState, apiMock);
     await addToCart(dispatch, getState, apiMock);
     expect(dispatch).toHaveBeenCalledTimes(2);
+
+    const expectedCartItem = Object.assign({}, cartItem, {id: expect.any(String), quantity: 2})
     expect(dispatch).toHaveBeenNthCalledWith(2,
-      ActionCreator.setCart([cartItem2])
+      ActionCreator.setCart([expectedCartItem])
+    );
+  });
+
+  it(`removeFromCart should make a correct api call on removing pizza from the cart`, async () => {
+    const pizzaId = 'pizza-1';
+    const crust = 'thick';
+    const size = '13';
+    const quantity = 1;
+    const pricePerOne = 11;
+
+    const cartItem = {
+      pizzaId, crust, size, quantity, pricePerOne
+    };
+
+    const dispatch = jest.fn();
+    const getState = () => {};
+    const addToCart = Operation.addToCart(cartItem);
+
+    expect.assertions(3);
+    await addToCart(dispatch, getState, apiMock);
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    const expectedCartItem = Object.assign({}, cartItem, {id: expect.any(String)})
+    expect(dispatch).toHaveBeenNthCalledWith(1,
+      ActionCreator.setCart([expectedCartItem])
+    );
+
+    const cart = apiMock.getTestCartItems();
+    const addedPizzaCartId = cart[0].id;
+    const removeFromCart = Operation.removeFromCart(addedPizzaCartId);
+    await removeFromCart(dispatch, getState, apiMock);
+    expect(dispatch).toHaveBeenNthCalledWith(2,
+      ActionCreator.setCart([])
     );
   });
 });
