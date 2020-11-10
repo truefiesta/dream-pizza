@@ -9,6 +9,8 @@ export const selectFavorites = state => state[NAME_SPACE].favoritePizzas;
 
 export const selectAllInCart = state => state[NAME_SPACE].pizzasInCart;
 
+export const selectCurrentPizza = state => state[NAME_SPACE].currentPizza;
+
 export const selectPizzaById = (pizzaId) => (state) => {
   return selectPizzas(state)
     .find(pizza => pizza.id === pizzaId);

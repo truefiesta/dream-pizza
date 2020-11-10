@@ -4,13 +4,15 @@ import { selectFavorites } from "./selectors.js";
 const initialState = {
   pizzas: [],
   favoritePizzas: [],
-  pizzasInCart: []
+  pizzasInCart: [],
+  currentPizza: {},
 }
 
 const ActionType = {
   SET_ALL_PIZZAS: `SET_ALL_PIZZAS`,
   SET_FAVORITES: `SET_FAVORITES`,
-  SET_CART: `SET_CART`
+  SET_CART: `SET_CART`,
+  SET_CURRENT_PIZZA: `SET_CURRENT_PIZZA`
 }
 
 const ActionCreator = {
@@ -25,6 +27,10 @@ const ActionCreator = {
   setCart: (pizzas) => ({
     type: ActionType.SET_CART,
     payload: pizzas
+  }),
+  setCurrentPizza: (pizza) => ({
+    type: ActionType.SET_CURRENT_PIZZA,
+    payload: pizza
   })
 }
 
@@ -87,6 +93,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_CART:
       return Object.assign({}, state, {
         pizzasInCart: action.payload
+      });
+    case ActionType.SET_CURRENT_PIZZA:
+      return Object.assign({}, state, {
+        currentPizza: action.payload
       })
   }
 
