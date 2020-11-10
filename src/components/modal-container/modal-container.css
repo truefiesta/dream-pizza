@@ -1,0 +1,39 @@
+.modal-shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--semi-dark-gray);
+}
+
+.modal-main {
+  min-width: 211px;
+  position: fixed;
+  background: var(--basic-white);
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 20px;
+  padding-top: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  border: none;
+  color: var(--basic-red);
+  background-color: var(--bg-error);
+  padding: 5px 15px;
+  border-radius: 0 10px;
+
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
