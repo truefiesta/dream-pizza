@@ -21,6 +21,14 @@ describe(`Get pizzas`, () => {
     });
   });
 
+  it(`returns reviews with a new added review for a particular pizza`, () => {
+    const review = {pizza_id: "pizza-1", text: "new review for pizza-1 #1234"};
+    return api.addPizzaReview(review).then(pizzaReviews => {
+      expect(pizzaReviews).toHaveLength(3);
+      expect(pizzaReviews[2].text).toEqual(review.text);
+    });
+  });
+
   it(`adds pizza to favorites`, async () => {
     const pizzaId = "pizza-6";
 

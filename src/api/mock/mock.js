@@ -17,8 +17,19 @@ class MockApi {
     return Promise.resolve(this._reviews.filter(review => review.pizza_id === pizzaId));
   }
 
+  getTestPizzaReviews(pizzaId) {
+    return this._reviews.filter(review => review.pizza_id === pizzaId);
+  }
+
   getFavorites() {
     return Promise.resolve(this._favorites.slice());
+  }
+
+  addPizzaReview(review) {
+    const newReview = Object.assign({}, review, {id: nanoid()});
+    this._reviews.push(newReview);
+
+    return Promise.resolve(this.getPizzaReviews(newReview.pizza_id));
   }
 
   addToFavorites(pizza_id) {
