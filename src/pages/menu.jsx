@@ -87,13 +87,16 @@ const Menu = () => {
             <CardsList
               pizzas={pizzasToShow}
             />
-            <PrevNextControls
-              currentPage={page}
-              itemsNumber={pizzasNumber}
-              maxItemsPerPage={MAX_ITEMS_TO_SHOW_IN_MENU}
-              onPrevClick={(page) => {setPage(page)}}
-              onNextClick={(page) => {setPage(page)}}
-            />
+            {
+              pizzasNumber > MAX_ITEMS_TO_SHOW_IN_MENU &&
+              <PrevNextControls
+                currentPage={page}
+                itemsNumber={pizzasNumber}
+                maxItemsPerPage={MAX_ITEMS_TO_SHOW_IN_MENU}
+                onPrevClick={(page) => {setPage(page)}}
+                onNextClick={(page) => {setPage(page)}}
+              />
+            }
           </section>
         </div>
       </div>
