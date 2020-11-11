@@ -21,16 +21,16 @@ class MockApi {
     return Promise.resolve(this._favorites.slice());
   }
 
-  addToFavorites(pizzaId) {
-    if (!this._favorites.includes(pizzaId)) {
-      this._favorites.push(pizzaId);
+  addToFavorites(pizza_id) {
+    if (!this._favorites.includes(pizza_id)) {
+      this._favorites.push(pizza_id);
     }
 
     return Promise.resolve(this._favorites.slice());
   }
 
-  removeFromFavorites(pizzaId) {
-    const pizzaIndex = this._favorites.indexOf(pizzaId);
+  removeFromFavorites(pizza_id) {
+    const pizzaIndex = this._favorites.indexOf(pizza_id);
     if (pizzaIndex !== -1) {
       this._favorites = [...this._favorites.slice(0, pizzaIndex), ...this._favorites.slice(pizzaIndex + 1)];
     }
@@ -46,13 +46,13 @@ class MockApi {
     return Promise.resolve(this._cart.slice());
   }
 
-  addToCart(pizzaId, crust, size, quantity, pricePerOne) {
+  addToCart(pizza_id, crust, size, quantity, price_per_one) {
     const foundItems = this._cart.filter(
-      it => it.pizzaId === pizzaId && it.crust === crust && it.size === size
+      it => it.pizza_id === pizza_id && it.crust === crust && it.size === size
     );
 
     if (foundItems.length > 0) {
-      if (foundItems[0].pricePerOne !== pricePerOne) {
+      if (foundItems[0].price_per_one !== price_per_one) {
         return Promise.reject(new Error(`Wrong price`));
       }
 
@@ -62,11 +62,11 @@ class MockApi {
 
     const newCartItem = {
       id: nanoid(),
-      pizzaId,
+      pizza_id,
       crust,
       size,
       quantity,
-      pricePerOne
+      price_per_one
     }
 
     this._cart.push(newCartItem);

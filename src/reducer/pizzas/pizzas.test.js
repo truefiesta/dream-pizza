@@ -25,6 +25,24 @@ describe(`Action creators`, () => {
       payload: pizzaIds
     });
   });
+
+  it(`setCart returns correct type and payload`, () => {
+    const pizzas = [{id: 'pizza-1'}, {id: 'pizza-2'}, {id: 'pizza-3'}];
+
+    expect(ActionCreator.setCart(pizzas)).toEqual({
+      type: ActionType.SET_CART,
+      payload: pizzas
+    })
+  });
+
+  it(`setCurrentPizza returns correct type and payload`, () => {
+    const pizza = {id: 'pizza-3'};
+
+    expect(ActionCreator.setCurrentPizza(pizza)).toEqual({
+      type: ActionType.SET_CURRENT_PIZZA,
+      payload: pizza
+    })
+  });
 });
 
 describe(`Operations`, () => {
@@ -254,6 +272,24 @@ describe(`Reducer`, () => {
       const newFavorites = ['pizza-1', 'pizza-2', 'pizza-10'];
       const newState = reducer(undefined, ActionCreator.setFavorites(newFavorites));
       const expectedState = Object.assign({}, initialState, {favoritePizzas: newFavorites});
+      expect(newState).toEqual(expectedState);
+    });
+  });
+
+   describe(`action setCart`, () => {
+    it(`sets pizzas in the cart`, () => {
+      const newCart = [{id: 'pizza-1'}, {id: 'pizza-2'}];
+      const newState = reducer(undefined, ActionCreator.setCart(newCart));
+      const expectedState = Object.assign({}, initialState, {pizzasInCart: newCart});
+      expect(newState).toEqual(expectedState);
+    });
+  });
+
+  describe(`action setCurrentPizza`, () => {
+    it(`sets current pizza`, () => {
+      const newPizza = [{id: 'pizza-1'}, {id: 'pizza-2'}];
+      const newState = reducer(undefined, ActionCreator.setCurrentPizza(newPizza));
+      const expectedState = Object.assign({}, initialState, {currentPizza: newPizza});
       expect(newState).toEqual(expectedState);
     });
   });

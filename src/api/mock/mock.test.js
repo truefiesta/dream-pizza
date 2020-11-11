@@ -54,11 +54,11 @@ describe(`Get pizzas`, () => {
 
     return api.getCartItems().then(cartItems => {
       expect(cartItems).toHaveLength(1);
-      expect(cartItems[0].pizzaId).toEqual(pizzaId1);
+      expect(cartItems[0].pizza_id).toEqual(pizzaId1);
       expect(cartItems[0].crust).toEqual(crust1);
       expect(cartItems[0].size).toEqual(size1);
       expect(cartItems[0].quantity).toEqual(quantity1);
-      expect(cartItems[0].pricePerOne).toEqual(price1);
+      expect(cartItems[0].price_per_one).toEqual(price1);
     });
   });
 
@@ -74,7 +74,7 @@ describe(`Get pizzas`, () => {
 
     return api.getCartItems().then(cartItems => {
       expect(cartItems).toHaveLength(1);
-      expect(cartItems[0].pizzaId).toEqual(pizzaId1);
+      expect(cartItems[0].pizza_id).toEqual(pizzaId1);
       expect(cartItems[0].quantity).toEqual(quantity1 + quantity1);
     })
   });
@@ -132,7 +132,7 @@ describe(`Get pizzas`, () => {
     const cartItems = await api.getCartItems();
 
     expect(cartItems).toHaveLength(1);
-    expect(cartItems[0].pizzaId).toEqual(pizzaId1);
+    expect(cartItems[0].pizza_id).toEqual(pizzaId1);
     expect(cartItems[0].quantity).toEqual(quantity1 + 1);
   });
 

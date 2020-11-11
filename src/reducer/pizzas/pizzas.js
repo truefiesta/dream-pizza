@@ -53,7 +53,10 @@ const Operation = {
   loadCart: () => (dispatch, getState, api) => {
     return api.getCartItems()
       .then(response => {
-        dispatch(ActionCreator.setCart(response));
+        const cartItemsServer = response;
+        const cartItemsClient = cartItemsServer.map(item => createPizzaCartItem(item));
+
+        dispatch(ActionCreator.setCart(cartItemsClient));
       })
   },
   changeFavorites: (pizzaId) => (dispatch, getState, api) => {
@@ -75,25 +78,37 @@ const Operation = {
     const { pizzaId, crust, size, quantity, pricePerOne } = pizzaCartObj;
     return api.addToCart(pizzaId, crust, size, quantity, pricePerOne)
       .then(response => {
-        dispatch(ActionCreator.setCart(response))
+        const cartItemsServer = response;
+        const cartItemsClient = cartItemsServer.map(item => createPizzaCartItem(item));
+
+        dispatch(ActionCreator.setCart(cartItemsClient))
       })
   },
   removeFromCart: (cartObjId) => (dispatch, getState, api) => {
     return api.removeFromCart(cartObjId)
       .then(response => {
-        dispatch(ActionCreator.setCart(response))
+        const cartItemsServer = response;
+        const cartItemsClient = cartItemsServer.map(item => createPizzaCartItem(item));
+
+        dispatch(ActionCreator.setCart(cartItemsClient))
       })
   },
   increaseItemQuantityInCart: (cartObjId) => (dispatch, getState, api) => {
     return api.increaseItemQuantity(cartObjId)
       .then(response => {
-        dispatch(ActionCreator.setCart(response))
+        const cartItemsServer = response;
+        const cartItemsClient = cartItemsServer.map(item => createPizzaCartItem(item));
+
+        dispatch(ActionCreator.setCart(cartItemsClient))
       })
   },
   decreaseItemQuantityInCart: (cartObjId) => (dispatch, getState, api) => {
     return api.decreaseItemQuantity(cartObjId)
       .then(response => {
-        dispatch(ActionCreator.setCart(response))
+        const cartItemsServer = response;
+        const cartItemsClient = cartItemsServer.map(item => createPizzaCartItem(item));
+
+        dispatch(ActionCreator.setCart(cartItemsClient))
       })
   }
 };

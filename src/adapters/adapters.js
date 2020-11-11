@@ -30,3 +30,13 @@ const createPizza = (pizza) => {
 }
 
 export { createPizza };
+const createPizzaCartItem = (pizzaCartItem) => {
+  return {
+    id: pizzaCartItem.id,
+    pizzaId: pizzaCartItem.pizza_id,
+    crust: pizzaCartItem.crust,
+    size: pizzaCartItem.size,
+    quantity: pizzaCartItem.quantity,
+    pricePerOne: pizzaCartItem.price_per_one
+  }
+};
