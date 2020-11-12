@@ -14,6 +14,11 @@
   margin: 0 auto;
 }
 
+.not-found-page .wrapper {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
 .favorites-page .section-title {
   text-align: left;
 }
@@ -416,6 +421,13 @@
   }
 
   .favorites-page .wrapper {
+    width: 970px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 60px;
+  }
+
+  .not-found-page .wrapper {
     width: 970px;
     padding-left: 15px;
     padding-right: 15px;
