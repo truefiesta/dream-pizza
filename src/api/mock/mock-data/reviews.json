@@ -4,7 +4,7 @@
       "user": {
         "id": "user-1",
         "name": "John Terensky",
-        "avatar": "/img/user-1.png"
+        "avatar": "/img/user-1.jpg"
       },
       "id": "rev-1",
       "rating": 5.0,
@@ -16,7 +16,7 @@
       "user": {
         "id": "user-2",
         "name": "Stella Johnes",
-        "avatar": "/img/user-2.png"
+        "avatar": "/img/user-2.jpg"
       },
       "id": "rev-2",
       "rating": 4.9,
@@ -28,7 +28,7 @@
       "user": {
         "id": "user-2",
         "name": "Stella Johnes",
-        "avatar": "/img/user-2.png"
+        "avatar": "/img/user-2.jpg"
       },
       "id": "rev-3",
       "rating": 4.5,
@@ -40,7 +40,7 @@
       "user": {
         "id": "user-3",
         "name": "James O'Connor",
-        "avatar": "/img/user-3.png"
+        "avatar": "/img/user-3.jpg"
       },
       "id": "rev-4",
       "rating": 5.0,
@@ -52,7 +52,7 @@
       "user": {
         "id": "user-4",
         "name": "Thomas Williams",
-        "avatar": "/img/user-4.png"
+        "avatar": "/img/user-4.jpg"
       },
       "id": "rev-5",
       "rating": 4.7,
@@ -64,7 +64,7 @@
       "user": {
         "id": "user-5",
         "name": "Aria Davis",
-        "avatar": "/img/user-5.png"
+        "avatar": "/img/user-5.jpg"
       },
       "id": "rev-6",
       "rating": 3.2,
@@ -76,7 +76,7 @@
       "user": {
         "id": "user-5",
         "name": "Aria Davis",
-        "avatar": "/img/user-5.png"
+        "avatar": "/img/user-5.jpg"
       },
       "id": "rev-7",
       "rating": 4.2,
@@ -88,7 +88,7 @@
       "user": {
         "id": "user-5",
         "name": "Aria Davis",
-        "avatar": "/img/user-5.png"
+        "avatar": "/img/user-5.jpg"
       },
       "id": "rev-8",
       "rating": 5.0,

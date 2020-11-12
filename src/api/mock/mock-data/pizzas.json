@@ -31,9 +31,9 @@
     {
       "id": "pizza-2",
       "image": "img/pizza-2.png",
-      "name": "Veggie Special",
+      "name": "Veggie Dream",
       "type": "vegetarian",
-      "rating": 4.8,
+      "rating": 4.5,
       "kcal": 250,
       "ingredients": {
         "sauces": ["marinara sauce"],
@@ -145,7 +145,7 @@
       "image": "img/pizza-6.png",
       "name": "Veggie Special",
       "type": "vegetarian",
-      "rating": 4.2,
+      "rating": 5.0,
       "kcal": 210,
       "ingredients": {
         "sauces": ["marinara sauce"],
@@ -173,7 +173,7 @@
       "image": "img/pizza-7.png",
       "name": "Veggie Feta",
       "type": "vegetarian",
-      "rating": 4.2,
+      "rating": 0.0,
       "kcal": 210,
       "ingredients": {
         "sauces": ["marinara sauce"],
@@ -201,7 +201,7 @@
       "image": "img/pizza-8.png",
       "name": "Margherita",
       "type": "traditional",
-      "rating": 4.5,
+      "rating": 0.0,
       "kcal": 240,
       "ingredients": {
         "sauces": ["tomato sauce"],
@@ -229,7 +229,7 @@
       "image": "img/pizza-9.png",
       "name": "Napoletana",
       "type": "traditional",
-      "rating": 4.5,
+      "rating": 0.0,
       "kcal": 240,
       "ingredients": {
         "sauces": ["tomato sauce"],
