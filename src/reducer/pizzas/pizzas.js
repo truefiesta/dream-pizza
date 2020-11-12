@@ -1,4 +1,4 @@
-import { createPizza } from "../../adapters/adapters.js";
+import { createPizza, createPizzaCartItem, createReview } from "../../adapters/adapters.js";
 import { selectFavorites } from "./selectors.js";
 
 const initialState = {
@@ -6,13 +6,15 @@ const initialState = {
   favoritePizzas: [],
   pizzasInCart: [],
   currentPizza: {},
+  pizzaReviews: []
 }
 
 const ActionType = {
   SET_ALL_PIZZAS: `SET_ALL_PIZZAS`,
   SET_FAVORITES: `SET_FAVORITES`,
   SET_CART: `SET_CART`,
-  SET_CURRENT_PIZZA: `SET_CURRENT_PIZZA`
+  SET_CURRENT_PIZZA: `SET_CURRENT_PIZZA`,
+  SET_PIZZA_REVIEWS: `SET_PIZZA_REVIEWS`
 }
 
 const ActionCreator = {
@@ -31,6 +33,10 @@ const ActionCreator = {
   setCurrentPizza: (pizza) => ({
     type: ActionType.SET_CURRENT_PIZZA,
     payload: pizza
+  }),
+  setPizzaReviews: (reviews) => ({
+    type: ActionType.SET_PIZZA_REVIEWS,
+    payload: reviews
   })
 }
 
@@ -110,6 +116,36 @@ const Operation = {
 
         dispatch(ActionCreator.setCart(cartItemsClient))
       })
+  },
+  loadPizzaReviews: (pizzaId) => (dispatch, getState, api) => {
+    return api.getPizzaReviews(pizzaId)
+      .then(response => {
+        const reviewsServer = response;
+        const reviewsClient = reviewsServer.map(review => createReview(review));
+
+        dispatch(ActionCreator.setPizzaReviews(reviewsClient))
+      })
+  },
+  addPizzaReview: (review) => (dispatch, getState, api) => {
+    const formattedReview = {
+      "user": {
+        "id": review.user.id,
+        "name": review.user.name,
+        "avatar": review.user.avatar,
+      },
+      "rating": review.rating,
+      "date": review.date,
+      "pizza_id": review.pizzaId,
+      "text": review.text
+    };
+
+    return api.addPizzaReview(formattedReview)
+      .then(response => {
+        const reviewsServer = response;
+        const reviewsClient = reviewsServer.map(review => createReview(review));
+
+        dispatch(ActionCreator.setPizzaReviews(reviewsClient))
+      })
   }
 };
 
@@ -130,6 +166,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_CURRENT_PIZZA:
       return Object.assign({}, state, {
         currentPizza: action.payload
+      });
+    case ActionType.SET_PIZZA_REVIEWS:
+      return Object.assign({}, state, {
+        pizzaReviews: action.payload
       })
   }
 

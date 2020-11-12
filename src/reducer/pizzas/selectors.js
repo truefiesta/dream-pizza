@@ -11,6 +11,8 @@ export const selectAllInCart = state => state[NAME_SPACE].pizzasInCart;
 
 export const selectCurrentPizza = state => state[NAME_SPACE].currentPizza;
 
+export const selectPizzaReviews = state => state[NAME_SPACE].pizzaReviews;
+
 export const selectPizzaById = (pizzaId) => (state) => {
   return selectPizzas(state)
     .find(pizza => pizza.id === pizzaId);

@@ -27,9 +27,23 @@ const createPizza = (pizza) => {
     "isNew": pizza.is_new,
     "isTop": pizza.is_top
   }
-}
+};
 
-export { createPizza };
+const createReview = (review) => {
+  return {
+    "user": {
+      "id": review.user.id,
+      "name": review.user.name,
+      "avatar": review.user.avatar,
+    },
+    "id": review.id,
+    "rating": review.rating,
+    "date": review.date,
+    "pizzaId": review.pizza_id,
+    "text": review.text
+  }
+};
+
 const createPizzaCartItem = (pizzaCartItem) => {
   return {
     id: pizzaCartItem.id,
@@ -40,3 +54,5 @@ const createPizzaCartItem = (pizzaCartItem) => {
     pricePerOne: pizzaCartItem.price_per_one
   }
 };
+
+export { createPizza, createReview, createPizzaCartItem };

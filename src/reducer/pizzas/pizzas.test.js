@@ -3,7 +3,7 @@ import MockApi from "../../api/mock/mock.js";
 import pizzasTestData from "../../api/test-data/pizzas.test.json";
 import reviewsTestData from "../../api/test-data/reviews.test.json";
 
-import { createPizza } from "../../adapters/adapters.js";
+import { createPizza, createReview } from "../../adapters/adapters.js";
 import { reducer, ActionCreator, ActionType, Operation, initialState } from "./pizzas.js";
 import NameSpace from "../name-space.js";
 
@@ -41,6 +41,15 @@ describe(`Action creators`, () => {
     expect(ActionCreator.setCurrentPizza(pizza)).toEqual({
       type: ActionType.SET_CURRENT_PIZZA,
       payload: pizza
+    })
+  });
+
+  it(`setPizzaReviews returns correct type and payload`, () => {
+    const reviews = [{id: 'review-1'}, {id: 'review-3'}];
+
+    expect(ActionCreator.setPizzaReviews(reviews)).toEqual({
+      type: ActionType.SET_PIZZA_REVIEWS,
+      payload: reviews
     })
   });
 });
@@ -251,6 +260,53 @@ describe(`Operations`, () => {
       ActionCreator.setCart([cartItemWithIncreasedQuantity])
     );
   });
+
+  it(`loadPizzaReviews should make a correct api call on loading pizza reviews`, async () => {
+    const pizzaId = 'pizza-1';
+    const dispatch = jest.fn();
+    const getState = () => {};
+    const loadPizzaReviews = Operation.loadPizzaReviews(pizzaId);
+
+    const reviewsInClientFormat = reviewsTestData.reviews.map(review => createReview(review));
+    const pizzaIdReviews = reviewsInClientFormat.filter(review => review.pizzaId === pizzaId);
+
+    expect.assertions(2);
+    await loadPizzaReviews(dispatch, getState, apiMock);
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenNthCalledWith(1,
+      ActionCreator.setPizzaReviews(pizzaIdReviews)
+    );
+  });
+
+  it(`addPizzaReview should make a correct api call on adding new pizza review`, async () => {
+    const newReview = {
+      user: {
+        id: 'user-1234',
+        name: "Eva",
+        avatar: "img/avatar-1235.jpg"
+      },
+      rating: 5.0,
+      date: "02-06-2015 11:00:23",
+      pizzaId: "pizza-1",
+      text: "review #12345"
+    };
+    const initialPizzaIdReviewsNumber = apiMock.getTestPizzaReviews(newReview.pizzaId).length;
+
+    const dispatch = jest.fn();
+    const getState = () => {};
+    const addPizzaReview = Operation.addPizzaReview(newReview);
+
+    expect.assertions(3);
+    await addPizzaReview(dispatch, getState, apiMock);
+
+    const pizzaIdReviews = apiMock.getTestPizzaReviews(newReview.pizzaId);
+    const pizzaIdFormattedReviews = pizzaIdReviews.map(review => createReview(review));
+    expect(pizzaIdReviews.length).toEqual(initialPizzaIdReviewsNumber + 1);
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenNthCalledWith(1,
+      ActionCreator.setPizzaReviews(pizzaIdFormattedReviews)
+    );
+  })
 });
 
 describe(`Reducer`, () => {
@@ -290,6 +346,15 @@ describe(`Reducer`, () => {
       const newPizza = [{id: 'pizza-1'}, {id: 'pizza-2'}];
       const newState = reducer(undefined, ActionCreator.setCurrentPizza(newPizza));
       const expectedState = Object.assign({}, initialState, {currentPizza: newPizza});
+      expect(newState).toEqual(expectedState);
+    });
+  });
+
+  describe(`action setPizzaReviews`, () => {
+    it(`sets current pizza reviews`, () => {
+      const newReviews = [{id: 'review-1'}, {id: 'review-2'}];
+      const newState = reducer(undefined, ActionCreator.setPizzaReviews(newReviews));
+      const expectedState = Object.assign({}, initialState, {pizzaReviews: newReviews});
       expect(newState).toEqual(expectedState);
     });
   });

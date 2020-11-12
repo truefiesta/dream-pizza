@@ -11,7 +11,7 @@ import FavoritesButton from "../favorites-button/favorites-button.jsx";
 import PlusMinusButtons from "../plus-minus-buttons/plus-minus-buttons.jsx";
 import "./card-details.css";
 
-const CardDetails = ({ pizza }) => {
+const CardDetails = ({ pizza, reviewsNumber }) => {
   const [crust, setCrust] = useState(CRUST_TYPE.THIN);
   const [size, setSize] = useState(PIZZA_SIZE.MEDIUM);
   const [quantity, setQuantity] = useState(MIN_PIZZA_QUANTITY)
@@ -64,7 +64,7 @@ const CardDetails = ({ pizza }) => {
       {isTop && <div className="pizza-details-mark pizza-details-mark-top">Top</div>}
       {discountLabelMarkup}
       <div className="pizza-photo">
-        <img src={image} width="106" height="106" alt="pizza photo" />
+        <img src={`/${image}`} width="106" height="106" alt="pizza photo" />
       </div>
       <div className="pizza-details-info-container">
       <div className="pizza-details-top">
@@ -79,7 +79,7 @@ const CardDetails = ({ pizza }) => {
           </div>
           <span className="pizza-details-rating-star"></span>
           <span className="visually-hidden">Rating</span>
-          <span className="pizza-details-rating-value">{rating} <span className="pizza-details-rating-full-value">/ 5.0 <a href="#reviews">(365 reviews)</a></span></span>
+          <span className="pizza-details-rating-value">{rating} <span className="pizza-details-rating-full-value">/ 5.0 <a href="#reviews">({reviewsNumber} reviews)</a></span></span>
         </div>
         <div className="pizza-details-nutritional-info-container">
           <p className="pizza-details-kcal">{kcal} kcal</p>
@@ -152,6 +152,7 @@ const CardDetails = ({ pizza }) => {
 };
 
 CardDetails.propTypes = {
+  reviewsNumber: PropTypes.number.isRequired,
   pizza: PropTypes.shape({
     id: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
