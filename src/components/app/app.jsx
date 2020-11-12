@@ -12,6 +12,7 @@ import Menu from "../../pages/menu.jsx";
 import Pizza from "../../pages/pizza.jsx";
 import Favorites from "../../pages/favorites.jsx";
 import Cart from "../../pages/cart.jsx";
+import PageNotFound from "../../pages/page-not-found.jsx";
 
 const App = () => {
   const pizzas = useSelector(selectPizzas);
@@ -29,6 +30,7 @@ const App = () => {
           <Route path={AppRoute.PIZZA} component={Pizza} />
           <Route path={AppRoute.FAVORITES} component={Favorites} />
           <Route path={AppRoute.CART} component={Cart} />
+          <Route component={PageNotFound} />
         </Switch>
       <Footer />
     </>

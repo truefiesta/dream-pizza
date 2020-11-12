@@ -133,6 +133,49 @@ img {
   color: var(--basic-black);
 }
 
+.page-text {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--full-dark-gray);
+}
+
+.page-link {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  color: var(--basic-red);
+  text-decoration: none;
+
+  display: inline-block;
+  vertical-align: middle;
+  padding: 5px 10px;
+  padding-left: 30px;
+  border: 2px solid var(--basic-red);
+  border-radius: 20px;
+  position: relative;
+}
+
+.page-link::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  padding: 3px;
+  background: var(--basic-red) url(../assets/img/arrow.svg) no-repeat;
+  background-position: center;
+}
+
+.page-link:hover,
+.page-link:focus {
+  border: 2px solid var(--full-dark-gray);
+}
+
 /* Layout */
 
 @media (min-width: 320px) {
