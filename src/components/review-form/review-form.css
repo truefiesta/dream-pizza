@@ -140,6 +140,11 @@
   .new-review-title-container {
     text-align: left;
   }
+
+  .review-form-text {
+    font-size: 16px;
+    font-weight: 18px;
+  }
 }
 
 @media (min-width: 1000px) {

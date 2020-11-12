@@ -3,10 +3,15 @@ import PropTypes from "prop-types";
 import { convertStarRatingToWidthPercent } from "../../utils.js";
 
 import "./review.css";
-import noAvatar from "../../assets/img/user-no-avatar.svg";
+import noAvatar from "../../assets/img/users/user-no-avatar.svg";
 
 const Review = ({review}) => {
-  const {user, rating, text} = review;
+  const {user, rating, text, date} = review;
+  const formattedDate = new Date(date).toLocaleDateString('en-GB', {
+    day: "numeric",
+    month: "short",
+    year: "numeric"
+  });
 
   return (
     <article className="review">
@@ -23,12 +28,12 @@ const Review = ({review}) => {
           <div className="review-rating">
             <span
               className="review-rating-active"
-              style={{ width: convertStarRatingToWidthPercent(rating) }}
+              style={{ width: `${convertStarRatingToWidthPercent(rating)}%` }}
             ></span>
           </div>
           <p className="review-user-name">{user.name}</p>
           <p className="review-date">
-            <time dateTime="2020-04-25 20:00">25 April 2020</time>
+            <time dateTime={date}>{formattedDate}</time>
           </p>
         </div>
       </div>

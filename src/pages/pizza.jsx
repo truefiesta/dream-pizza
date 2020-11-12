@@ -29,7 +29,9 @@ const Pizza = ({ match }) => {
   const hasReviews = reviews.length > 0;
   let reviewsMarkup = '';
   if (hasReviews) {
-    let reviewsToShow = getItemsForPageNumber(page, MAX_REVIEWS_TO_SHOW, reviews);
+    const sortedReviews = reviews.slice();
+    sortedReviews.sort((reviewA, reviewB) => Date.parse(reviewB.date) - Date.parse(reviewA.date));
+    let reviewsToShow = getItemsForPageNumber(page, MAX_REVIEWS_TO_SHOW, sortedReviews);
     reviewsMarkup = (
       <>
       <div className="review-container">
@@ -66,7 +68,7 @@ const Pizza = ({ match }) => {
           </div>
           {reviewsMarkup}
         </section>
-        <ReviewForm />
+        <ReviewForm pizzaId={pizzaId} />
         </div>
       </div>
     </main>
