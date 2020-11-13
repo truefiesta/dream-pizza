@@ -1,11 +1,12 @@
 import MockApi from "./mock.js";
-import pizzasData from "./mock-data/pizzas.json";
-import reviewsData from "./mock-data/reviews.json";
+import pizzasData from "../test-data/pizzas.test.json";
+import reviewsData from "../test-data/reviews.test.json";
+import locationsData from "../test-data/locations.test.json";
 
 describe(`Get pizzas`, () => {
   let api;
   beforeEach(() => {
-    api = new MockApi(pizzasData.pizzas, reviewsData.reviews);
+    api = new MockApi(pizzasData.pizzas, reviewsData.reviews, locationsData.locations);
   });
 
   it(`returns pizza objects`, () => {
@@ -28,6 +29,12 @@ describe(`Get pizzas`, () => {
       expect(pizzaReviews[2].text).toEqual(review.text);
     });
   });
+
+  it(`returns locations`, () => {
+    return api.getLocations().then(locations => {
+      expect(locations).toHaveLength(4);
+    })
+  })
 
   it(`adds pizza to favorites`, async () => {
     const pizzaId = "pizza-6";

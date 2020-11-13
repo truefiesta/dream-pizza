@@ -1,0 +1,48 @@
+{
+  "locations": [
+    {
+      "id": "restaurant-1",
+      "name": "Dream Pizza",
+      "country": "Australia",
+      "city": "Sydney",
+      "suberb": "CBD",
+      "address": "50 Hunter St, Sydney NSW 2000",
+      "latitude": -33.865913,
+      "longitude": 151.207455,
+      "zoom": 10
+    },
+    {
+      "id": "restaurant-2",
+      "name": "Dream Pizza",
+      "country": "Australia",
+      "city": "Sydney",
+      "suberb": "Rose Bay",
+      "address": "516 Old South Head Rd, Rose Bay NSW 2029",
+      "latitude": -33.8736822,
+      "longitude": 151.2710132,
+      "zoom": 10
+    },
+    {
+      "id": "restaurant-3",
+      "name": "Dream Pizza",
+      "country": "Australia",
+      "city": "Sydney",
+      "suberb": "Cremorne",
+      "address": "41 Parraween St, Cremorne NSW 2090",
+      "latitude": -33.8288182,
+      "longitude": 151.2257357,
+      "zoom": 10
+    },
+    {
+      "id": "restaurant-4",
+      "name": "Dream Pizza",
+      "country": "Australia",
+      "city": "Sydney",
+      "suberb": "Glebe",
+      "address": "174 St Johns Rd, Glebe NSW 2037",
+      "latitude": -33.8828212,
+      "longitude": 151.1822351,
+      "zoom": 10
+    }
+  ]
+}

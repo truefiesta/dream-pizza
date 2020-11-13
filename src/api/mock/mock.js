@@ -2,9 +2,10 @@ import _ from "lodash";
 import { nanoid } from "nanoid";
 
 class MockApi {
-  constructor(pizzas, reviews) {
+  constructor(pizzas, reviews, locations) {
     this._pizzas = _.cloneDeep(pizzas);
     this._reviews = _.cloneDeep(reviews);
+    this._locations = _.cloneDeep(locations);
     this._favorites = [];
     this._cart = [];
   }
@@ -15,6 +16,10 @@ class MockApi {
 
   getPizzaReviews(pizzaId) {
     return Promise.resolve(this._reviews.filter(review => review.pizza_id === pizzaId));
+  }
+
+  getLocations() {
+    return Promise.resolve(this._locations);
   }
 
   getTestPizzaReviews(pizzaId) {
