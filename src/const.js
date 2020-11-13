@@ -3,9 +3,18 @@ export const AppRoute = {
   FAVORITES: `/favorites`,
   LOGIN: `/login`,
   MENU: `/menu`,
-  PIZZA: `/pizza/:id`,
+  PIZZA: `/menu/:id`,
   HOME: `/`,
 };
+
+export const AppRouteTitle = {
+  [AppRoute.CART]: `Cart`,
+  [AppRoute.FAVORITES]: `Favorites`,
+  [AppRoute.LOGIN]: `Login`,
+  [AppRoute.MENU]: `Menu`,
+  [AppRoute.PIZZA]: `Pizza`,
+  [AppRoute.HOME]: `Home`
+}
 
 export const Tag = {
   NEW: `new`,

@@ -1,15 +1,39 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
+
+import { AppRoute, AppRouteTitle } from "../../const.js";
 import "./breadcrumbs.css";
 
-const Breadcrumbs = () => {
+const Breadcrumbs = ({items}) => {
+  const itemsMarkup = items.map(item => {
+    return (
+        <li
+          key={item.title}
+          className="breadcrumbs-item"
+        >
+          <NavLink exact to={item.url} activeClassName="breadcrumbs-current">{item.title}</NavLink>
+        </li>
+      );
+  });
+
   return (
     <ul className="breadcrumbs-list">
       <li className="breadcrumbs-item">
-        <a href="">Home</a>
+        <NavLink exact to={AppRoute.HOME}>{AppRouteTitle[AppRoute.HOME]}</NavLink>
       </li>
-      <li className="breadcrumbs-item breadcrumbs-current">Menu</li>
+      {itemsMarkup}
     </ul>
   );
 };
+
+Breadcrumbs.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired
+    })
+  ).isRequired
+}
 
 export default Breadcrumbs;

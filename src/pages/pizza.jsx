@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Operation as PizzasOperation } from "../reducer/pizzas/pizzas.js";
 import { selectPizzaById, selectPizzaReviews } from "../reducer/pizzas/selectors.js";
 import { getItemsForPageNumber } from "../utils.js";
+import { AppRoute, AppRouteTitle } from "../const.js";
 
 import Breadcrumbs from "../components/breadcrumbs/breadcrumbs.jsx";
 import CardDetails from "../components/card-details/card-details.jsx";
@@ -13,7 +14,8 @@ import PrevNextControls from "../components/prev-next-controls/prev-next-control
 
 const MAX_REVIEWS_TO_SHOW = 2;
 
-const Pizza = ({ match }) => {
+const Pizza = (props) => {
+  const { match } = props;
   const dispatch = useDispatch();
   const pizzaId = match.params.id;
   const pizza = useSelector(selectPizzaById(pizzaId));
@@ -50,11 +52,22 @@ const Pizza = ({ match }) => {
     );
   }
 
+  const breadcrumbItems = [
+    {
+      title: AppRouteTitle[AppRoute.MENU],
+      url: AppRoute.MENU,
+    },
+    {
+      title: pizza.name,
+      url: props.match.url
+    }
+  ];
+
   return (
     <main className="pizza-page">
       <div className="wrapper">
         <h1 className="visually-hidden">Pizza page</h1>
-        <Breadcrumbs />
+        <Breadcrumbs items={breadcrumbItems} />
         <CardDetails
           pizza={pizza}
           reviewsNumber={reviews.length || 0}
@@ -77,8 +90,9 @@ const Pizza = ({ match }) => {
 
 Pizza.propTypes = {
   match: PropTypes.shape({
+    url: PropTypes.string.isRequired,
     params: PropTypes.shape({
-      id: PropTypes.string.isRequired
+      id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired
 }

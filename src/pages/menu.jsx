@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectPizzas } from "../reducer/pizzas/selectors.js";
 import { getItemsForPageNumber, filterPizzas } from "../utils.js";
-import { typesOptions, ingredientOptions, tagOptions, FilterByType } from "../const.js";
+import { typesOptions, ingredientOptions, tagOptions, FilterByType, AppRoute, AppRouteTitle } from "../const.js";
 
 import Filters from "../components/filters/filters.jsx"
 import Breadcrumbs from "../components/breadcrumbs/breadcrumbs.jsx";
@@ -34,10 +34,17 @@ const Menu = () => {
     setTags([]);
   }
 
+  const breadcrumbItems = [
+    {
+      title: AppRouteTitle[AppRoute.MENU],
+      url: AppRoute.MENU,
+    }
+  ];
+
   return (
     <main className="menu-page">
       <div className="wrapper">
-        <Breadcrumbs />
+        <Breadcrumbs items={breadcrumbItems} />
         <h1 className="main-title">Dream Pizza Menu</h1>
         <div className="menu-filters-container">
           <section className="filters-section">

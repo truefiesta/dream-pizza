@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectPizzas, selectFavorites } from "../reducer/pizzas/selectors.js";
 import { getItemsForPageNumber } from "../utils.js";
+import { AppRoute, AppRouteTitle } from "../const.js";
 
 import Breadcrumbs from "../components/breadcrumbs/breadcrumbs.jsx";
 import CardsList from "../components/cards-list/cards-list.jsx";
@@ -22,10 +23,17 @@ const Favorites = () => {
 
   let favoritesToShow = getItemsForPageNumber(page, MAX_FAVORITES_PER_PAGE, favoritePizzas);
 
+  const breadcrumbItems = [
+    {
+      title: AppRouteTitle[AppRoute.FAVORITES],
+      url: AppRoute.FAVORITES,
+    }
+  ];
+
   return (
     <main className="favorites-page">
       <div className="wrapper">
-        <Breadcrumbs />
+        <Breadcrumbs items={breadcrumbItems} />
         <h1 className="main-title">Favorites</h1>
         <div className="content">
           <section className="favorites-list-section">

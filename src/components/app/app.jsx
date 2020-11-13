@@ -26,10 +26,10 @@ const App = () => {
       <Header />
         <Switch>
           <Route exact path={AppRoute.HOME} component={Home} />
-          <Route path={AppRoute.MENU} component={Menu} />
-          <Route path={AppRoute.PIZZA} component={Pizza} />
-          <Route path={AppRoute.FAVORITES} component={Favorites} />
-          <Route path={AppRoute.CART} component={Cart} />
+          <Route exact path={AppRoute.MENU} component={Menu} />
+          <Route exact path={AppRoute.PIZZA} component={Pizza} />
+          <Route exact path={AppRoute.FAVORITES} component={Favorites} />
+          <Route exact path={AppRoute.CART} component={Cart} />
           <Route component={PageNotFound} />
         </Switch>
       <Footer />

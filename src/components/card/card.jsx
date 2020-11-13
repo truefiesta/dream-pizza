@@ -44,7 +44,7 @@ const Card = ({ pizza }) => {
         {newLabel}
         {topLabel}
         {discountLabel}
-        <Link to={`/pizza/${id}`} className="card-image-container-link">
+        <Link to={`/menu/${id}`} className="card-image-container-link">
           <img
             src={image}
             width="106"
@@ -55,7 +55,7 @@ const Card = ({ pizza }) => {
         <div className="card-details">
           <div className="card-details-top">
             <h3 className="card-title">
-              <Link to={`/pizza/${id}`} className="card-title-link">{name}</Link>
+              <Link to={`/menu/${id}`} className="card-title-link">{name}</Link>
             </h3>
             <p className="card-pizza-type">{type}</p>
             <div className="card-rating rating">
