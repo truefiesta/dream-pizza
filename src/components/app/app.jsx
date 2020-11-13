@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import { selectPizzas } from "../../reducer/pizzas/selectors";
+import { selectPizzas } from "../../reducer/pizzas/selectors.js";
 import { AppRoute } from "../../const.js";
 import "./app.css";
 
