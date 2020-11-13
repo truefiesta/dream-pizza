@@ -83,8 +83,4 @@
   .map-details-container .map-pin-info:hover {
     background-color: var(--basic-white);
   }
-
-  .map-container .map-pin-info {
-    display: none;
-  }
 }

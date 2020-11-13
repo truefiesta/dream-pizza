@@ -9,7 +9,7 @@ import TagsFilter from "../components/tags-filter/tags-filter.jsx";
 import CardsList from "../components/cards-list/cards-list.jsx";
 import ButtonFullMenu from "../components/button-full-menu/button-full-menu.jsx";
 import PrevNextControls from "../components/prev-next-controls/prev-next-controls.jsx";
-import Map from "../components/map/map.jsx";
+import MapSection from "../components/map-section/map-section.jsx";
 import Hero from "../components/hero/hero.jsx";
 
 const MAX_ITEMS_TO_SHOW = 4;
@@ -47,7 +47,7 @@ const Home = () => {
           onNextClick={(page) => {setPage(page)}}
         />
       </div>
-      <Map />
+      <MapSection />
     </main>
   );
 };
