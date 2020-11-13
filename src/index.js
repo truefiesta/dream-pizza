@@ -4,7 +4,9 @@ import ReactDOM from "react-dom";
 import MockApi from "./api/mock/mock.js";
 import pizzasData from "./api/mock/mock-data/pizzas.json";
 import reviewsData from "./api/mock/mock-data/reviews.json";
+import locationsData from "./api/mock/mock-data/locations.json";
 import { Operation as PizzasOperation } from "./reducer/pizzas/pizzas.js";
+import { Operation as LocationsOperation } from "./reducer/locations/locations.js";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
@@ -19,7 +21,7 @@ import App from "./components/app/app.jsx";
 // eslint-disable-next-line no-unused-vars
 import index from "./styles/index.css";
 
-const api = new MockApi(pizzasData.pizzas, reviewsData.reviews);
+const api = new MockApi(pizzasData.pizzas, reviewsData.reviews, locationsData.locations);
 
 const composedEnhancer = composeWithDevTools(
   applyMiddleware(thunkMiddleware.withExtraArgument(api))
@@ -27,6 +29,7 @@ const composedEnhancer = composeWithDevTools(
 
 const store = createStore(reducer, composedEnhancer);
 store.dispatch(PizzasOperation.loadAllPizzas());
+store.dispatch(LocationsOperation.loadLocations());
 
 ReactDOM.render(
   <Provider store={store}>

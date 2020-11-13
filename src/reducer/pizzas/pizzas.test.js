@@ -2,6 +2,7 @@
 import MockApi from "../../api/mock/mock.js";
 import pizzasTestData from "../../api/test-data/pizzas.test.json";
 import reviewsTestData from "../../api/test-data/reviews.test.json";
+import locationsTestData from "../../api/test-data/locations.test.json";
 
 import { createPizza, createReview } from "../../adapters/adapters.js";
 import { reducer, ActionCreator, ActionType, Operation, initialState } from "./pizzas.js";
@@ -57,7 +58,7 @@ describe(`Action creators`, () => {
 describe(`Operations`, () => {
   let apiMock;
   beforeEach(() => {
-    apiMock = new MockApi(pizzasTestData.pizzas, reviewsTestData.reviews);
+    apiMock = new MockApi(pizzasTestData.pizzas, reviewsTestData.reviews, locationsTestData.locations);
   });
 
   it(`loadAllPizzas should make a correct API call`, async () => {
