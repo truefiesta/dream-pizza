@@ -33,19 +33,20 @@ const Home = () => {
         <ButtonFullMenu />
         <TagsFilter
           currentTag={currentTag}
-          onTagChange={(tag) => {dispatch(FiltersActionCreator.changeTag(tag))}}
+          onTagChange={(tag) => {dispatch(FiltersActionCreator.changeTag(tag)); setPage(1)}}
         />
         <div className="cards-list-wrapper">
           <h2 className="section-title">{filterTitle}</h2>
           <CardsList pizzas={pizzasToShow} />
         </div>
-        <PrevNextControls
-          currentPage={page}
-          itemsNumber={pizzasNumber}
-          maxItemsPerPage={MAX_ITEMS_TO_SHOW}
-          onPrevClick={(page) => {setPage(page)}}
-          onNextClick={(page) => {setPage(page)}}
-        />
+        {pizzasNumber > MAX_ITEMS_TO_SHOW &&
+          <PrevNextControls
+            currentPage={page}
+            itemsNumber={pizzasNumber}
+            maxItemsPerPage={MAX_ITEMS_TO_SHOW}
+            onPrevClick={(page) => {setPage(page)}}
+            onNextClick={(page) => {setPage(page)}}
+          />}
       </div>
       <MapSection />
     </main>
