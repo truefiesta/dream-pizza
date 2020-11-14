@@ -107,9 +107,12 @@ const Menu = () => {
             <h2 className="visually-hidden">
               Our meals according to your current filters
             </h2>
-            <CardsList
-              pizzas={pizzasToShow}
-            />
+            {pizzasToShow.length === 0 ?
+              <p className="page-text">Sorry, no pizzas found according to your current search filters.</p> :
+              <CardsList
+                pizzas={pizzasToShow}
+              />
+            }
             {
               pizzasNumber > MAX_ITEMS_TO_SHOW_IN_MENU &&
               <PrevNextControls

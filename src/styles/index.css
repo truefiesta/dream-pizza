@@ -50,12 +50,6 @@ img {
   color: var(--basic-black);
 }
 
-.page-title {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  font-size: 60px;
-}
-
 .button {
   display: inline-block;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
@@ -133,12 +127,25 @@ img {
   color: var(--basic-black);
 }
 
+.page-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 60px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
 .page-text {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
   color: var(--full-dark-gray);
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
 }
 
 .page-link {
