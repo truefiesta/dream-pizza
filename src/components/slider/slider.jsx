@@ -8,7 +8,7 @@ const getValue = (percentage, max) => (max / 100) * percentage;
 
 const getLeft = percentage => `calc(${percentage}% - 2px)`;
 
-const Slider = ({ initialValue, maxValue, onChange}) => {
+const Slider = ({ initialValue, minValue, maxValue, onChange}) => {
   const scaleRef = useRef();
   const barRef = useRef();
   const toggleRef = useRef();
@@ -33,17 +33,25 @@ const Slider = ({ initialValue, maxValue, onChange}) => {
 
     if (newX > end) {
       newX = end;
+      console.log(newX)
     }
 
-    const newTogglePercentage = getTogglePercentage(newX, end);
-    const newBarPercentage = getBarPercentage(newX, end);
-    const newLabelPercentage = getLabelRercentage(newX, end);
-    const newValue = getValue(newBarPercentage, maxValue);
-    valueRef.current.value = newValue;
-    onChange(newValue);
-    toggleRef.current.style.left = getLeft(newTogglePercentage);
-    barRef.current.style.width = getLeft(newBarPercentage);
-    labelRef.current.style.left = getLeft(newLabelPercentage);
+    let newTogglePercentage = getTogglePercentage(newX, end).toFixed(0);
+    let newBarPercentage = getBarPercentage(newX, end).toFixed(0);
+    let newLabelPercentage = getLabelRercentage(newX, end).toFixed(0);
+    let newValue = getValue(newBarPercentage, maxValue).toFixed(0);
+    if (newValue < minValue) {
+      newValue = minValue;
+      newTogglePercentage = toggleRef.current.style.left;
+      newBarPercentage = barRef.current.style.width;
+      newLabelPercentage = labelRef.current.style.left;
+    } else {
+      valueRef.current.value = newValue;
+      onChange(parseInt(newValue, 10));
+      toggleRef.current.style.left = getLeft(newTogglePercentage);
+      barRef.current.style.width = getLeft(newBarPercentage);
+      labelRef.current.style.left = getLeft(newLabelPercentage);
+    }
   };
 
   const handleMouseUp = () => {
@@ -80,7 +88,7 @@ const Slider = ({ initialValue, maxValue, onChange}) => {
             <input
               ref={valueRef}
               type="number"
-              min="0"
+              min={minValue}
               max={maxValue}
               readOnly="readonly"
               name="filter-max-price"
@@ -103,6 +111,7 @@ const Slider = ({ initialValue, maxValue, onChange}) => {
 
 Slider.propTypes = {
   initialValue: PropTypes.number.isRequired,
+  minValue: PropTypes.number.isRequired,
   maxValue: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
 }

@@ -13,7 +13,7 @@ const FILTER_BY_INGREDIENTS_SUFFIX = `pizza`;
 
 const Filters = ({
     typeFilterOptions, ingredientFilterOptions, tagFilterOptions,
-    currentType, currentIngredients, currentTags, currentPrice, maxPrice,
+    currentType, currentIngredients, currentTags, currentPrice, minPrice, maxPrice,
     onTypeFilterChange, onIngredientFilterChange, onTagFilterChange, onPriceChange,
     onReset
   }) => {
@@ -36,6 +36,7 @@ const Filters = ({
       />
       <Slider
         initialValue={currentPrice}
+        minValue={minPrice}
         maxValue={maxPrice}
         onChange={onPriceChange}
       />
@@ -63,6 +64,7 @@ Filters.propTypes = {
   currentIngredients: PropTypes.arrayOf(PropTypes.string).isRequired,
   currentTags: PropTypes.arrayOf(PropTypes.string).isRequired,
   currentPrice: PropTypes.number.isRequired,
+  minPrice: PropTypes.number.isRequired,
   maxPrice: PropTypes.number.isRequired,
   onTypeFilterChange: PropTypes.func.isRequired,
   onIngredientFilterChange: PropTypes.func.isRequired,

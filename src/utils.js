@@ -34,7 +34,15 @@ export const filterByType = (type) => (pizza) => {
 };
 
 export const filterByPrice = (price) => (pizza) => {
-  return pizza.prices.thick.large <= price;
+  let initialPrice = pizza.prices.thin.small;
+  let currentPrice;
+  if(pizza.discountPercent > 0) {
+    currentPrice = (initialPrice - (initialPrice * pizza.discountPercent / 100)).toFixed(0);
+  } else {
+    currentPrice = initialPrice;
+  }
+
+  return currentPrice <= price;
 };
 
 export const filterByIngredients = (ingredientTypes) => (pizza) => {

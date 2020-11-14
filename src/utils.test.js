@@ -102,7 +102,7 @@ it(`filterByType returns all pizzas when type is "any"`, () => {
 });
 
 it(`filterByPrice returns pizzas with the correct price`, () => {
-  const testPrice = 15;
+  const testPrice = 10;
   const pizzasByPrice = testPizzas.filter(filterByPrice(testPrice));
   expect(pizzasByPrice).toHaveLength(2);
 });
