@@ -13,6 +13,8 @@ import Pizza from "../../pages/pizza.jsx";
 import Favorites from "../../pages/favorites.jsx";
 import Cart from "../../pages/cart.jsx";
 import PageNotFound from "../../pages/page-not-found.jsx";
+import ThankYouPage from "../../pages/thank-you.jsx";
+import PrivateRoute from "../private-route/private-route.jsx";
 
 const App = () => {
   const pizzas = useSelector(selectPizzas);
@@ -30,6 +32,14 @@ const App = () => {
           <Route exact path={AppRoute.PIZZA} component={Pizza} />
           <Route exact path={AppRoute.FAVORITES} component={Favorites} />
           <Route exact path={AppRoute.CART} component={Cart} />
+          <PrivateRoute
+            exact path={AppRoute.THANK_YOU}
+            render={() => {
+              return (
+                <ThankYouPage />
+              );
+            }}
+          />
           <Route component={PageNotFound} />
         </Switch>
       <Footer />

@@ -5,6 +5,8 @@ export const AppRoute = {
   MENU: `/menu`,
   PIZZA: `/menu/:id`,
   HOME: `/`,
+  THANK_YOU: `/thank-you`,
+  ERROR: `/error`
 };
 
 export const AppRouteTitle = {
