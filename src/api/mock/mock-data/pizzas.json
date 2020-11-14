@@ -277,8 +277,8 @@
         }
       },
       "discount_percent": 0,
-      "is_new": false,
-      "is_top": true
+      "is_new": true,
+      "is_top": false
     },
     {
       "id": "pizza-11",
