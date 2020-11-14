@@ -75,8 +75,8 @@ const MapSection = () => {
           {locations && locations.map(location => {
             return (
               <section
-                onMouseOver={() => setActiveLocation(location.id)}
-                onMouseOut={() => setActiveLocation("")}
+                onMouseEnter={() => {setActiveLocation(location.id)}}
+                onMouseLeave={() => setActiveLocation("")}
                 key={location.id}
                 className="map-pin-info"
               >
