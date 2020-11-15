@@ -98,6 +98,11 @@ class MockApi {
     return Promise.resolve(this._cart.slice());
   }
 
+  cleanCart() {
+    this._cart = [];
+    return Promise.resolve(this._cart.slice());
+  }
+
   increaseItemQuantity(cartItemId) {
     const foundItems = this._cart.filter(it => it.id === cartItemId);
     if (foundItems.length === 1) {

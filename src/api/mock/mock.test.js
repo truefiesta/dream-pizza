@@ -133,6 +133,24 @@ describe(`Get pizzas`, () => {
     //   });
   });
 
+  it(`removes all items from the cart`, async () => {
+    const pizzaId1 = "pizza-6";
+    const pizzaId2 = "pizza-1";
+    const crust1 = "thick";
+    const size1 = 11;
+    const quantity1 = 3;
+    const price1 = 10;
+    expect.assertions(2);
+
+    await api.addToCart(pizzaId1, crust1, size1, quantity1, price1);
+    await api.addToCart(pizzaId2, crust1, size1, quantity1, price1);
+    const cartItems = await api.getCartItems();
+    expect(cartItems).toHaveLength(2);
+    await api.cleanCart();
+    const cartItemsAfterCleanUp = await api.getCartItems();
+    expect(cartItemsAfterCleanUp).toHaveLength(0);
+  })
+
   it(`can increase item quantity`, async () => {
     const pizzaId1 = "pizza-6";
     const crust1 = "thick";
