@@ -33,7 +33,8 @@
   color: var(--basic-black);
 }
 
-.cart-total-button {
+.cart-total-button,
+.cart-total-button-disabled {
   display: block;
   box-sizing: border-box;
   width: 132px;
@@ -49,6 +50,11 @@
   text-align: center;
   text-transform: uppercase;
   text-decoration: none;
+}
+
+.cart-total-button-disabled {
+  background-color: var(--full-dark-gray);
+  opacity: 0.8;
 }
 
 .cart-total-button:hover,

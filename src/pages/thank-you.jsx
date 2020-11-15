@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { ActionCreator as PaymentActionCreator } from "../reducer/payment/payment.js";
+import { Operation as PizzasOperation } from "../reducer/pizzas/pizzas.js";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../const.js";
 
 const ThankYouPage = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(PizzasOperation.cleanCart());
+
+    return function () {
+      dispatch(PaymentActionCreator.changeAccess(false));
+    };
+  });
+
   return (
     <main className="menu-page">
       <div className="wrapper">
