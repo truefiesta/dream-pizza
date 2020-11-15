@@ -49,7 +49,7 @@ const CardDetails = ({ pizza, reviewsNumber }) => {
       crust,
       size,
       quantity,
-      pricePerOne: currentPrice
+      pricePerOne: parseInt(currentPrice, 10)
     }
   };
 

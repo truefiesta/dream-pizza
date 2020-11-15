@@ -51,7 +51,7 @@ const createPizzaCartItem = (pizzaCartItem) => {
     crust: pizzaCartItem.crust,
     size: pizzaCartItem.size,
     quantity: pizzaCartItem.quantity,
-    pricePerOne: pizzaCartItem.price_per_one
+    pricePerOne: parseInt(pizzaCartItem.price_per_one, 10)
   }
 };
 
