@@ -198,6 +198,39 @@ describe(`Operations`, () => {
     );
   });
 
+  it(`cleanCart makes a correct api call on cleaning the cart`, async () => {
+    const pizzaId = 'pizza-1';
+    const pizzaId2 = 'pizza-2';
+    const crust = 'thick';
+    const size = '13';
+    const quantity = 1;
+    const pricePerOne = 11;
+
+    const cartItemFirst = {
+      pizzaId, crust, size, quantity, pricePerOne
+    };
+
+    const cartItemSecond = {
+      pizzaId2, crust, size, quantity, pricePerOne
+    };
+
+    const dispatch = jest.fn();
+    const getState = () => {};
+    const addToCartFirstItem = Operation.addToCart(cartItemFirst);
+    const addToCartSecondItem = Operation.addToCart(cartItemSecond);
+    await addToCartFirstItem(dispatch, getState, apiMock);
+    await addToCartSecondItem(dispatch, getState, apiMock);
+
+    expect.assertions(2);
+    const cart = apiMock.getTestCartItems();
+    expect(cart).toHaveLength(2);
+    const cleanCart = Operation.cleanCart();
+    await cleanCart(dispatch, getState, apiMock);
+    expect(dispatch).toHaveBeenNthCalledWith(3,
+      ActionCreator.setCart([])
+    );
+  })
+
   it(`increaseItemQuantityInCart should make a correct api call on increasing item quantity in the cart`, async () => {
     const pizzaId = 'pizza-1';
     const crust = 'thick';

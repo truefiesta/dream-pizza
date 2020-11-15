@@ -99,6 +99,12 @@ const Operation = {
         dispatch(ActionCreator.setCart(cartItemsClient))
       })
   },
+  cleanCart: () => (dispatch, getState, api) => {
+    return api.cleanCart()
+      .then(response => {
+        dispatch(ActionCreator.setCart(response))
+      })
+  },
   increaseItemQuantityInCart: (cartObjId) => (dispatch, getState, api) => {
     return api.increaseItemQuantity(cartObjId)
       .then(response => {
