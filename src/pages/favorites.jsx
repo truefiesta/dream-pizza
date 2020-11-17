@@ -30,6 +30,10 @@ const Favorites = () => {
     }
   ];
 
+  if (favoritePizzas.length > 0 && favoritePizzas.length <= MAX_FAVORITES_PER_PAGE && page !== 1) {
+    setPage(1);
+  }
+
   return (
     <main className="favorites-page">
       <div className="wrapper">
