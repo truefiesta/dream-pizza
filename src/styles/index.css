@@ -183,6 +183,36 @@ img {
   border: 2px solid var(--full-dark-gray);
 }
 
+@keyframes dots {
+  to {
+    width: 40px;
+  }
+}
+
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+  color: var(--semi-dark-gray);
+}
+
+.loader::after {
+  content: "\2022 \2022 \2022";
+  color: var(--semi-dark-gray);
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: baseline;
+  animation: dots steps(4, end) 2s infinite;
+  width: 0;
+}
+
 /* Layout */
 
 @media (min-width: 320px) {

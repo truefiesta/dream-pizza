@@ -19,8 +19,14 @@ import PrivateRoute from "../private-route/private-route.jsx";
 const App = () => {
   const pizzas = useSelector(selectPizzas);
   if (pizzas.length === 0) {
-    // TODO: add loader
-    return <div>Loading...</div>;
+    return (
+      <div className="loader-wrapper">
+        <div className="loader">
+          Loading
+        </div>
+      </div>
+
+    );
   }
 
   return (
