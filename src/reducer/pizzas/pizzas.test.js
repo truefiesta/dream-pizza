@@ -57,8 +57,13 @@ describe(`Action creators`, () => {
 
 describe(`Operations`, () => {
   let apiMock;
+  let storage = {
+    getItem: jest.fn(),
+    setItem: jest.fn(),
+    clear: jest.fn()
+  };
   beforeEach(() => {
-    apiMock = new MockApi(pizzasTestData.pizzas, reviewsTestData.reviews, locationsTestData.locations);
+    apiMock = new MockApi(storage, pizzasTestData.pizzas, reviewsTestData.reviews, locationsTestData.locations);
   });
 
   it(`loadAllPizzas should make a correct API call`, async () => {

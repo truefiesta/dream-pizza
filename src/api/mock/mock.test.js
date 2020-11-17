@@ -5,8 +5,14 @@ import locationsData from "../test-data/locations.test.json";
 
 describe(`Get pizzas`, () => {
   let api;
+  let storage = {
+    getItem: jest.fn(),
+    setItem: jest.fn(),
+    clear: jest.fn()
+  };
+
   beforeEach(() => {
-    api = new MockApi(pizzasData.pizzas, reviewsData.reviews, locationsData.locations);
+    api = new MockApi(storage, pizzasData.pizzas, reviewsData.reviews, locationsData.locations);
   });
 
   it(`returns pizza objects`, () => {

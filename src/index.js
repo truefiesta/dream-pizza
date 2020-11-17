@@ -21,7 +21,9 @@ import App from "./components/app/app.jsx";
 // eslint-disable-next-line no-unused-vars
 import index from "./styles/index.css";
 
-const api = new MockApi(pizzasData.pizzas, reviewsData.reviews, locationsData.locations);
+const storage = window.localStorage;
+
+const api = new MockApi(storage, pizzasData.pizzas, reviewsData.reviews, locationsData.locations);
 
 const composedEnhancer = composeWithDevTools(
   applyMiddleware(thunkMiddleware.withExtraArgument(api))
@@ -30,6 +32,8 @@ const composedEnhancer = composeWithDevTools(
 const store = createStore(reducer, composedEnhancer);
 store.dispatch(PizzasOperation.loadAllPizzas());
 store.dispatch(LocationsOperation.loadLocations());
+store.dispatch(PizzasOperation.loadFavorites());
+store.dispatch(PizzasOperation.loadCart());
 
 ReactDOM.render(
   <Provider store={store}>
