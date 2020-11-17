@@ -291,10 +291,6 @@
   margin-bottom: 20px;
 }
 
-/* .card-details-bottom {
-  display: none;
-} */
-
 @media (min-width: 600px) {
   .card-mark {
     width: 50px;
