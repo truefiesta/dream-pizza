@@ -28,12 +28,31 @@ const ReviewText = {
   MAX_LENGTH: 50
 }
 
+const VALIDATION_ERROR = "Please, ensure that you have set your rating and your message is 30 to 50 characters long before submittion.";
+
 const ReviewForm = ({pizzaId}) => {
   const [rating, setRating] = useState(0);
-  const [review, setReview] = useState(``);
+  const [review, setReview] = useState("");
+  const [isBlocked, setIsBlocked] = useState(false);
+  const [reviewError, setReviewError] = useState("");
   const dispatch = useDispatch();
-  const reviewError = false;
-  const submitReviewHandle = () => {
+
+  const handleValidation = () => {
+    return (
+      rating > 0 && review.length >= ReviewText.MIN_LENGTH && review.length <= ReviewText.MAX_LENGTH
+    );
+  };
+
+  const handleSubmit = () => {
+    if (!handleValidation()) {
+      setReviewError(VALIDATION_ERROR);
+      return;
+    }
+
+    setReviewError("");
+
+    setIsBlocked(true);
+
     const newReview = {
       user: {
         id: "user-0",
@@ -48,25 +67,21 @@ const ReviewForm = ({pizzaId}) => {
 
     dispatch(PizzasOperation.addPizzaReview(newReview));
     setRating(0);
-    setReview('');
-    // validate
-    // submit
+    setReview("");
+    setIsBlocked(false);
   }
 
   return (
     <section id="new-review" className="new-review">
       <div className="new-review-title-container">
         <h2 className="review-title">Write a review</h2>
-        <p className="review-title-note">
-          Please note, you need to be loged in to submit a review.
-        </p>
       </div>
       <form
         className="review-form"
         method="POST"
         onSubmit={(evt) => {
           evt.preventDefault();
-          submitReviewHandle();
+          handleSubmit();
         }}
       >
         <div className="review-form-top">
@@ -77,12 +92,11 @@ const ReviewForm = ({pizzaId}) => {
             options={ratingOptions}
             selectedOption={rating}
             onSelectedOptionChange={(rating) => setRating(rating)}
-            isBlocked={false}
+            isBlocked={isBlocked}
           />
           {reviewError &&
             <p className="reiview-error">
-              Your review haven’t been submited.
-              Please, try again later.
+              {reviewError}
             </p>}
         </div>
         <textarea
@@ -94,6 +108,7 @@ const ReviewForm = ({pizzaId}) => {
           value={review}
           minLength={ReviewText.MIN_LENGTH}
           maxLength={ReviewText.MAX_LENGTH}
+          disabled={isBlocked}
           required
         />
         <div className="review-form-bottom">
@@ -101,7 +116,7 @@ const ReviewForm = ({pizzaId}) => {
             To submit review please make sure to set rating and describe your
             experience with at least 30 characters.
           </p>
-          <button type="submit" className="dark-button review-form-submit">
+          <button type="submit" className="dark-button review-form-submit" disabled={isBlocked}>
             Submit review
           </button>
         </div>
