@@ -11,14 +11,14 @@ import PrevNextControls from "../components/prev-next-controls/prev-next-control
 const MAX_FAVORITES_PER_PAGE = 3;
 
 const Favorites = () => {
-  const favorites = useSelector(selectFavorites);
+  const favoritesIds = useSelector(selectFavorites);
   const pizzas = useSelector(selectPizzas);
   const [page, setPage] = useState(1);
   let favoritePizzas = [];
-  const favoritesNumber = favorites.length;
-  const noFavorites = favoritesNumber === 0;
+  const favoritesQuantity = favoritesIds.length;
+  const noFavorites = favoritesQuantity === 0;
   if (!noFavorites) {
-    favoritePizzas = favorites.map(favoriteId => pizzas.find(pizza => pizza.id === favoriteId));
+    favoritePizzas = favoritesIds.map(favoriteId => pizzas.find(pizza => pizza.id === favoriteId));
   }
 
   let favoritesToShow = getItemsForPageNumber(page, MAX_FAVORITES_PER_PAGE, favoritePizzas);
@@ -46,7 +46,7 @@ const Favorites = () => {
               { favoritePizzas.length > MAX_FAVORITES_PER_PAGE &&
                 <PrevNextControls
                   currentPage={page}
-                  itemsNumber={favoritesNumber}
+                  itemsNumber={favoritesQuantity}
                   maxItemsPerPage={MAX_FAVORITES_PER_PAGE}
                   onPrevClick={(page) => {setPage(page)}}
                   onNextClick={(page) => {setPage(page)}}
