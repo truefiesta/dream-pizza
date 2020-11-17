@@ -33,7 +33,6 @@ const Slider = ({ initialValue, minValue, maxValue, onChange}) => {
 
     if (newX > end) {
       newX = end;
-      console.log(newX)
     }
 
     let newTogglePercentage = getTogglePercentage(newX, end).toFixed(0);
