@@ -1,5 +1,6 @@
 .modal-shadow {
   position: fixed;
+  z-index: 100000;
   top: 0;
   left: 0;
   width: 100%;
@@ -10,6 +11,7 @@
 .modal-main {
   min-width: 211px;
   position: fixed;
+  z-index: 100000;
   background: var(--basic-white);
   box-sizing: border-box;
   border-radius: 10px;
