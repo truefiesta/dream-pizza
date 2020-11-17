@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectFavorites, selectPizzasInCartQuantity } from "../../reducer/pizzas/selectors.js";
 import { NavLink, Link } from "react-router-dom";
@@ -7,6 +7,7 @@ import { AppRoute } from "../../const.js";
 import "./header.css";
 
 const Header = () => {
+  const [showMenu, setShowMenu] = useState(false);
   const favorites = useSelector(selectFavorites);
   const pizzasInCartNumber = useSelector(selectPizzasInCartQuantity);
   const favoritesNumber = favorites.length;
@@ -18,12 +19,12 @@ const Header = () => {
       <div className="header-main-container">
         <div className="header-main-top">
           <Link to={AppRoute.HOME} className="logo">Dream Pizza</Link>
-          <button className="nav-main-toggle" type="button">
-            <span className="visually-hidden">Open menu</span>
+          <button onClick={() => setShowMenu(!showMenu)} className={showMenu ? `nav-main-toggle toggle-close` : `nav-main-toggle toggle-open`} type="button">
+            <span className="visually-hidden">{showMenu ? `Close menu`: `Open menu`}</span>
           </button>
         </div>
-        <nav className="nav-main">
-          <ul className="nav-main-list">
+        <nav className={showMenu ? `nav-main nav-main-show` : `nav-main nav-main-hide`}>
+          <ul className="nav-main-list" onClick={() => setShowMenu(false)}>
             <li className="nav-main-item">
               <NavLink to={AppRoute.MENU} activeClassName="nav-item-current-link">Menu</NavLink>
             </li>
