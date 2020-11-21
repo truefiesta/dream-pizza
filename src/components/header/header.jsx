@@ -20,6 +20,11 @@ const Header = () => {
         <div className="header-main-top">
           <Link to={AppRoute.HOME} className="logo">Dream Pizza</Link>
           <button onClick={() => setShowMenu(!showMenu)} className={showMenu ? `nav-main-toggle toggle-close` : `nav-main-toggle toggle-open`} type="button">
+            <svg className="burger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+              <g className="line-three"><line x1="5" y1="24" x2="27" y2="24" fill="none" stroke="#b72828" strokeMiterlimit="10" strokeWidth="3"/></g>
+              <g className="line-two"><line x1="5" y1="15" x2="27" y2="15" fill="none" stroke="#b72828" strokeMiterlimit="10" strokeWidth="3"/></g>
+              <g className="line-one"><line x1="5" y1="6" x2="27" y2="6" fill="none" stroke="#b72828" strokeMiterlimit="10" strokeWidth="3"/></g>
+            </svg>
             <span className="visually-hidden">{showMenu ? `Close menu`: `Open menu`}</span>
           </button>
         </div>

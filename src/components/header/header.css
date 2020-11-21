@@ -97,6 +97,7 @@
     display: block;
     width: 30px;
     height: 30px;
+    padding: 0;
 
     position: absolute;
     bottom: 25px;
@@ -107,20 +108,56 @@
     background-color: transparent;
   }
 
-  .toggle-close {
-    background-image: url(../../assets/img/menu-close.svg);
-    background-position: center;
-    background-size: 30px 20px;
-    background-repeat: no-repeat;
-    transition: background-image 1s;
+  @keyframes line-grow {
+    0% {
+      transform: scaleX(1);
+    }
+    50% {
+      transform: scaleX(1.25);
+    }
+    100% {
+      transform: scaleX(1);
+    }
   }
 
-  .toggle-open {
-    background-image: url(../../assets/img/menu-open.svg);
-    background-position: center;
-    background-size: 29px 20px;
-    background-repeat: no-repeat;
-    transition: background-image 1s;
+  @keyframes line-one-rotate {
+    0% {
+      transform: scaleX(1) rotateZ(0deg);
+    }
+    100% {
+      transform: scaleX(1.25) rotateZ(40deg);
+    }
+  }
+
+  @keyframes line-three-rotate {
+    0% {
+      transform: scaleX(1) rotateZ(0deg);
+    }
+    100% {
+      transform: scaleX(1.25) rotateZ(-40deg);
+    }
+  }
+
+  .toggle-open:hover .line-one,
+  .toggle-open:hover .line-two,
+  .toggle-open:hover .line-three {
+    transform-origin: 50% 50%;
+    animation: line-grow ease-out 500ms;
+  }
+
+  .toggle-close .line-two {
+    display: none;
+  }
+
+  .toggle-close .line-one {
+    animation: line-one-rotate ease-out 500ms;
+    animation-fill-mode: forwards;
+  }
+
+  .toggle-close .line-three {
+    transform-origin: left bottom;
+    animation: line-three-rotate ease-out 500ms;
+    animation-fill-mode: forwards;
   }
 
   .nav-user-list {
